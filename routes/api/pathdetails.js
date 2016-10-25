@@ -12,6 +12,9 @@ exports = module.exports = function(req, res) {
 	};
 	Path.model.findOne()
 	.where('_id', req.headers.id)
+	.populate('author')
+	.populate('init_content')
+	.populate('success_content')
 	.exec(function(err, path){
 		if (err) {
 			return res.json(err);
@@ -24,7 +27,8 @@ exports = module.exports = function(req, res) {
 				function(callback){
 					Place.model.find({
 						'_id':{$in: places}
-					})
+					}).populate('init_content')
+					.populate('success_content')
 					.exec(function(err2,place){
 						ret.places.push(place);
 						callback();
@@ -33,7 +37,9 @@ exports = module.exports = function(req, res) {
 				function(callback){
 					Objects.model.find({
 						'_id':{$in: objects}
-					}).exec(function(err3,object){
+					}).populate('init_content')
+					.populate('success_content')
+					.exec(function(err3,object){
 						ret.objects.push(object);
 						callback();
 					});	
