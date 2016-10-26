@@ -37,8 +37,9 @@ exports = module.exports = function (app) {
 	// Views
 	app.get('/', routes.views.index);
 	app.all('/contact', routes.views.contact);
-	app.get('/pathlist', routes.api.pathlist);
-	app.get('/pathdetails', routes.api.pathdetails);
+	app.get('/api/pathlist', routes.api.pathlist);
+	app.get('/api/pathdetails', routes.api.pathdetails);
+	app.all('/api*', [keystone.initAPI, keystone.cors]);
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 
