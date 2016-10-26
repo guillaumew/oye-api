@@ -39,10 +39,13 @@ exports = module.exports = function (app) {
 	app.all('/contact', routes.views.contact);
 	app.get('/api/pathlist', routes.api.pathlist);
 	app.get('/api/pathdetails', routes.api.pathdetails);
-	app.all('/api*', [keystone.initAPI, keystone.cors]);
+	app.all('/api*', keystone.cors);
 	app.options('/api*', function(req, res) {
-	   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-XSRF-TOKEN');
-	   res.sendStatus(200);
+		res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
+	    res.setHeader('Access-Control-Allow-Methods', 'GET');
+		//res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-XSRF-TOKEN');
+		res.setHeader('Access-Control-Allow-Credentials', true);
+		res.sendStatus(200);
 	});
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
