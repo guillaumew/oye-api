@@ -40,6 +40,10 @@ exports = module.exports = function (app) {
 	app.get('/api/pathlist', routes.api.pathlist);
 	app.get('/api/pathdetails', routes.api.pathdetails);
 	app.all('/api*', [keystone.initAPI, keystone.cors]);
+	app.options('/api*', function(req, res) {
+	   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-XSRF-TOKEN');
+	   res.sendStatus(200);
+	});
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 
