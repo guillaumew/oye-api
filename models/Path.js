@@ -26,6 +26,7 @@ Path.add({
 	init_objects: { type: Types.Relationship, ref: 'Object', many: true },
 	init_content: { type: Types.Relationship, ref: 'Content' },
 	success_content: { type: Types.Relationship, ref: 'Content' },
+	key: { type: Types.Key },
 });
 
 
