@@ -41,7 +41,7 @@ keystone.set('locals', {
 });
 
 // Allow cross domain calls
-keystone.set('cors allow origin', true);
+//keystone.set('cors allow origin', true);
 
 // Load your project's Routes
 keystone.set('routes', require('./routes'));

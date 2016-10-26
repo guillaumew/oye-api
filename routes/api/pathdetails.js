@@ -45,6 +45,9 @@ exports = module.exports = function(req, res) {
 					});	
 				}
 			], function(err){
+				res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
+				res.setHeader('Access-Control-Allow-Methods', 'GET');
+				res.setHeader('Access-Control-Allow-Credentials', true);	
 				return res.json(ret);
 			});
 		}
