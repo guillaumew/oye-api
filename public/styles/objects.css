@@ -16,7 +16,7 @@
 	height: 90px;
 	overflow-x: scroll;
 	overflow-y: hidden;
-	left: 20px;
+	left: 24px;
 }
 #objects_title{
 	font-family: "multicolore", Helvetica, Arial, sans-serif;
@@ -33,7 +33,7 @@
     -webkit-transform: rotate(-90deg);
     -webkit-transform-origin: 0 0;
     bottom: -25px;
-    height: 20px;
+    height: 25px;
     padding-top: 5px;
 }
 #objects_list{
@@ -41,17 +41,18 @@
 	background-color: #121326;
 	width: 2000px;
 	padding: 5px;
-    height: 80px;
     display: inline-block;
     overflow-x: scroll;
+    top:0;
+    bottom: 0;
 }
 .object{
-	width:0px;
+	width:75px;
 	height: 75px;
 	overflow: hidden;
 	position: relative;
 	margin-right: 5px;
-	display: none;
+	display: inherit;
 	transition: width 0.5s;
 	-webkit-transition: width 0.5s;
 	border-radius: 10px;
