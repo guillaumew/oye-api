@@ -1,0 +1,10 @@
+Search: <input ng-model="$ctrl.query" />
+<ul>
+  <li ng-repeat="path in $ctrl.paths | filter:$ctrl.query">
+  	<a href="#!/path/{{path.key}}">
+	  	<img ng-src="http://localhost:5000/path_files/{{path.thumb.filename}}">
+	    <span>{{path.name}}</span>
+	    <p>{{path.athor.name}}</p>
+    </a>
+  </li>
+</ul>

@@ -11,13 +11,15 @@ exports = module.exports = function(req, res) {
 		objects:[]
 	};
 	Path.model.findOne()
-	.where('_id', req.headers.id)
+	.where('key', req.query.key)
 	.populate('author')
 	.populate('init_content')
 	.populate('success_content')
 	.exec(function(err, path){
 		if (err) {
 			return res.json(err);
+		} else if(!path) {
+			return res.json(ret);
 		} else {
 			ret.path = path;
 			var places = path.places;

@@ -1,3 +1,9 @@
+var express  = require('express');
+var app = express();
+var port  	 = process.env.PORT || 5000; 
+
+app.use('', express.static(__dirname + '/app'));
+
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
 require('dotenv').config();
@@ -77,4 +83,7 @@ keystone.set('nav', {
 
 // Start Keystone to connect to your database and initialise the web server
 
+keystone.app = app;
+
 keystone.start();
+app.listen(port);
