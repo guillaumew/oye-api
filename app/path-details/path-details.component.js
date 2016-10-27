@@ -12,7 +12,11 @@ angular.
           params: {key: $routeParams.pathId}
         })
         .then(function(response) {
-  	      self.response = response.data;
+          var ans = response.data;
+          for(var i=0; i<ans.objects.length; i++){
+            ans.objects[i].is_visible = true;
+          }
+  	      self.response = ans;
   	    });
       }
     ]
