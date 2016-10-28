@@ -47,8 +47,11 @@ keystone.set('locals', {
 	editable: keystone.content.editable,
 });
 
-// Allow cross domain calls
-//keystone.set('cors allow origin', true);
+keystone.set('s3 config', { 
+	bucket: 'openyoureyes', 
+	key: 'AKIAI4YO6QUYC7KSB6KA', 
+	secret: 'mDwbpIKuNp0XkAGIcIKK7W3vjrWgC/R8txRxnzF7' }
+);
 
 // Load your project's Routes
 keystone.set('routes', require('./routes'));
