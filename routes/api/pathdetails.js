@@ -12,9 +12,8 @@ exports = module.exports = function(req, res) {
 	};
 	Path.model.findOne()
 	.where('key', req.query.key)
-	.populate('author')
-	.populate('init_content')
-	.populate('success_content')
+	.populate('author', 'name avatar')
+	.populate('init_content success_content')
 	.exec(function(err, path){
 		if (err) {
 			return res.json(err);

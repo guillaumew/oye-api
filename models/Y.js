@@ -9,8 +9,9 @@ var Y = new keystone.List('Y');
 
 Y.add({
 	name: { type: Types.Name, required: true, index: true },
-	email: { type: Types.Email, initial: true, required: true, index: true },
+	email: { type: Types.Email, initial: true, required: true, index: true, expose:false },
 	password: { type: Types.Password, initial: true, required: true },
+	avatar: {type : Types.S3File},
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 });

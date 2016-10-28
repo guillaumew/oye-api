@@ -16,9 +16,7 @@ Content.add({
 	},
 	description: {type: Types.Html, wysiwyg: true},
 	media : { 
-		type: Types.LocalFile, 
-		dest: 'public/path_files', 
-		required: false
+		type: Types.S3File
 	},
 	media_url: {type: Types.Url},
 	sub_objects : { type: Types.Relationship, ref: 'Object', many: true },

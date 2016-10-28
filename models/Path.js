@@ -5,17 +5,13 @@ var Types = keystone.Field.Types;
  * Path Model
  * ==========
  */
-var Path = new keystone.List('Path');
+var Path = new keystone.List('Path',
+	{autokey: { path: 'key', from: 'name', unique: true }});
 
 Path.add({
 	name: { type: Types.Text, required: true, index: true },
 	thumb: { 
-		type: Types.LocalFile, 
-		dest: 'public/path_files', 
-		required: false,
-		format: function(item, file){
-			return '<img src="/path_files/'+file.filename+'" style="width: 100px; height:100px;">'
-		}
+		type: Types.S3File
 	},
 	author: { type: Types.Relationship, ref: 'Y' },
 	places: { type: Types.Relationship, ref: 'Place', many: true },

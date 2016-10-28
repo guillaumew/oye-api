@@ -3,7 +3,7 @@ var Path = keystone.list('Path');
 
 exports = module.exports = function(req, res) {
 	Path.model.find()
-	.populate('author')
+	.populate('author', 'name avatar')
 	.exec(function(err, paths){
 		if (err) {
 			return res.json(err);
