@@ -3,19 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>Open Your Eyes</title>
+    <title>Open</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-aside-menu/dist/aside-menu.css" />
     <link rel="stylesheet" href="app.css" />
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-aside-menu/dist/aside-menu.js"></script>
 
     <script src="app.module.js"></script>
     <script src="app.config.js"></script>
     <script src="core/apiurl/apiurl.module.js"></script>
     <script src="core/apiurl/apiurl.service.js"></script>
 
+    <script src="menu/menu.module.js"></script>
+    <script src="menu/menu.component.js"></script>
     <script src="paths-list/paths-list.module.js"></script>
     <script src="paths-list/paths-list.component.js"></script>
     <script src="path-details/path-details.module.js"></script>
@@ -24,7 +28,14 @@
   <body>
 
     <!-- Use a custom component to render a list of paths -->
-    <div ng-view></div>
+    <aside-menu id="left-menu" side="left" width="250px" is-backdrop="false" push-content="true">
+        <menu></menu>
+    </aside-menu>
+    <aside-menu-content>
+        <div id="nav-icon" aside-menu-toggle="left-menu" ></div>
+        <div ng-view></div>
+    </aside-menu-content>
+    
 
   </body>
 </html>

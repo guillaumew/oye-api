@@ -1,10 +1,59 @@
-Search: <input ng-model="$ctrl.query" />
-<ul>
-  <li ng-repeat="path in $ctrl.paths | filter:$ctrl.query">
-  	<a href="#!/path/{{path.key}}">
-	  	<img ng-src="http://localhost:5000/path_files/{{path.thumb.filename}}">
-	    <span>{{path.name}}</span>
-	    <p>{{path.athor.name}}</p>
-    </a>
-  </li>
-</ul>
+<div class="page-title">
+	<H1>Open Your Eyes</H1>
+</div>
+<img ng-src="images/logo.png" class="logo" />
+
+<p>Liste des parcours disponibles : </p>
+<p>Filtrer: <input ng-model="$ctrl.query" /></p>
+<div>
+	<div ng-repeat="path in $ctrl.paths | filter:$ctrl.query">
+		<a href="#!/path/{{path.key}}">
+			<div class="item">
+				<div class="inline"><img ng-src="{{path.thumb.url}}" class="path_thumb"></div>
+				<div class="inline">
+					<div>
+						<h4>{{path.name}}</h4>
+					</div>
+					<div>
+						<span class="strong">Auteur : </span>
+						<span>{{path.author.name.first + " " + path.author.name.last}}</span>
+					</div>
+				</div>
+			</div>
+
+	    </a>
+	</div>
+</div>
+
+<style type="text/css">
+.logo{
+	width: 100px;
+    margin-left: -50px;
+	left:50%;
+    position: relative;
+}
+
+.item{
+	background-color: #121326;
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
+    margin: 10px;
+}
+.item_path{
+	text-decoration: none;
+	margin-top: 20px;
+}
+
+h4{
+	text-align: left;
+    margin: 0;
+}
+
+.item img{
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+}
+</style>

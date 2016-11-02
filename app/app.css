@@ -1,4 +1,49 @@
 body {
-  padding-top: 20px;
 }
 
+@font-face{
+    font-family: "multicolore";
+    src: url('/fonts/multicolore.otf');
+}
+.page-title{
+	position: relative;
+	left: 0;
+	height: 65px;
+	display: inline-block;
+	line-height: 65px;
+    top: 0;
+    padding-left: 65px;
+    padding-right: 65px;
+    text-align: center;
+    width: 100%;
+}
+h1{
+    font-family: "multicolore", Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #121326;
+    font-size: 25px;
+    vertical-align: middle;
+    margin:0;
+    display: inline-block;
+}
+header{
+	display: inline-block;
+}
+#nav-icon{
+	display: inherit;
+	width:50px;
+	height: 50px;
+	margin: 5px;
+	background: url(/images/menu_button.png);
+	background-size: contain;
+	position: absolute;
+	z-index: 1000;
+	background-color: rgba(255,255,255,0.3);
+}
+
+.strong{
+    font-weight: bold;
+}
+.inline{
+    display: inline-block;
+}

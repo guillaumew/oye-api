@@ -3,5 +3,7 @@
 angular.module('oyeApp', [
   'ngRoute',
   'pathsList',
-  'pathDetails'
+  'pathDetails',
+  'menu',
+  'asideModule'
 ]);
