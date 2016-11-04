@@ -39,8 +39,7 @@ angular.
 MapController.$inject = ['$scope'];
 
 function MapController($scope) {
-    var ctrl = this;
-    angular.extend(ctrl, {
+    angular.extend($scope, {
         san_fran: {
             lat: 37.78,
             lng: -122.42,
