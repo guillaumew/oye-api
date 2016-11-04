@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="test">
+<head>
+	<title>Test Leaflet</title>
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-mocks/angular-mocks.js"></script>
+	<script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+</head>
+<body>
+	<map></map>
+<style type="text/css">
+    #mapid{
+        height: 400px;
+        width: 100%;
+    }
+</style>
+
+<script type="text/javascript">
+angular.module('test', [
+  'ngRoute',
+  'map',
+  'menu'
+]);
+
+angular.module('map', [
+  'ngRoute'
+]);
+angular.
+  module('map').
+  component('map', {
+    template: '<leaflet center="san_fran" markers="markers" event-broadcast="events" defaults="defaults" id="mapid"></leaflet>',
+    controller: MapController
+    }
+  );
+
+MapController.$inject = ['$scope'];
+
+function MapController($scope) {
+    var ctrl = this;
+    angular.extend(ctrl, {
+        san_fran: {
+            lat: 37.78,
+            lng: -122.42,
+            zoom: 13
+        },
+        events: {},
+        layers: {
+            baselayers: {
+                osm: {
+                    name: 'OpenStreetMap',
+                    url: 'https://{s}.tiles.mapbox.com/v3/examples.map-i875mjb7/{z}/{x}/{y}.png',
+                    type: 'xyz'
+                }
+            }
+        },
+        defaults: {
+            scrollWheelZoom: false
+        }
+    });
+}
+</script>
+</body>
+</html>
+
+
