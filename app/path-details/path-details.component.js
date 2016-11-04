@@ -2,8 +2,8 @@ angular.
   module('pathDetails').
   component('pathDetails', {
     templateUrl: 'path-details/path-details.template.html',
-    controller: ['geolocation', 'Apiurl', '$http', '$routeParams',
-      function PathDetailsController(geolocation, Apiurl, $http, $routeParams) {
+    controller: ['geolocation', 'Apiurl', '$http', '$routeParams', '$scope', 'uiGmapIsReady',
+      function PathDetailsController(geolocation, Apiurl, $http, $routeParams, $scope, uiGmapIsReady) {
         var self = this;
 // GETTING DATA
   	    $http({
@@ -19,11 +19,23 @@ angular.
   	      self.response = ans;
   	    });
 
+        $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+
 // FEATURES
 
         self.getPosition = function getPosition(){
           geolocation.getLocation().then(function(data){
             self.position = data.coords;
+            $scope.map = { 
+              center: {longitude: data.coords.longitude, latitude:data.coords.latitude}, 
+              zoom: 8 
+            };
+            $scope.marker = {
+              key: "0",
+              coords: {longitude: data.coords.longitude, latitude:data.coords.latitude}
+            };
+
+
           });
         }
 

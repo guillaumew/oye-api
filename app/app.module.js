@@ -7,5 +7,6 @@ angular.module('oyeApp', [
   'menu',
   'asideModule',
   'map',
-  'geolocation'
+  'geolocation',
+  'uiGmapgoogle-maps'
 ]);

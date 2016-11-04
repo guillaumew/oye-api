@@ -1,17 +1,28 @@
 <link rel="stylesheet" type="text/css" href="styles/objects.css">
+<style type="text/css">
+ui-gmap-google-map{
+	height: 400px;
+    width: 400px;
+    display: block;
+}
+.angular-google-map-container { height: 400px; }
 
+</style></strong>
 
 <div class="page-title">
 	<H1>{{$ctrl.response.path.name}}</H1>
 </div>
 <div>
+	<img ng-if="$ctrl.response.is_editable" ng-src="https://cdn3.iconfinder.com/data/icons/flat-circle-content/512/flat-style-circle-add-2-64.png" ng-click="$ctrl.addPlace()" style="float:right;">
 	<h3>Position</h3>
 	<div ng-click="$ctrl.getPosition()">
 		<p>Latitude: {{$ctrl.position.latitude}}</p>
 		<p>Longitude: {{$ctrl.position.longitude}}</p>
 	</div>
-	<img ng-src="https://cdn3.iconfinder.com/data/icons/flat-circle-content/512/flat-style-circle-add-2-128.png" ng-click="$ctrl.addPlace()">
 </div>
+<ui-gmap-google-map center="map.center" zoom='map.zoom'>
+	<ui-gmap-marker coords="marker.coords" idkey="0"></ui-gmap-marker>
+</ui-gmap-google-map>
 <map></map>
 <div id="objects">
 	<div id="objects_title">Objets</div>
