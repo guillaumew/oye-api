@@ -2,10 +2,10 @@ angular.
   module('pathDetails').
   component('pathDetails', {
     templateUrl: 'path-details/path-details.template.html',
-    controller: ['Apiurl', '$http', '$routeParams',
-      function PathDetailsController(Apiurl, $http, $routeParams) {
+    controller: ['geolocation', 'Apiurl', '$http', '$routeParams',
+      function PathDetailsController(geolocation, Apiurl, $http, $routeParams) {
         var self = this;
-        //self.path = {name:"Coucou"};
+// GETTING DATA
   	    $http({
           url: Apiurl.host + '/api/pathdetails',
           method: 'GET',
@@ -18,6 +18,57 @@ angular.
           }
   	      self.response = ans;
   	    });
+
+// FEATURES
+
+        self.getPosition = function getPosition(){
+          geolocation.getLocation().then(function(data){
+            self.position = data.coords;
+          });
+        }
+
+        self.editObject = function editObject(objectId){
+          window.open("../keystone/objects/"+objectId);
+        }
+
+        self.addObject = function addObject(){
+          var objectName = prompt("Nom de l'object ?");
+          $http({
+            url: Apiurl.host + '/api/additem',
+            method: 'POST',
+            params : {
+              type: "object",
+              name: objectName,
+              path_id: self.response.path['_id']
+            }
+          }).then(function(response){
+            tmp_object = response.data;
+            tmp_object.is_visible = true;
+            self.response.objects.push(tmp_object);
+          })
+        }
+      
+        self.addPlace = function addPlace(){
+          var placeName = prompt("Nom du lieu ?");
+          $http({
+            url: Apiurl.host + '/api/additem',
+            method: 'POST',
+            params : {
+              type: "place",
+              name: placeName,
+              path_id: self.response.path['_id'],
+              longitude: self.position.longitude,
+              latitude: self.position.latitude
+            }
+          }).then(function(response){
+            tmp_place = response.data;
+            self.response.places.push(tmp_place);
+            console.log(tmp_place);
+          })
+        }
+
+
+
       }
     ]
   });

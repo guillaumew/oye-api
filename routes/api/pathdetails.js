@@ -8,21 +8,28 @@ exports = module.exports = function(req, res) {
 	var ret = {
 		path:{},
 		places:[],
-		objects:[]
+		objects:[],
+		is_editable: false
 	};
 	Path.model.findOne()
 	.where('key', req.query.key)
 	.populate('author', 'name avatar')
 	.populate('init_content success_content')
 	.exec(function(err, path){
+		path['is_editable'] = false;
 		if (err) {
 			return res.json(err);
 		} else if(!path) {
 			return res.json(ret);
 		} else {
-			ret.path = path;
 			var places = path.places;
 			var objects = path.objects;
+			if(req.user && req.user['_id'].toString() == path.author['_id'].toString()){
+				ret.is_editable = true ;
+			}
+			
+			ret.path = path;
+			
 
 			async.parallel([
 				function(callback){
@@ -48,7 +55,8 @@ exports = module.exports = function(req, res) {
 			], function(err){
 				res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
 				res.setHeader('Access-Control-Allow-Methods', 'GET');
-				res.setHeader('Access-Control-Allow-Credentials', true);	
+				res.setHeader('Access-Control-Allow-Credentials', true);
+				console.log(ret.is_editable);
 				return res.json(ret);
 			});
 		}

@@ -1,5 +1,5 @@
 'use strict';
 
 angular.module('pathDetails', [
-  'ngRoute', 'core.apiurl'
+  'ngRoute', 'core.apiurl', 'geolocation'
 ]);

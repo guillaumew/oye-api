@@ -82,7 +82,8 @@ exports = module.exports = function(req, res) {
 		],function(){
 			item.getUpdateHandler(req).process(data, function(err1) {
 				if(err1){return res.sendStatus(500);}
-				path.objects.push(item['_id']);
+
+				path[req.query.type+"s"].push(item['_id']);
 
 				path.getUpdateHandler(req).process(path,function(err2){
 					if(err2){return res.sendStatus(500);}
