@@ -15,6 +15,8 @@ Path.add({
 	},
 	author: { type: Types.Relationship, ref: 'Y' },
 	places: { type: Types.Relationship, ref: 'Place', many: true },
+	longitude: { type: Types.Number },
+	latitude: { type: Types.Number },
 	objects: { type: Types.Relationship, ref: 'Object', many: true },
 	longitude: { type: Types.Number },
 	latitude: { type: Types.Number },
