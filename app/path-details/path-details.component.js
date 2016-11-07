@@ -48,7 +48,7 @@ angular.
               idKey: i+1,
               id:i+1,
               title: place.name,
-              click: test_click 
+              click: self.test_click 
             });
           }
         }
@@ -70,49 +70,50 @@ angular.
         self.editObject = function editObject(objectId){
           window.open("../keystone/objects/"+objectId);
         }
+        self.editPlace = function editPlace(placeId){
+          window.open("../keystone/places/"+placeId);
+        }
 
-        self.addObject = function addObject(){
-          var objectName = prompt("Nom de l'object ?");
+        self.addItem = function addObject(type, name){
+          var params = {
+            type: type,
+            name: name,
+            path_id: self.response.path['_id']
+          };
+          if(self.position && self.position.latitude && self.position.longitude){
+            params.latitude = self.position.latitude;
+            params.longitude = self.position.longitude;
+          }
           $http({
             url: Apiurl.host + '/api/additem',
             method: 'POST',
-            params : {
-              type: "object",
-              name: objectName,
-              path_id: self.response.path['_id']
-            }
+            params : params
           }).then(function(response){
-            tmp_object = response.data;
-            tmp_object.is_visible = true;
-            self.response.objects.push(tmp_object);
+            tmp_item = response.data;
+            tmp_item.is_visible = true;
+            self.response[type+"s"].push(tmp_item);
           })
+        }
+
+        self.addObject = function addObject(){
+          var objectName = prompt("Nom de l'object ?");
+          if(objectName){
+            self.addItem("object", objectName);
+          }
         }
       
         self.addPlace = function addPlace(){
           var placeName = prompt("Nom du lieu ?");
-          $http({
-            url: Apiurl.host + '/api/additem',
-            method: 'POST',
-            params : {
-              type: "place",
-              name: placeName,
-              path_id: self.response.path['_id'],
-              longitude: self.position.longitude,
-              latitude: self.position.latitude
-            }
-          }).then(function(response){
-            tmp_place = response.data;
-            self.response.places.push(tmp_place);
-            console.log(tmp_place);
-          })
+          if(placeName){
+            self.addItem("place", placeName);
+          }
         }
 
-
+        self.test_click = function test_click(instance,event,marker){
+          self.editPlace(marker.extId);
+        }
 
       }
     ]
   });
 
-  function test_click(instance,event,marker){
-    console.log(marker);
-  }
