@@ -39,6 +39,7 @@ exports = module.exports = function (app) {
 	app.all('/contact', routes.views.contact);
 	app.get('/api/pathlist', routes.api.pathlist);
 	app.get('/api/pathdetails', routes.api.pathdetails);
+	app.get('/api/user', routes.api.user);
 	app.all('/api/additem', routes.api.additem);
 
 };

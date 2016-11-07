@@ -8,5 +8,6 @@ angular.module('oyeApp', [
   'asideModule',
   'map',
   'geolocation',
-  'uiGmapgoogle-maps'
+  'uiGmapgoogle-maps',
+  'user'
 ]);
