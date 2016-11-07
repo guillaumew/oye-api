@@ -3,9 +3,9 @@ var app = express();
 var enforce = require('express-sslify');
 var port  	 = process.env.PORT || 5000; 
 
-//if( app.get('env') != "development"){
+if(process.env.ENV != "development"){
 	app.use(enforce.HTTPS({ trustProtoHeader: true }));
-//}
+}
 app.use('', express.static(__dirname + '/app'));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
 
