@@ -1,11 +1,13 @@
 <link rel="stylesheet" type="text/css" href="styles/objects.css">
 <style type="text/css">
-ui-gmap-google-map{
-	height: 400px;
-    width: 400px;
+.map-container{
+    width: 100%;
     display: block;
+    position: fixed;
+    bottom:90px;
+    top:180px;
 }
-.angular-google-map-container { height: 400px; }
+.angular-google-map,.angular-google-map-container { height: 100%; }
 
 </style></strong>
 
@@ -20,10 +22,11 @@ ui-gmap-google-map{
 		<p>Longitude: {{$ctrl.position.longitude}}</p>
 	</div>
 </div>
-<ui-gmap-google-map center="map.center" zoom='map.zoom'>
-	<ui-gmap-markers models="markers" coords="'self'" icon="'icon'", click="click"></ui-gmap-marker>
-</ui-gmap-google-map>
-<map></map>
+<div class="map-container">
+	<ui-gmap-google-map center="map.center" zoom='map.zoom'>
+		<ui-gmap-markers models="markers" coords="'self'" icon="'icon'", click="click"></ui-gmap-markers>
+	</ui-gmap-google-map>
+</div>
 <div id="objects">
 	<div id="objects_title">Objets</div>
 	<div id="objects_container">
