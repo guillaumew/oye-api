@@ -1,9 +1,13 @@
 var express  = require('express');
 var app = express();
+var enforce = require('express-sslify');
 var port  	 = process.env.PORT || 5000; 
 
 app.use('', express.static(__dirname + '/app'));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
+if( app.get('env') != "development"){
+	app.use(enforce.HTTPS({ trustProtoHeader: true }));
+}
 
 // Simulate config options from your production environment by
 // customising the .env file in your project's root folder.
