@@ -5,6 +5,7 @@ var port  	 = process.env.PORT || 5000;
 
 app.use('', express.static(__dirname + '/app'));
 app.use('/bower_components', express.static(__dirname + '/bower_components'));
+console.log(app.get('env'));
 if( app.get('env') != "development"){
 	app.use(enforce.HTTPS({ trustProtoHeader: true }));
 }
