@@ -1,7 +1,8 @@
 angular.
 	module('core.apiurl').
-	factory('Apiurl', function() {
+	factory('Apiurl', ['$location',
+	function ($location) {
 		return {
-			host: $location.protocol() + "://" + $location.host()
+			host: $location.protocol() + "://" + $location.host() + ":" + $location.port()
 		}; 
-	});
+	}]);
