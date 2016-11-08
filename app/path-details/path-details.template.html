@@ -16,22 +16,32 @@
 </div>
 <div>
 	<img ng-if="$ctrl.response.is_editable" ng-src="https://cdn3.iconfinder.com/data/icons/flat-circle-content/512/flat-style-circle-add-2-64.png" ng-click="$ctrl.addPlace()" style="float:right;">
-	<h3>Position</h3>
-	<div ng-click="$ctrl.getPosition()">
-		<p>Latitude: {{$ctrl.position.latitude}}</p>
-		<p>Longitude: {{$ctrl.position.longitude}}</p>
-	</div>
 </div>
 <div class="map-container">
 	<ui-gmap-google-map center="map.center" zoom='map.zoom'>
 		<ui-gmap-markers models="markers" coords="'self'" icon="'icon'", click="click"></ui-gmap-markers>
 	</ui-gmap-google-map>
 </div>
+<div class="content" ng-if="$ctrl.current_content.is_shown">
+	<div class="close_content" ng-click="$ctrl.closeContent()"></div>
+	<h3>{{$ctrl.current_content.title}}</h3>
+	<div ng-bind-html="$ctrl.current_content.description | trusted"></div>
+	<div class="media_content">
+		<img ng-src="{{$ctrl.current_content.media.url}}" ng-if="$ctrl.current_content.media_type == 'img'">
+
+		<div ng-if="$ctrl.current_content.media_type == 'group'">
+			<div ng-repeat="subobject in $ctrl.current_content.sub_obj" ng-click="$ctrl.showContent(subobject)">
+				{{subobject.name}}
+			</div>
+		</div>
+	</div>
+	<div ng-if="$ctrl.response.is_editable" ng-click="$ctrl.editItem($ctrl.current_content.source)">Modifier cet élément</div> 
+</div>
 <div id="objects">
 	<div id="objects_title">Objets</div>
 	<div id="objects_container">
 		<div id="objects_list">
-			<div class="object" ng-repeat="object in $ctrl.response.objects | filter: {is_visible: 'true'}" ng-click="$ctrl.editObject(object._id)">
+			<div class="object" ng-repeat="object in $ctrl.response.objects | filter: {is_visible: 'true'}" ng-click="$ctrl.showContent(object)">
 				<img ng-src="{{object.thumb.url}}">
 				<span class="object_title">{{object.name}}</span>
 			</div>
@@ -41,3 +51,22 @@
 		</div>
 	</div>
 </div>
+
+<style type="text/css">
+.close_content{
+	position: absolute;
+    background: black;
+    height: 30px;
+    width: 30px;
+    right: 0;
+}
+.content{
+    background: rgba(255,255,255,0.8);
+    position: fixed;
+    left: 5px;
+    right: 5px;
+    bottom: 95px;
+    top: 70px;
+    border: 2px solid black;
+}
+</style>
