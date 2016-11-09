@@ -9,5 +9,6 @@ angular.module('oyeApp', [
   'map',
   'geolocation',
   'uiGmapgoogle-maps',
-  'user'
+  'user',
+  'ngAnimate'
 ]);

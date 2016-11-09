@@ -1,4 +1,28 @@
 body {
+    margin: 0;
+    color: #121326;
+    font-family: Trebuchet MS;
+}
+
+
+input[type=text] {
+    padding:5px; 
+    border:2px solid #121326; 
+    webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+input[type=text]:focus {
+    border-color:#14938C; 
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+    background:#121326;
+    color:#FFFFFF;
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
 
 @font-face{

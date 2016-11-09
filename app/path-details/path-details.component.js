@@ -7,31 +7,58 @@ angular.
    }).
   component('pathDetails', {
     templateUrl: 'path-details/path-details.template.html',
-    controller: ['geolocation', 'Apiurl', '$http', '$routeParams', '$scope', 'uiGmapIsReady',
-      function PathDetailsController(geolocation, Apiurl, $http, $routeParams, $scope, uiGmapIsReady) {
+    controller: ['geolocation', 'Apiurl', '$http', '$routeParams', '$scope', 'uiGmapIsReady', '$animate',
+      function PathDetailsController(geolocation, Apiurl, $http, $routeParams, $scope, uiGmapIsReady, $animate) {
         var self = this;
         $scope.markers = [];
 
 // FEATURES
+        self.itemSuccess = function itemSuccess(item){
+          self.openPlaces(item.places_on_open);
+          self.openObjects(item.objects_on_open);
+        }
+
+        self.testPassword = function testPassword(){
+          if(self.current_content.user_password && self.current_content.user_password.toLowerCase().indexOf(self.current_content.success_key)>-1){
+            self.current_content.is_succeeded = true;
+            self.flipContent();
+            if(self.current_content.source.type == "Object"){
+              self.itemSuccess(self.getObjectFromId(self.current_content._id));
+            }else{
+              self.itemSuccess(self.getPlaceFromId(self.current_content._id));
+            }
+          }else{
+            var element = document.getElementById("password_input");
+            $animate.addClass(element, 'shake').then(function() {
+              element.classList.remove('shake');
+            });
+          }
+        }
+        self.flipContent = function flipContent(){
+          document.getElementById("card").classList.toggle("flipped");
+          $("#content_container").animate({scrollTop: 0},1000);
+          //document.getElementById("content_container").scrollTop = 0;
+        }
+
         self.showContent = function showContent(item){
-          content = item.init_content;
-          if (content.sub_objects){
-            content.sub_obj = [];
-            content.sub_objects.forEach(function(objId){
-              content.sub_obj.push(self.getObjectFromId(objId));
+          $("#card").removeClass("flipped");
+          if (item.init_content.sub_objects){
+            item.init_content.sub_obj = [];
+            item.init_content.sub_objects.forEach(function(objId){
+              item.init_content.sub_obj.push(self.getObjectFromId(objId));
             });
           }
           self.openPlaces(item.places_on_open);
           self.openObjects(item.objects_on_open);
 
-          content.source = {
+          item.source = {
             type: item.__t,
             id: item._id
           };
-          content.title = item.name;
+
+          item.is_shown =true;
           
-          content.is_shown = true;
-          self.current_content = content;
+          self.current_content = item;
         }
 
         self.closeContent = function closeContent(){
