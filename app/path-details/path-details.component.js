@@ -14,8 +14,8 @@ angular.
 
 // FEATURES
         self.itemSuccess = function itemSuccess(item){
-          self.openPlaces(item.places_on_open);
-          self.openObjects(item.objects_on_open);
+          self.openPlaces(item.places_on_success);
+          self.openObjects(item.objects_on_success);
         }
 
         self.testPassword = function testPassword(){
