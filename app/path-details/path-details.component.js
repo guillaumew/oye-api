@@ -16,6 +16,7 @@ angular.
         self.itemSuccess = function itemSuccess(item){
           self.openPlaces(item.places_on_success);
           self.openObjects(item.objects_on_success);
+          self.saveProgress();
         }
 
         self.testPassword = function testPassword(){
@@ -50,6 +51,7 @@ angular.
           }
           self.openPlaces(item.places_on_open);
           self.openObjects(item.objects_on_open);
+          self.saveProgress();
 
           item.source = {
             type: item.__t,
@@ -169,26 +171,29 @@ angular.
             });
           }
         }
-// GETTING DATA
-        $http({
-          url: Apiurl.host + '/api/pathdetails',
-          method: 'GET',
-          params: {key: $routeParams.pathId}
-        })
-        .then(function(response) {
-          var ans = response.data;
-          self.response = ans;
+        self.deleteProgress = function deleteProgress(){
+          localStorage.removeItem(self.response.path.key);
+          document.location.reload(true);
+        }
 
-          ans.path.__t="Path";
+        self.saveProgress = function saveProgress(){
+          localStorage.setItem(self.response.path.key,JSON.stringify(self));
+        }
+        self.initPath = function initPath(data){
+          self.response = data;
 
-          self.showContent(ans.path);
+          data.path.__t="Path";
 
-          self.openObjects(ans.path.init_objects);
-          self.openPlaces(ans.path.init_places);
+          self.showContent(data.path);
+
+          self.openObjects(data.path.init_objects);
+          self.openPlaces(data.path.init_places);
           
-          self.response = ans;
+          self.response = data;
           self.initMap();
-        });
+        }
+// GETTING DATA
+        // init with dummy values
         $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
         $scope.markers.push({
           longitude: 0,
@@ -198,6 +203,27 @@ angular.
           title: "me",
           icon: "https://openyoureyes.herokuapp.com/img/green_pin.png"
         });
+
+        //getting data
+        var previous_self = localStorage.getItem($routeParams.pathId);
+        if(previous_self){
+          previous_self = JSON.parse(previous_self);
+          self.initPath(previous_self.response);
+          self.response.places.forEach(function(pla){
+            if(pla.is_visible){
+              self.openPlaces([pla._id]);
+            }
+          });
+        }else{
+          $http({
+            url: Apiurl.host + '/api/pathdetails',
+            method: 'GET',
+            params: {key: $routeParams.pathId}
+          })
+          .then(function(response) {
+            self.initPath(response.data);
+          });
+        }
 
 
       }

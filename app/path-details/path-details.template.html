@@ -15,6 +15,7 @@
 	<H1>{{$ctrl.response.path.name}}</H1>
 </div>
 <div>
+	<p ng-click="$ctrl.deleteProgress()">Supprimer la progression</p>
 	<img ng-if="$ctrl.response.is_editable" ng-src="https://cdn3.iconfinder.com/data/icons/flat-circle-content/512/flat-style-circle-add-2-64.png" ng-click="$ctrl.addPlace()" style="float:right;">
 </div>
 <div class="map-container">
