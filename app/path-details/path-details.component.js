@@ -59,6 +59,7 @@ angular.
               item.preview = false;
               item.is_visited = true;
               self.showOnMap(item);
+              self.centerMap(item);
             }            
           }
 
@@ -102,28 +103,33 @@ angular.
           }else{
             var icon = "//s3.eu-central-1.amazonaws.com/openyoureyes/grey_pin.png"
           }
-          if(!place.marker){
-            place.marker = $scope.markers.length
-          }
-          $scope.markers.push({
+          var newMarker = {
             latitude: place.latitude,
             longitude: place.longitude,
             extId: place._id,
-            idKey: place.marker,
-            id: place.marker,
+            idKey: $scope.markers.length,
+            id: $scope.markers.length,
             title: place.name,
             click: self.test_click,
             icon: icon
-          });
-        }
-        self.initMap = function initMap(){
-          $scope.map = { 
-            center: { 
-              latitude: self.response.path.latitude, 
-              longitude: self.response.path.longitude
-            }, 
-            zoom: 16
           };
+
+          if(!place.marker){
+            place.marker=$scope.markers.length;
+            $scope.markers.push(newMarker);
+          }else{
+            newMarker.id = place.marker;
+            newMarker.idKey = place.marker;
+            var markerToReplace = $scope.markers.find(function(mark){
+              return mark.id === place.marker;
+            });
+            if(markerToReplace){
+              markerToReplace.icon = icon;
+            }else{
+              $scope.markers.push(newMarker);
+            }
+            
+          }
         }
 
         self.checkPlaceReached = function checkPlaceReached(){
@@ -134,14 +140,19 @@ angular.
           });
         }
 
+        self.centerMap = function centerMap(position){
+          $scope.map = { 
+            center: {longitude: position.longitude, latitude:position.latitude}, 
+            zoom: 16
+          };
+        }
+
         self.getPosition = function getPosition(callback){
           geolocation.getLocation().then(function(data){
             self.position = data.coords;
             if(callback){callback();}
-            $scope.map = { 
-              center: {longitude: data.coords.longitude, latitude:data.coords.latitude}, 
-              zoom: 16
-            };
+            
+            self.centerMap(data.coords);
             myMarker = $scope.markers.find(function(marker){
               return marker.id === 0
             });
@@ -235,11 +246,10 @@ angular.
           self.openPlaces(data.path.init_places);
 
           self.response = data;
-          self.initMap();
+          self.centerMap(self.response.path);
         }
 // GETTING DATA
         // init with dummy values
-        $scope.test = "Ceci est un test";
         $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
         $scope.markers.push({
           longitude: 0,
