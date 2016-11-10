@@ -220,10 +220,6 @@ angular.
             });
           }
         }
-        self.deleteProgress = function deleteProgress(){
-          localStorage.removeItem(self.response.path.key);
-          document.location.reload(true);
-        }
 
         self.saveProgress = function saveProgress(){
           localStorage.setItem(self.response.path.key,JSON.stringify(self));
@@ -237,7 +233,7 @@ angular.
 
           self.openObjects(data.path.init_objects);
           self.openPlaces(data.path.init_places);
-          
+
           self.response = data;
           self.initMap();
         }

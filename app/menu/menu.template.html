@@ -1,10 +1,12 @@
-<a href="/" aside-menu-toggle="left-menu"><h3> Open Your Eyes</h3></a>
+<a href="/#!/paths" aside-menu-toggle="left-menu"><h3> Open Your Eyes</h3></a>
 <hr>
-<div id="menu_path">
+<div id="menu_path" ng-if="$ctrl.show_path_options">
 	<span class="menu_sub">Parcours</span>
+    <p ng-click="$ctrl.deleteProgress()">Effacer progression</p>
 </div>
 <div>
 	<span class="menu_sub">General</span>
+    <p ng-click="$ctrl.toggleFullScreen()">Mode plein écran</p>
 	<a href="http://twitter.com/geeyom" target="_new"><p>Contact</p></a>
 </div>
 
@@ -37,6 +39,6 @@ menu p{
 }
 
 #menu_path{
-    display: none;
+    display: block;
 }
 </style>

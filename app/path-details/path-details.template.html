@@ -5,7 +5,7 @@
     display: block;
     position: fixed;
     bottom:190px;
-    top:80px;
+    top:65px;
 }
 .angular-google-map,.angular-google-map-container { height: 100%; }
 
@@ -15,10 +15,10 @@
 	<H1>{{$ctrl.response.path.name}}</H1>
 </div>
 <div>
-	<p ng-click="$ctrl.deleteProgress()">Supprimer la progression</p>
-	<img ng-if="$ctrl.response.is_editable" ng-src="https://cdn3.iconfinder.com/data/icons/flat-circle-content/512/flat-style-circle-add-2-64.png" ng-click="$ctrl.addPlace()" style="float:right;">
+	
 </div>
 <div class="map-container">
+<img ng-if="$ctrl.response.is_editable" ng-src="https://cdn3.iconfinder.com/data/icons/flat-circle-content/512/flat-style-circle-add-2-64.png" ng-click="$ctrl.addPlace()" class="add_place">
 	<ui-gmap-google-map center="map.center" zoom='map.zoom'>
 		<ui-gmap-markers models="markers" coords="'self'" icon="'icon'", click="click"></ui-gmap-markers>
 	</ui-gmap-google-map>
@@ -108,6 +108,13 @@
 </div>
 
 <style type="text/css">
+.add_place{
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
 #position{
 	width: 100%;
 	text-align: center;
