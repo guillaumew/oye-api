@@ -1,0 +1,39 @@
+<div class="shield"  ng-click="$ctrl.openApp()">
+	<div class="logo">
+		<img ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/logo.png" ng-click="$ctrl.openApp()">
+		<h1>Open Your Eyes</h1>
+	</div>
+	<div class="enter_button">Commencer l'enquête</div>
+</div>
+
+<style type="text/css">
+	.shield{
+		position: fixed;
+		width:100%;
+		height: 100%;
+		background-color: #121326;
+		text-align: center;
+		z-index:2000;
+	}
+	.shield .logo{
+		position: relative;
+		top:50%;
+		margin-top: -125px;
+		height: 250px;
+	}
+	.shield h1{
+		color: #85E6FB;
+	}
+	.enter_button{
+		background-color: #34B3AC;
+		color:#FFFFFF;
+	    font-size: 20px;
+	    padding: 10px;
+	    width: 300px;
+	    font-weight: bolder;
+	    position: absolute;
+	    bottom: 50px;
+	    left: 50%;
+	    margin-left: -150px;
+	}
+</style>

@@ -17,6 +17,9 @@ angular.
         when('/path/:pathId', {
           template: '<path-details></path-details>'
         }).
-        otherwise('/paths');
+        when('/welcome', {
+          template: '<welcome></welcome>'
+        }).
+        otherwise('/welcome');
     }
   ]);

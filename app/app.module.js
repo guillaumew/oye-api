@@ -10,5 +10,6 @@ angular.module('oyeApp', [
   'geolocation',
   'uiGmapgoogle-maps',
   'user',
-  'ngAnimate'
+  'ngAnimate',
+  'welcome'
   ]);
