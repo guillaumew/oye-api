@@ -1,4 +1,7 @@
-<a href="/#!/paths" aside-menu-toggle="left-menu"><h3> Open Your Eyes</h3></a>
+<a href="/#!/paths" aside-menu-toggle="left-menu" class="menu_head">
+    <img ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/home.png" style="width:25px;">
+    <div class="menu_title">Open Your Eyes</div>
+</a>
 <hr>
 <div id="menu_path" ng-if="$ctrl.show_path_options">
 	<span class="menu_sub">Parcours</span>
@@ -11,9 +14,18 @@
 </div>
 
 <style type="text/css">
-h3{
+.menu_head{
+    display: inline-block;
+}
+.menu_head img{
+    display: inline-block;
+}
+.menu_title{
     font-family: "multicolore", Helvetica, Arial, sans-serif;
     text-align: center;
+    font-size: 21px;
+    display: inline-block;
+    line-height: 25px;
 }
 
 #left-menu{

@@ -108,6 +108,27 @@
 </div>
 
 <style type="text/css">
+.object.ng-enter, .object.ng-leave{
+	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+.object.ng-enter, .object.ng-leave.ng-leave-active {
+  width:0;
+}
+
+.object.ng-leave, .object.ng-enter.ng-enter-active {
+  width:75px;
+}
+
+.content.ng-enter, .content.ng-leave{
+	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+.content.ng-enter, .content.ng-leave.ng-leave-active {
+  top:110%;
+}
+
+.content.ng-leave, .content.ng-enter.ng-enter-active {
+  top:70px;
+}
 .add_place{
 	position: absolute;
     left: 0;
