@@ -50,6 +50,11 @@ h1{
     margin:0;
     display: inline-block;
 }
+h3{
+    font-family: "multicolore", Helvetica, Arial, sans-serif;
+    text-align: center;
+    color: #121326;
+}
 header{
 	display: inline-block;
 }
