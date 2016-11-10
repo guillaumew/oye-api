@@ -1,11 +1,11 @@
-<link rel="stylesheet" type="text/css" href="styles/objects.css">
+<link rel="stylesheet" type="text/css" href="path-details/objects.css">
 <style type="text/css">
 .map-container{
     width: 100%;
     display: block;
     position: fixed;
-    bottom:90px;
-    top:180px;
+    bottom:190px;
+    top:80px;
 }
 .angular-google-map,.angular-google-map-container { height: 100%; }
 
@@ -24,11 +24,40 @@
 	</ui-gmap-google-map>
 </div>
 
+<div id="position">
+	<div id="legend">
+		<h4>Légende</h4>
+		<div>
+			<img src="//s3.eu-central-1.amazonaws.com/openyoureyes/red_pin.png">
+			<span>: Ta dernière position enregistrée</span>
+		</div>
+		<div>
+			<img src="//s3.eu-central-1.amazonaws.com/openyoureyes/green_pin.png"> / <img src="//s3.eu-central-1.amazonaws.com/openyoureyes/grey_pin.png">
+			<span>: Lieux visités / à visiter</span>
+		</div>
+		<div>
+			<img src="//s3.eu-central-1.amazonaws.com/openyoureyes/yellow_pin.png">
+			<span>: Autres détectives</span>
+		</div>
+	</div>
+	<div id="postion_update" ng-click="$ctrl.getPosition($ctrl.checkPlaceReached)"><span id="position_content">Vérifier ma position</span></div>
+</div>
+
 <div class="content" ng-if="$ctrl.current_content.is_shown">
 	<div class="flip_content" ng-click="$ctrl.flipContent()" ng-if="$ctrl.current_content.is_succeeded"></div>
 	<div class="close_content" ng-click="$ctrl.closeContent()"></div>
 	<section id="content_container">
-		<div id="card">
+		<div id="place-preview" ng-if="$ctrl.current_content.preview">
+			<h3>{{$ctrl.current_content.name}}</h3>
+			<div>
+				<p>Ce lieu se situe à {{$ctrl.current_content.distance}} m. Il faut se rapprocher pour le décourvir</p>
+			</div>
+			<div>
+				<div class="content_button" ng-click="$ctrl.showContent($ctrl.current_content,true)">Voir tout de même le contenu</div>
+				<div class="content_button" ng-if="$ctrl.response.is_editable" ng-click="$ctrl.editItem($ctrl.current_content)">Modifier cet élément</div>
+			</div>
+		</div>
+		<div id="card" ng-if="!$ctrl.current_content.preview">
 			<figure class="front">
 				<h3>{{$ctrl.current_content.name}}</h3>
 				<div ng-bind-html="$ctrl.current_content.init_content.description | trusted"></div>
@@ -45,16 +74,14 @@
 				
 				<div id="media_password" ng-if="$ctrl.current_content.success_condition == 'password'">
 					<p>Tu as trouvé la solution ?</p>
-					<p style="padding-left: 1px;text-align: center;" id="password_input">
+					<div id="password_input">
 						<input type="text" ng-model="$ctrl.current_content.user_password">
 						<input type="submit" value="Envoyer" ng-click="$ctrl.testPassword()">
-					</p>
+					</div>
 				</div>
-
-				<div ng-if="$ctrl.response.is_editable" ng-click="$ctrl.editItem($ctrl.current_content.source)">Modifier cet élément</div>
 			</figure>
 			<figure class = "back">
-				<h3>{{$ctrl.current_content.name}}</h3>
+				<h3>Bravo : {{$ctrl.current_content.name}}</h3>
 				<div ng-bind-html="$ctrl.current_content.success_content.description | trusted"></div>
 				<div class="media_content">
 					<img ng-src="{{$ctrl.current_content.success_content.media.url}}" ng-if="$ctrl.current_content.success_content.media_type == 'img'">
@@ -81,6 +108,79 @@
 </div>
 
 <style type="text/css">
+#position{
+	width: 100%;
+	text-align: center;
+	height: 100px;
+	position: fixed;
+	bottom:90px;
+	display: inline-block;
+}
+
+#postion_update{
+	text-align: center;
+    background-color: #34B3AC;
+    width: 90PX;
+    height: 90px;
+    border-radius: 50px;
+    display: inline-block;
+    position: absolute;
+    top:5px;
+    right: 5px;
+}
+
+#position_content{
+	font-family: "multicolore", Helvetica, Arial, sans-serif;
+	position: absolute;
+    color: white;
+    font-size: 16px;
+    left: 0;
+    top: 20px;
+    right: 0;
+    line-height: initial;
+}
+#legend{
+	display: inline-block;
+    text-align: left;
+    border: solid 1px #121326;
+    border-radius: 5px;
+    padding: 2px;
+    position: absolute;
+    left: 1px;
+    right: 101px;
+    top: 1px;
+    bottom: 1px;
+}
+#legend>div{
+	height: 22px;
+    overflow: hidden;
+}
+#legend span{
+	position: relative;
+    top: -2px;
+    color:#121326;
+}
+#legend h4{
+	margin:0;
+}
+#legend img{
+	height: 20px;
+}
+
+
+.content_button{
+    background-color: #34B3AC;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+    margin: 10px 25px;
+    border: solid white;
+}
+#content_container p{
+	font-size: 20px;
+    margin: 10px;
+}
 @keyframes shake {
   0% {transform: translateX(0);}
   12.5% {transform: translateX(-10px) rotateY(-5deg)}
@@ -99,8 +199,11 @@
   100% {-webkit-transform: translateX(0)}
 }
 #password_input{
-	left: 5%;
+	left: 2%;
+	width:96%;
     position: relative;
+    padding-left: 1px;
+    text-align: center;
 }
 
 .shake {
@@ -117,24 +220,30 @@ figure img{
 }
 .flip_content{
 	position: absolute;
-	left:0;
-    background: grey;
-    height: 30px;
-    width: 30px;
+	left:-10px;
+	top:-10px;
+    background: url(//s3.eu-central-1.amazonaws.com/openyoureyes/flip_button.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 40px;
     z-index: 100;
 }
 .close_content{
 	position: absolute;
-	right:0;
-    background: black;
-    height: 30px;
-    width: 30px;
+    right: -10px;
+    top: -10px;
+    background: url(//s3.eu-central-1.amazonaws.com/openyoureyes/close.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 40px;
+    width: 40px;
     z-index: 100;
 }
 .content{
     position: fixed;
-    left: 5px;
-    right: 5px;
+    left: 10px;
+    right: 10px;
     bottom: 95px;
     top: 70px;
 }

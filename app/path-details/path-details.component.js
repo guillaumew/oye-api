@@ -14,6 +14,7 @@ angular.
 
 // FEATURES
         self.itemSuccess = function itemSuccess(item){
+          item.is_succeeded = true;
           self.openPlaces(item.places_on_success);
           self.openObjects(item.objects_on_success);
           self.saveProgress();
@@ -21,7 +22,6 @@ angular.
 
         self.testPassword = function testPassword(){
           if(self.current_content.user_password && self.current_content.user_password.toLowerCase().indexOf(self.current_content.success_key)>-1){
-            self.current_content.is_succeeded = true;
             self.flipContent();
             if(self.current_content.source.type == "Object"){
               self.itemSuccess(self.getObjectFromId(self.current_content._id));
@@ -41,17 +41,45 @@ angular.
           //document.getElementById("content_container").scrollTop = 0;
         }
 
-        self.showContent = function showContent(item){
-          $("#card").removeClass("flipped");
+        self.computeDistance = function computeDistance(pointA,pointB){
+          var lat_place1 = pointA.latitude;
+          var lat_place2 = pointB.latitude;
+          var long_place1 = pointA.longitude;
+          var long_place2 =  pointB.longitude;
+          return Math.acos(Math.sin(lat_place1 * Math.PI / 180)*Math.sin((Math.PI / 180 * lat_place2))+Math.cos((Math.PI / 180 * lat_place1))*Math.cos((Math.PI / 180 * lat_place2))*Math.cos(Math.PI / 180 * (long_place1-long_place2)))*6371 ;
+        }
+
+        self.showContent = function showContent(item, forcePreview){
+          if(item.__t=="Place"){
+            distance = Math.round(1000*self.computeDistance(item, self.position));
+            item.distance = distance;
+            if(distance>30 && !forcePreview){
+              item.preview = true;
+            }else{
+              item.preview = false;
+              item.is_visited = true;
+              self.showOnMap(item);
+            }            
+          }
+
+          if(item.is_succeeded){
+            $("#card").addClass("flipped");
+          }else{
+            $("#card").removeClass("flipped");
+          }
+          
           if (item.init_content.sub_objects){
             item.init_content.sub_obj = [];
             item.init_content.sub_objects.forEach(function(objId){
               item.init_content.sub_obj.push(self.getObjectFromId(objId));
             });
           }
-          self.openPlaces(item.places_on_open);
-          self.openObjects(item.objects_on_open);
-          self.saveProgress();
+
+          if(!item.preview){
+            self.openPlaces(item.places_on_open);
+            self.openObjects(item.objects_on_open);
+            self.saveProgress();
+          }
 
           item.source = {
             type: item.__t,
@@ -69,14 +97,23 @@ angular.
 
         self.showOnMap = function showOnMap(place){
           place.is_visible = true;
+          if(place.is_visited){
+            var icon = "//s3.eu-central-1.amazonaws.com/openyoureyes/green_pin.png";
+          }else{
+            var icon = "//s3.eu-central-1.amazonaws.com/openyoureyes/grey_pin.png"
+          }
+          if(!place.marker){
+            place.marker = $scope.markers.length
+          }
           $scope.markers.push({
             latitude: place.latitude,
             longitude: place.longitude,
             extId: place._id,
-            idKey: $scope.markers.length,
-            id:$scope.markers.length,
+            idKey: place.marker,
+            id: place.marker,
             title: place.name,
-            click: self.test_click 
+            click: self.test_click,
+            icon: icon
           });
         }
         self.initMap = function initMap(){
@@ -88,9 +125,19 @@ angular.
             zoom: 16
           };
         }
-        self.getPosition = function getPosition(){
+
+        self.checkPlaceReached = function checkPlaceReached(){
+          self.response.places.forEach(function(place){
+            if(place.is_visible && self.computeDistance(self.position,place) < 0.03){
+              self.showContent(place,true);
+            }
+          });
+        }
+
+        self.getPosition = function getPosition(callback){
           geolocation.getLocation().then(function(data){
             self.position = data.coords;
+            if(callback){callback();}
             $scope.map = { 
               center: {longitude: data.coords.longitude, latitude:data.coords.latitude}, 
               zoom: 16
@@ -150,7 +197,9 @@ angular.
           });         
         }
         self.test_click = function test_click(instance,event,marker){
-          self.showContent(self.getPlaceFromId(marker.extId));
+          self.getPosition(function(){
+            self.showContent(self.getPlaceFromId(marker.extId))
+          });
         }
 
         self.editItem = function editItem(source){
@@ -194,14 +243,14 @@ angular.
         }
 // GETTING DATA
         // init with dummy values
+        $scope.test = "Ceci est un test";
         $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
         $scope.markers.push({
           longitude: 0,
           latitude: 0,
           idKey: 0,
           id:0,
-          title: "me",
-          icon: "https://openyoureyes.herokuapp.com/img/green_pin.png"
+          title: "me"
         });
 
         //getting data

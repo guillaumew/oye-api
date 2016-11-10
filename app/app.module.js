@@ -11,4 +11,4 @@ angular.module('oyeApp', [
   'uiGmapgoogle-maps',
   'user',
   'ngAnimate'
-]);
+  ]);
