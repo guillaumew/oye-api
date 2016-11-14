@@ -50,6 +50,7 @@ angular.
         }
 
         self.showContent = function showContent(item, forcePreview){
+
           if(item.__t=="Place"){
             distance = Math.round(1000*self.computeDistance(item, self.position));
             item.distance = distance;
@@ -87,7 +88,15 @@ angular.
             id: item._id
           };
 
-          item.is_shown =true;
+          if(self.current_content && self.current_content.is_shown){
+            self.current_content.is_shown = false;
+            setTimeout(function(){
+              self.current_content.is_shown = true;
+            },250);
+          }else{
+            item.is_shown =true;
+          }
+          
           
           self.current_content = item;
         }
@@ -213,8 +222,8 @@ angular.
           });
         }
 
-        self.editItem = function editItem(source){
-          window.open(Apiurl.host+"/keystone/"+source.type+"/"+source.id);
+        self.editItem = function editItem(item){
+          window.open(Apiurl.host+"/keystone/"+item.source.type+"/"+item.source.id);
         }
 
         self.openObjects = function openObjects(extIdArray){
