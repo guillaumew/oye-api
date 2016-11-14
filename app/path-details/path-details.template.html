@@ -77,7 +77,7 @@
 					<img ng-src="{{$ctrl.current_content.init_content.media.url}}" ng-if="$ctrl.current_content.init_content.media_type == 'img'">
 
 					<div ng-if="$ctrl.current_content.init_content.media_type == 'group'" class="subobjects">
-						<div ng-repeat="subobject in $ctrl.current_content.init_content.sub_obj" ng-click="$ctrl.showContent(subobject)" class="object">
+						<div ng-repeat="subobject in $ctrl.current_content.init_content.sub_obj | orderBy:'+name'" ng-click="$ctrl.showContent(subobject)" class="object">
 							<img ng-src="{{subobject.thumb.url}}">
 							<span class="object_title">{{subobject.name}}</span>
 						</div>
