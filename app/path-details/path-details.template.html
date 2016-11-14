@@ -5,17 +5,29 @@
     display: block;
     position: fixed;
     bottom:190px;
-    top:65px;
+    top:70px;
 }
 .angular-google-map,.angular-google-map-container { height: 100%; }
-
+.progress-container{
+	position: relative;
+	height: 5px;
+	width:100%;
+}
+#my-progress{
+	height: 100%;
+	position: absolute;
+	left:0;
+	width:0%;
+	background-color: #121326;
+	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
 </style></strong>
 
 <div class="page-title">
 	<H1>{{$ctrl.response.path.name}}</H1>
 </div>
-<div>
-	
+<div class="progress-container">
+	<div id="my-progress"></div>
 </div>
 <div class="map-container">
 <img ng-if="$ctrl.response.is_editable" ng-src="https://cdn3.iconfinder.com/data/icons/flat-circle-content/512/flat-style-circle-add-2-64.png" ng-click="$ctrl.addPlace()" class="add_place">
@@ -53,8 +65,8 @@
 				<p>Ce lieu se situe à {{$ctrl.current_content.distance}} m. Il faut se rapprocher pour le décourvir</p>
 			</div>
 			<div>
+				<div class="content_button" ng-click="$ctrl.getItinirary($ctrl.current_content)">Obtenir l'itinéraire</div>
 				<div class="content_button" ng-click="$ctrl.showContent($ctrl.current_content,true)">Voir tout de même le contenu</div>
-				<div class="content_button" ng-if="$ctrl.response.is_editable" ng-click="$ctrl.editItem($ctrl.current_content)">Modifier cet élément</div>
 			</div>
 		</div>
 		<div id="card" ng-if="!$ctrl.current_content.preview">
@@ -79,6 +91,11 @@
 						<input type="submit" value="Envoyer" ng-click="$ctrl.testPassword()">
 					</div>
 				</div>
+
+				<div>
+					<div class="content_button" ng-if="$ctrl.response.is_editable" ng-click="$ctrl.editItem($ctrl.current_content)">Modifier cet élément</div>
+				</div>
+
 			</figure>
 			<figure class = "back">
 				<h3>Bravo : {{$ctrl.current_content.name}}</h3>
@@ -166,6 +183,12 @@
     top: 20px;
     right: 0;
     line-height: initial;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 #legend{
 	display: inline-block;

@@ -225,13 +225,26 @@ angular.
           }
         }
         self.openPlaces = function openPlaces(extIdArray){
+          self.updateProgress();
           if(extIdArray){
             extIdArray.forEach(function(plaId){
               self.showOnMap(self.getPlaceFromId(plaId));
             });
           }
         }
-
+        self.getItinirary = function getItinirary(place){
+          var url = "https://www.google.com/maps/dir/Ma+Position/"+place.latitude+","+place.longitude;
+          window.open(url);
+        }
+        self.updateProgress = function updateProgress(){
+          var num=0;
+          var denom=0;
+          self.response.places.forEach(function(place){
+            denom++;
+            if(place.is_visited){num++;}
+          });
+          document.getElementById("my-progress").style.width=num/denom*100+"%"
+        }
         self.saveProgress = function saveProgress(){
           localStorage.setItem(self.response.path.key,JSON.stringify(self));
         }
