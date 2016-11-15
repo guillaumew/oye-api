@@ -52,7 +52,7 @@
 			<span>{{'PATH_DETAILS.LEGEND-DETAILS.OTHERS' | translate }}</span>
 		</div>
 	</div>
-	<div id="postion_update" ng-click="$ctrl.getPosition($ctrl.checkPlaceReached)"><span id="position_content">{{'PATH_DETAILS.CHECK_POSITION' | translate }}</span></div>
+	<div id="postion_update" ng-click="$ctrl.getPosition($ctrl.checkPlaceReached)"><span id="position_content" class="unselectionable">{{'PATH_DETAILS.CHECK_POSITION' | translate }}</span></div>
 </div>
 
 <div class="content" ng-if="$ctrl.current_content.is_shown">
@@ -209,12 +209,6 @@
     top: 20px;
     right: 0;
     line-height: initial;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
 }
 #legend{
 	display: inline-block;
