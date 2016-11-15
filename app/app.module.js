@@ -13,5 +13,6 @@ angular.module('oyeApp', [
   'ngAnimate',
   'welcome',
   'pascalprecht.translate',
-  'ngSanitize'
+  'ngSanitize',
+  'youtube-embed'
   ]);
