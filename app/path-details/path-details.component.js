@@ -35,6 +35,11 @@ angular.
             });
           }
         }
+        self.keyboardPassword = function keyboardPassword(e){
+          if(e.keyCode == 13){
+            self.testPassword();
+          }
+        }
         self.flipContent = function flipContent(){
           document.getElementById("card").classList.toggle("flipped");
           $("#content_container").animate({scrollTop: 0},1000);

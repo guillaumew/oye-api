@@ -30,7 +30,7 @@
 	<div id="my-progress"></div>
 </div>
 <div class="map-container">
-<img ng-if="$ctrl.response.is_editable" ng-src="https://cdn3.iconfinder.com/data/icons/flat-circle-content/512/flat-style-circle-add-2-64.png" ng-click="$ctrl.addPlace()" class="add_place">
+	<img ng-if="$ctrl.response.is_editable" ng-src="https://cdn3.iconfinder.com/data/icons/flat-circle-content/512/flat-style-circle-add-2-64.png" ng-click="$ctrl.addPlace()" class="add_place">
 	<ui-gmap-google-map center="map.center" zoom='map.zoom'>
 		<ui-gmap-markers models="markers" coords="'self'" icon="'icon'", click="click"></ui-gmap-markers>
 	</ui-gmap-google-map>
@@ -90,7 +90,7 @@
 				<div id="media_password" ng-if="$ctrl.current_content.success_condition == 'password'">
 					<p>{{'PATH_DETAILS.ITEM.PASSWORD.INTRO' | translate }}</p>
 					<div id="password_input">
-						<input type="text" ng-model="$ctrl.current_content.user_password">
+						<input type="text" ng-model="$ctrl.current_content.user_password" ng-keyup="$ctrl.keyboardPassword($event)">
 						<input type="submit" value="{{'PATH_DETAILS.ITEM.PASSWORD.SEND' | translate }}" ng-click="$ctrl.testPassword()">
 					</div>
 				</div>
@@ -316,6 +316,8 @@ figure img{
     height: 40px;
     width: 40px;
     z-index: 100;
+    background-color: white;
+    border-radius: 20px;
 }
 .content{
     position: fixed;
