@@ -4,7 +4,7 @@ angular.
     function config($locationProvider, $routeProvider, uiGmapGoogleMapApiProvider, $translateProvider) {
       uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyAk-e2vIralT717kd6wbv2_gpcSbGyByxM',
-        v: '3.20',
+        v: '3',
         libraries: 'weather,geometry,visualization'
       });
 
