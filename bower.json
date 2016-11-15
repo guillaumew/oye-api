@@ -17,6 +17,9 @@
     "angular-simple-logger": "^0.1.7",
     "lodash": "^4.16.6",
     "angular-google-maps": "^2.4.0",
-    "angular-animate": "^1.5.8"
+    "angular-animate": "^1.5.8",
+    "angular-translate": "^2.13.0",
+    "angular-translate-loader-static-files": "^2.13.0",
+    "angular-sanitize": "^1.5.8"
   }
 }

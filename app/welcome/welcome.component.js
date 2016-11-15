@@ -2,8 +2,10 @@ angular.
   module('welcome').
   component('welcome', {
     templateUrl: 'welcome/welcome.template.html',
-    controller: ['$location',
+    controller: ['$location' ,
       function UserController($location) {
+
+        // FEATURES
         var self = this;
         self.openApp = function openApp(){
           if (!document.fullscreenElement && !document.mozFullScreenElement && !document.webkitFullscreenElement) {  // current working methods

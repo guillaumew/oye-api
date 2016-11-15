@@ -11,5 +11,7 @@ angular.module('oyeApp', [
   'uiGmapgoogle-maps',
   'user',
   'ngAnimate',
-  'welcome'
+  'welcome',
+  'pascalprecht.translate',
+  'ngSanitize'
   ]);

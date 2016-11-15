@@ -3,8 +3,8 @@
 </div>
 <img ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/logo.png" class="logo" />
 
-<p>Liste des parcours disponibles : </p>
-<p>Filtrer: <input ng-model="$ctrl.query" /></p>
+<p>{{'PATH_LIST.INTRO' | translate }}</p>
+<p>{{'PATH_LIST.FILTER' | translate }}<input ng-model="$ctrl.query" /></p>
 <div>
 	<div ng-repeat="path in $ctrl.paths | filter:$ctrl.query">
 		<a href="#!/path/{{path.key}}">
@@ -15,7 +15,7 @@
 						<h4>{{path.name}}</h4>
 					</div>
 					<div>
-						<span class="strong">Auteur : </span>
+						<span class="strong">{{'PATH_LIST.AUTHOR' | translate }}</span>
 						<span>{{path.author.name.first + " " + path.author.name.last}}</span>
 					</div>
 				</div>

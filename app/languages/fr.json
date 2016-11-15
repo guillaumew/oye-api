@@ -1,0 +1,36 @@
+{
+	"WELCOME":{
+		"CALL_TO_ACTION": "Commencer l'enquête"
+	},
+	"USER":{
+		"LOGIN": "Connexion"
+	},
+	"PATH_LIST":{
+		"AUTHOR":"Auteur : ",
+		"FILTER": "Filtrer : ",
+		"INTRO": "Liste des parcours disponibles :"
+	},
+	"PATH_DETAILS":{
+		"LEGEND": "Légende",
+		"LEGEND-DETAILS":{
+			"MYPOSITION": " : Ta dernière position enregistrée",
+			"PLACES": " : Lieux visités / à visiter",
+			"OTHERS": " : Autres détectives"
+		},
+		"CHECK_POSITION": "Vérifier ma position",
+		"PLACE":{
+			"INTRO":"Ce lieu se situe à {{distance}} m. Il faut se rapprocher pour le décourvir",
+			"ITINERARY": "Obtenir l'itinéraire",
+			"GET_CONTENT": "Voir tout de même le contenu"
+		},
+		"ITEM":{
+			"PASSWORD":{
+				"INTRO" : "Tu as trouvé la solution ?",
+				"SEND": "Envoyer"
+			},
+			"EDIT":"Modifier cet élément",
+			"SUCCESS": "Bravo ! "
+		},
+		"OBJECTS": "Indices"
+	}
+}

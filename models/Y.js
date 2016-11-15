@@ -12,6 +12,11 @@ Y.add({
 	email: { type: Types.Email, initial: true, required: true, index: true, expose:false },
 	password: { type: Types.Password, initial: true, required: true },
 	avatar: {type : Types.S3File},
+	language:{
+		type: Types.Select, 
+		emptyOption: false, 
+		options: 'fr, en'
+	}
 }, 'Permissions', {
 	isAdmin: { type: Boolean, label: 'Can access Keystone', index: true },
 });

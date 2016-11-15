@@ -1,0 +1,36 @@
+{
+	"WELCOME":{
+		"CALL_TO_ACTION": "Start investigating"
+	},
+	"USER":{
+		"LOGIN": "Log in"
+	},
+	"PATH_LIST":{
+		"AUTHOR":"Author: ",
+		"FILTER": "Filter: ",
+		"INTRO": "Available paths:"
+	},
+	"PATH_DETAILS":{
+		"LEGEND": "Legend",
+		"LEGEND-DETAILS":{
+			"MYPOSITION": " : Your last recorded position",
+			"PLACES": " : Place visited / to visit",
+			"OTHERS": " : Other investigators"
+		},
+		"CHECK_POSITION": "Check my position",
+		"PLACE":{
+			"INTRO":"This place is {{distance}} m away. You should get closer to find out its content.",
+			"ITINERARY": "Get itinerary",
+			"GET_CONTENT": "Display content anyway"
+		},
+		"ITEM":{
+			"PASSWORD":{
+				"INTRO" : "Did you figured this out?",
+				"SEND": "Send"
+			},
+			"EDIT":"Edit this element",
+			"SUCCESS": "Success ! "
+		},
+		"OBJECTS": "Clues"
+	}
+}

@@ -1,6 +1,7 @@
 <a href="{{$ctrl.link}}" target="_new">
 	<img ng-src="{{$ctrl.avatar}}" />
-	<span>{{$ctrl.name}}</span>
+	<span ng-if="$ctrl.is_connected">{{$ctrl.name}}</span>
+	<span ng-if="!$ctrl.is_connected">{{'USER.LOGIN' | translate }}</span>
 </a>
 
 <style type="text/css">
