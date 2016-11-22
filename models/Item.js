@@ -22,7 +22,6 @@ Item.add({
 	objects_on_success : { type: Types.Relationship, ref: 'Object', many: true },
 });
 
-
 /**
  * Registration
  */

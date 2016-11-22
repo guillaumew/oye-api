@@ -17,6 +17,7 @@ Object.add({
 		type: Types.S3File
 	},
 });
+Object.relationship({path: 'paths', ref: 'Path', refPath: 'objects'});
 
 
 /**

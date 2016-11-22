@@ -14,7 +14,7 @@ Place.add({
 	longitude: { type: Types.Number },
 	latitude: { type: Types.Number },
 });
-
+Place.relationship({path: 'paths', ref: 'Path', refPath: 'places'});
 
 /**
  * Registration

@@ -21,6 +21,7 @@ Content.add({
 	media_url: {type: Types.Url},
 	sub_objects : { type: Types.Relationship, ref: 'Object', many: true },
 });
+Content.relationship({path: 'paths', ref: 'Path', refPath: 'init_content'});
 
 
 /**
