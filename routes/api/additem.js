@@ -45,6 +45,7 @@ exports = module.exports = function(req, res) {
 						return res.sendStatus(404);
 					}
 					path = found_path;
+					data.parent = req.query.path_id;
 					next();
 				});
 			}else{

@@ -20,6 +20,7 @@ Item.add({
 	places_on_success : { type: Types.Relationship, ref: 'Place', many: true },
 	objects_on_open : { type: Types.Relationship, ref: 'Object', many: true },
 	objects_on_success : { type: Types.Relationship, ref: 'Object', many: true },
+	parent: {type: Types.Relationship, ref: 'Path', many: false},
 });
 
 /**

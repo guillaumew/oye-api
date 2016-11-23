@@ -16,7 +16,6 @@ exports = module.exports = function(req, res) {
 	.populate('author', 'name avatar')
 	.populate('init_content success_content')
 	.exec(function(err, path){
-		path['is_editable'] = false;
 		if (err) {
 			return res.json(err);
 		} else if(!path) {
