@@ -14,7 +14,7 @@
     "karma-chrome-launcher": "^0.2.3",
     "karma-firefox-launcher": "^0.1.7",
     "karma-jasmine": "^0.3.8",
-    "keystone": "^0.3.21",
+    "keystone": "0.3.21",
     "lodash": "^4.13.1",
     "node-sass": "^3.3.2",
     "node-sass-middleware": "^0.9.7",
