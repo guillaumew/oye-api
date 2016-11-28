@@ -45,6 +45,7 @@
     overflow-x: scroll;
     top:0;
     bottom: 0;
+    height: 90px;
 }
 .object{
 	width:75px;

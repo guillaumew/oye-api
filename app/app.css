@@ -4,7 +4,6 @@ body {
     font-family: Trebuchet MS;
 }
 
-
 input[type=text] {
     padding:5px; 
     border:2px solid #121326; 
@@ -83,4 +82,7 @@ header{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+.aside-menu-content{
+    overflow-y: scroll;
 }
