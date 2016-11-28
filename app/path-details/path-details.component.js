@@ -55,10 +55,14 @@ angular.
         }
 
         self.showContent = function showContent(item, forcePreview){
-
           if(item.__t=="Place"){
-            distance = Math.round(1000*self.computeDistance(item, self.position));
-            item.distance = distance;
+            if(self.position){
+              distance = Math.round(1000*self.computeDistance(item, self.position));
+              item.distance = distance;
+            }else{
+              item.distance = "???";
+              distance=1000;
+            }
             if(distance>30 && !forcePreview){
               item.preview = true;
             }else{
@@ -148,7 +152,7 @@ angular.
 
         self.checkPlaceReached = function checkPlaceReached(){
           self.response.places.forEach(function(place){
-            if(place.is_visible && self.computeDistance(self.position,place) < 0.03){
+            if(place.is_visible && self.position && self.computeDistance(self.position,place) < 0.03){
               self.showContent(place,true);
             }
           });
@@ -172,7 +176,10 @@ angular.
             });
             myMarker.longitude = data.coords.longitude;
             myMarker.latitude = data.coords.latitude;
-          });
+          }, function(error) {
+             console.log(error);
+             if(callback){callback();}
+         });
         }
 
         self.addItem = function addItem(type, name){
