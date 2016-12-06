@@ -9,14 +9,30 @@
 	<div ng-repeat="path in $ctrl.paths | filter:$ctrl.query">
 		<a href="#!/path/{{path.key}}">
 			<div class="item">
-				<div class="inline"><img ng-src="{{path.thumb.url}}" class="path_thumb"></div>
-				<div class="inline">
+				<img ng-src="{{path.thumb.url}}" class="path_thumb">
+				<div>
 					<div>
 						<h4>{{path.name}}</h4>
 					</div>
-					<div>
-						<span class="strong">{{'PATH_LIST.AUTHOR' | translate }}</span>
-						<span>{{path.author.name.first + " " + path.author.name.last}}</span>
+					<div class='inline-item column1'>
+						<div>
+							<span class="strong">{{'PATH_LIST.CITY' | translate }}</span>
+							<span>{{path.city}}</span>
+						</div>
+						<div>
+							<span class="strong">{{'PATH_LIST.LANG' | translate }}</span>
+							<span>{{path.language}}</span>
+						</div>
+					</div>
+					<div class='inline-item'>
+						<div>
+							<span class="strong">{{'PATH_LIST.LENGTH' | translate }}</span>
+							<span>{{path.length}}{{'PATH_LIST.HOURS' | translate }}</span>
+						</div>
+						<div>
+							<span class="strong">{{'PATH_LIST.AUTHOR' | translate }}</span>
+							<span>{{path.author.name.first + " " + path.author.name.last}}</span>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -26,6 +42,16 @@
 </div>
 
 <style type="text/css">
+.inline-item{
+	display: inline-block;
+	height: 40px;
+	overflow: hidden;
+	
+}
+.column1{
+	max-width: 120px;
+	padding-right: 10px;
+}
 .logo{
 	width: 100px;
     margin-left: -50px;
@@ -55,5 +81,7 @@ h4{
 	width: 50px;
 	height: 50px;
 	border-radius: 25px;
+	float:left;
+	margin: 5px;
 }
 </style>

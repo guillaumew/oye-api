@@ -30,6 +30,16 @@ Path.add({
 		required: true,
 		default: 'walk'
 	},
+	language: { 
+		type: Types.Select,
+		options: 'FR, EN',
+		emptyOption: false,
+		required: true,
+		default: 'FR'
+	},
+	length : {type: Types.Number },
+	city: { type: Types.Text},
+	is_available:{ type: Types.Boolean, required: true, default: false },
 	key: { type: Types.Key },
 });
 

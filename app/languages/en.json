@@ -8,7 +8,11 @@
 	"PATH_LIST":{
 		"AUTHOR":"Author: ",
 		"FILTER": "Filter: ",
-		"INTRO": "Available paths:"
+		"INTRO": "Available paths:",
+		"CITY": "City: ",
+		"LANG": "Language: ",
+		"LENGTH": "Duration: ",
+		"HOURS": "H"
 	},
 	"PATH_DETAILS":{
 		"LEGEND": "Legend",

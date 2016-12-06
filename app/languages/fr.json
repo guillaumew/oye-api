@@ -8,7 +8,11 @@
 	"PATH_LIST":{
 		"AUTHOR":"Auteur : ",
 		"FILTER": "Filtrer : ",
-		"INTRO": "Liste des parcours disponibles :"
+		"INTRO": "Liste des parcours disponibles :",
+		"CITY": "Ville : ",
+		"LANG": "Langue : ",
+		"LENGTH": "Durée : ",
+		"HOURS": "h"
 	},
 	"PATH_DETAILS":{
 		"LEGEND": "Légende",
