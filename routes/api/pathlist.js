@@ -3,6 +3,7 @@ var Path = keystone.list('Path');
 
 exports = module.exports = function(req, res) {
 	Path.model.find()
+	.where('is_available', true)
 	.populate('author', 'name avatar')
 	.exec(function(err, paths){
 		if (err) {
