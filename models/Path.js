@@ -23,6 +23,13 @@ Path.add({
 	init_places: { type: Types.Relationship, ref: 'Place', many: true, filters: { path: ':_id' } },
 	init_objects: { type: Types.Relationship, ref: 'Object', many: true, filters: { path: ':_id' } },
 	init_content: { type: Types.Relationship, ref: 'Content', filters: { parent: ':_id' }, many: false },
+	type: { 
+		type: Types.Select,
+		options: 'walk, inquiry, hunt',
+		emptyOption: false,
+		required: true,
+		default: 'walk'
+	},
 	key: { type: Types.Key },
 });
 
