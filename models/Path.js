@@ -39,7 +39,7 @@ Path.add({
 	},
 	length : {type: Types.Number },
 	city: { type: Types.Text},
-	is_available:{ type: Types.Boolean, required: true, default: false },
+	is_available:{ type: Types.Boolean, default: false },
 	key: { type: Types.Key },
 });
 

@@ -15,21 +15,21 @@
 						<h4>{{path.name}}</h4>
 					</div>
 					<div class='inline-item column1'>
-						<div>
+						<div ng-if="path.city">
 							<span class="strong">{{'PATH_LIST.CITY' | translate }}</span>
 							<span>{{path.city}}</span>
 						</div>
-						<div>
+						<div ng-if="path.language">
 							<span class="strong">{{'PATH_LIST.LANG' | translate }}</span>
 							<span>{{path.language}}</span>
 						</div>
 					</div>
 					<div class='inline-item'>
-						<div>
+						<div ng-if="path.length">
 							<span class="strong">{{'PATH_LIST.LENGTH' | translate }}</span>
 							<span>{{path.length}}{{'PATH_LIST.HOURS' | translate }}</span>
 						</div>
-						<div>
+						<div  ng-if="path.author">
 							<span class="strong">{{'PATH_LIST.AUTHOR' | translate }}</span>
 							<span>{{path.author.name.first + " " + path.author.name.last}}</span>
 						</div>

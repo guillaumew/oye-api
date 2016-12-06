@@ -2,8 +2,12 @@ var keystone = require('keystone');
 var Path = keystone.list('Path');
 
 exports = module.exports = function(req, res) {
-	Path.model.find()
-	.where('is_available', true)
+	var conditions = [{is_available: true}];
+	if(req.user){
+		conditions.push({"author" : req.user['_id'].toString()});
+	}
+	console.log(conditions);
+	Path.model.find({$or:conditions})
 	.populate('author', 'name avatar')
 	.exec(function(err, paths){
 		if (err) {
