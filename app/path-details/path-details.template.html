@@ -83,6 +83,7 @@
 						<div ng-repeat="subobject in $ctrl.current_content.init_content.sub_obj | orderBy:'+name'" ng-click="$ctrl.showContent(subobject)" class="object">
 							<img ng-src="{{subobject.thumb.url}}">
 							<span class="object_title">{{subobject.name}}</span>
+							<div class="subobj_checked" ng-if="subobject.is_succeeded"></div>
 						</div>
 					</div>
 				</div>
@@ -128,6 +129,15 @@
 </div>
 
 <style type="text/css">
+.subobj_checked{
+	position: absolute;
+    top: 0;
+    right: 0;
+    background: url(http://imgur.com/tpRRvop.png);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+}
 .embed-responsive {
   position: relative;
   display: block;

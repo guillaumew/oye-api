@@ -6,7 +6,6 @@ exports = module.exports = function(req, res) {
 	if(req.user){
 		conditions.push({"author" : req.user['_id'].toString()});
 	}
-	console.log(conditions);
 	Path.model.find({$or:conditions})
 	.populate('author', 'name avatar')
 	.exec(function(err, paths){
