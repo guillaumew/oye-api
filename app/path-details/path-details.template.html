@@ -56,7 +56,7 @@
 </div>
 
 <div class="content" ng-if="$ctrl.current_content.is_shown">
-	<div class="flip_content" ng-click="$ctrl.flipContent()" ng-if="$ctrl.current_content.is_succeeded"></div>
+	<div class="flip_content" ng-click="$ctrl.flipContent()" ng-if="$ctrl.current_content.is_succeeded && !$ctrl.current_content.preview"></div>
 	<div class="close_content" ng-click="$ctrl.closeContent()"></div>
 	<section id="content_container">
 		<div id="place-preview" ng-if="$ctrl.current_content.preview">
