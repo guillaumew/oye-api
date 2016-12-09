@@ -35,7 +35,12 @@
 			"EDIT":"Modifier cet élément",
 			"SUCCESS": "Bravo ! "
 		},
-		"OBJECTS": "Indices",
-		"GOALS_EXPLAINED": "Il existe deux types d'objectifs pour réussir votre enqête. Les objectif primaires (ou primary) sont obligatoires. Les objectifs secondaires (secondary) sont facultatifs."
+		"OBJECTS": "Objets",
+		"GOALS": {
+			"NAME": "Objectifs",
+			"EXPLAINATION": "Il existe deux types d'objectifs pour réussir votre enqête. Les objectifs principaux sont obligatoires. Les objectifs secondaires sont facultatifs.",
+			"primary": "Principaux",
+			"secondary" : "Secondaires"
+		}
 	}
 }

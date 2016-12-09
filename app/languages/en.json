@@ -35,8 +35,13 @@
 			"EDIT":"Edit this element",
 			"SUCCESS": "Success ! "
 		},
-		"OBJECTS": "Clues",
-		"GOALS_EXPLAINED": "There are two kinds of goals. To succeed in your mission, you must fullfil primary goals, while secondary goals are optional."
+		"OBJECTS": "Objects",
+		"GOALS": {
+			"NAME":"Goals",
+			"EXPLAINATION": "There are two kinds of goals. To succeed in your mission, you must fullfil primary goals, while secondary goals are optional.",
+			"primary": "Primary",
+			"secondary" : "Secondary"
+		}
 
 	}
 }

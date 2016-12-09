@@ -7,8 +7,8 @@ angular.
    }).
   component('pathDetails', {
     templateUrl: 'path-details/path-details.template.html',
-    controller: ['geolocation', 'Apiurl', '$http', '$routeParams', '$scope', 'uiGmapIsReady', '$animate',
-      function PathDetailsController(geolocation, Apiurl, $http, $routeParams, $scope, uiGmapIsReady, $animate) {
+    controller: ['geolocation', 'Apiurl', '$http', '$routeParams', '$scope', 'uiGmapIsReady', '$animate', '$translate',
+      function PathDetailsController(geolocation, Apiurl, $http, $routeParams, $scope, uiGmapIsReady, $animate, $translate) {
         var self = this;
         $scope.markers = [];
 
@@ -308,13 +308,17 @@ angular.
               primaryGoalsAchieved = false;
             }
           });
-          self.showContent({
-            name:"Objectifs",
-            init_content:"",
-            is_goals:true, 
-            is_succeeded:primaryGoalsAchieved,
-            success_content: self.response.path.success_content
+
+          $translate('PATH_DETAILS.GOALS.NAME').then(function (goal_string) {
+            self.showContent({
+              name:goal_string,
+              init_content:"",
+              is_goals:true, 
+              is_succeeded:primaryGoalsAchieved,
+              success_content: self.response.path.success_content
+            });
           });
+
         }
 
         self.showPathInfo = function showPathInfo(){

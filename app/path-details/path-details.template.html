@@ -102,16 +102,18 @@
 
 				<div class="goal-content" ng-if="$ctrl.current_content.is_goals">
 					<div class="goal-item" ng-repeat="(group, goals) in $ctrl.response.goals | orderBy: 'type' | groupBy: 'type'">
-						<h4>{{group}}</h4>
+						<h4 translate="PATH_DETAILS.GOALS.{{group}}"></h4>
 						<li class="goal-item" ng-repeat="goal in goals">
 							<div>
 								<span>{{goal.name}} :</span>
 								<span>{{goal.progress}}/{{goal.objective}}</span>
 							</div>
-							<div class="goal-progress" style="width:{{goal.progress/goal.objective*100}}%;"></div>
+							<div class="goal-progress-container">
+								<div class="goal-progress" style="width:{{goal.progress/goal.objective*100}}%;"></div>
+							</div>
 						</li>
 					</div>
-					<div>{{'PATH_DETAILS.GOALS_EXPLAINED' | translate }}</div>
+					<div>{{'PATH_DETAILS.GOALS.EXPLAINATION' | translate }}</div>
 				</div>
 
 				<div>
@@ -150,6 +152,10 @@
 .goal-progress{
 	height: 5px;
 	background-color: #34B3AC;
+}
+.goal-progress-container{
+	width: 100%;
+	border: solid 1px #34B3AC;
 }
 .goals{
 	background: url(https://s3.eu-central-1.amazonaws.com/openyoureyes/goals.png);
