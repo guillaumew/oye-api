@@ -109,7 +109,7 @@ angular.
             }else{
               document.getElementById("card").classList.remove("flipped");
             }
-          },5);
+          },50);
         }
 
         self.closeContent = function closeContent(){
