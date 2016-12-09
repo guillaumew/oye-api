@@ -2,6 +2,7 @@ var keystone = require('keystone');
 var Path = keystone.list('Path');
 var Place = keystone.list('Place');
 var Objects = keystone.list('Object');
+var Goals = keystone.list('Goal');
 var async = require('async');
 
 exports = module.exports = function(req, res) {
@@ -9,6 +10,7 @@ exports = module.exports = function(req, res) {
 		path:{},
 		places:[],
 		objects:[],
+		goals:[],
 		is_editable: false
 	};
 	Path.model.findOne()
@@ -50,6 +52,14 @@ exports = module.exports = function(req, res) {
 						ret.objects = (object);
 						callback();
 					});	
+				},
+				function(callback){
+					Goals.model.find({
+						'parent': path._id
+					}).exec(function(err4,goals){
+						ret.goals=goals;
+						callback();
+					});
 				}
 			], function(err){
 				res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
