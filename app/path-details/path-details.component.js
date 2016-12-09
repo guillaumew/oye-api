@@ -269,19 +269,31 @@ angular.
         self.saveProgress = function saveProgress(){
           localStorage.setItem(self.response.path.key,JSON.stringify(self));
         }
+
+        self.showPathGoals = function showPathGoals(){
+          console.log("en cours de création");
+        }
+
+        self.showPathInfo = function showPathInfo(){
+          self.showContent(self.response.path);
+        }
+
         self.initPath = function initPath(data){
           self.response = data;
 
           data.path.__t="Path";
 
-          self.showContent(data.path);
 
           self.openObjects(data.path.init_objects);
           self.openPlaces(data.path.init_places);
 
           self.response = data;
+          self.showPathInfo();
+
           self.centerMap(self.response.path);
         }
+
+        
 // GETTING DATA
         // init with dummy values
         $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
