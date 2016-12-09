@@ -74,8 +74,11 @@
 			<figure class="front">
 				<h3>{{$ctrl.current_content.name}}</h3>
 				<div ng-bind-html="$ctrl.current_content.init_content.description | trusted"></div>
+				
 				<div class="media_content">
-					<img ng-src="{{$ctrl.current_content.init_content.media.url}}" ng-if="$ctrl.current_content.init_content.media_type == 'img'">
+					<a href="{{$ctrl.current_content.init_content.media.url}}" target="_new">
+						<img ng-src="{{$ctrl.current_content.init_content.media.url}}" ng-if="$ctrl.current_content.init_content.media_type == 'img'">
+					</a>
 					<div class="embed-responsive embed-responsive-16by9" ng-if="$ctrl.current_content.init_content.media_type == 'youtube'">
 						<youtube-video class="embed-responsive-item" video-url="$ctrl.current_content.init_content.media_url" player-vars="{'cc_load_policy':1,'modestbranding':1, 'rel':0, 'cc_lang_pref':'fr', 'hl':'fr'}"></youtube-video>
 					</div>
