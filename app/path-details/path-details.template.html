@@ -98,17 +98,17 @@
 				</div>
 
 				<div class="goal-content" ng-if="$ctrl.current_content.is_goals">
-					<div class="goal-item" ng-repeat="(group, goals) in $ctrl.response.goals | groupBy: 'type'">
+					<div class="goal-item" ng-repeat="(group, goals) in $ctrl.response.goals | orderBy: 'type' | groupBy: 'type'">
 						<h4>{{group}}</h4>
-						<div class="goal-item" ng-repeat="goal in goals">
+						<li class="goal-item" ng-repeat="goal in goals">
 							<div>
-								<span class="strong">{{goal.name}} :</span>
+								<span>{{goal.name}} :</span>
 								<span>{{goal.progress}}/{{goal.objective}}</span>
 							</div>
 							<div class="goal-progress" style="width:{{goal.progress/goal.objective*100}}%;"></div>
-						</div>
+						</li>
 					</div>
-					<p>{{'PATH_DETAILS.GOALS_EXPLAINED' | translate }}</p>
+					<div>{{'PATH_DETAILS.GOALS_EXPLAINED' | translate }}</div>
 				</div>
 
 				<div>
@@ -162,6 +162,7 @@
 }
 .goal-content{
 	font-size: 16px;
+	padding:10px;
 }
 .goal-item{
 	margin-bottom: 10px;

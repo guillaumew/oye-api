@@ -283,8 +283,8 @@ angular.
                 goal.progress += self.getObjectFromId(openObj).is_visible||0;
               });
             }
-            if(goal.open_places){
-              goal.open_places.forEach(function(openPla){
+            if(goal.open_place){
+              goal.open_place.forEach(function(openPla){
                 goal.objective ++;
                 goal.progress += self.getPlaceFromId(openPla).is_visible||0;
               });
@@ -295,8 +295,8 @@ angular.
                 goal.progress += self.getObjectFromId(sucObj).is_succeeded||0;
               });
             }
-            if(goal.success_places){
-              goal.success_places.forEach(function(sucPla){
+            if(goal.success_place){
+              goal.success_place.forEach(function(sucPla){
                 goal.objective++;
                 goal.progress += self.getPlaceFromId(sucPla).is_succeeded||0;
               });
