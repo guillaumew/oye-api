@@ -111,7 +111,7 @@ angular.
               }else{
                 document.getElementById("card").classList.remove("flipped");
               }
-            },50);
+            },550);
           }
         }
 
