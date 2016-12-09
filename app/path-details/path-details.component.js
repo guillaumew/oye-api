@@ -103,13 +103,16 @@ angular.
           
           
           self.current_content = item;
-          setTimeout(function(){
-            if(item.is_succeeded){
-              document.getElementById("card").classList.add("flipped");
-            }else{
-              document.getElementById("card").classList.remove("flipped");
-            }
-          },50);
+
+          if(!item.preview){
+            setTimeout(function(){
+              if(item.is_succeeded){
+                document.getElementById("card").classList.add("flipped");
+              }else{
+                document.getElementById("card").classList.remove("flipped");
+              }
+            },50);
+          }
         }
 
         self.closeContent = function closeContent(){
