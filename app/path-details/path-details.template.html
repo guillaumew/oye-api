@@ -21,9 +21,10 @@
 	background-color: #121326;
 	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
-</style></strong>
+</style>
 
-<div class="page-title">
+<div class="goals" ng-click="$ctrl.showPathGoals()"></div>
+<div class="page-title" ng-click="$ctrl.showPathInfo()">
 	<H1>{{$ctrl.response.path.name}}</H1>
 </div>
 <div class="progress-container">
@@ -96,6 +97,20 @@
 					</div>
 				</div>
 
+				<div class="goal-content" ng-if="$ctrl.current_content.is_goals">
+					<div class="goal-item" ng-repeat="(group, goals) in $ctrl.response.goals | groupBy: 'type'">
+						<h4>{{group}}</h4>
+						<div class="goal-item" ng-repeat="goal in goals">
+							<div>
+								<span class="strong">{{goal.name}} :</span>
+								<span>{{goal.progress}}/{{goal.objective}}</span>
+							</div>
+							<div class="goal-progress" style="width:{{goal.progress/goal.objective*100}}%;"></div>
+						</div>
+					</div>
+					<p>{{'PATH_DETAILS.GOALS_EXPLAINED' | translate }}</p>
+				</div>
+
 				<div>
 					<div class="content_button" ng-if="$ctrl.response.is_editable" ng-click="$ctrl.editItem($ctrl.current_content)">{{'PATH_DETAILS.ITEM.EDIT' | translate }}</div>
 				</div>
@@ -129,6 +144,28 @@
 </div>
 
 <style type="text/css">
+.goal-progress{
+	height: 5px;
+	background-color: #34B3AC;
+}
+.goals{
+	background: url(https://s3.eu-central-1.amazonaws.com/openyoureyes/goals.png);
+	background-size: contain;
+	position: absolute;
+	right:0;
+	top:0;
+	overflow: hidden;
+	margin: 5px;
+	width: 50px;
+	height: 50px;
+	z-index: 1;
+}
+.goal-content{
+	font-size: 16px;
+}
+.goal-item{
+	margin-bottom: 10px;
+}
 .subobj_checked{
 	position: absolute;
     top: 0;
@@ -180,7 +217,7 @@
 }
 
 .content.ng-leave, .content.ng-enter.ng-enter-active {
-  top:70px;
+  top:10px;
 }
 .add_place{
 	position: absolute;
@@ -332,7 +369,9 @@ figure img{
     left: 10px;
     right: 10px;
     bottom: 95px;
-    top: 70px;
+    top: 10px;
+    z-index: 1000;
+
 }
 #content_container {
 	transition: all 1s;

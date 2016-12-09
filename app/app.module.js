@@ -14,5 +14,6 @@ angular.module('oyeApp', [
   'welcome',
   'pascalprecht.translate',
   'ngSanitize',
-  'youtube-embed'
+  'youtube-embed',
+  'angular.filter'
   ]);

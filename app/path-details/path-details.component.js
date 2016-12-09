@@ -73,11 +73,6 @@ angular.
             }            
           }
 
-          if(item.is_succeeded){
-            $("#card").addClass("flipped");
-          }else{
-            $("#card").removeClass("flipped");
-          }
           
           if (item.init_content.sub_objects){
             item.init_content.sub_obj = [];
@@ -108,6 +103,13 @@ angular.
           
           
           self.current_content = item;
+          setTimeout(function(){
+            if(item.is_succeeded){
+              document.getElementById("card").classList.add("flipped");
+            }else{
+              document.getElementById("card").classList.remove("flipped");
+            }
+          },5);
         }
 
         self.closeContent = function closeContent(){
@@ -269,19 +271,69 @@ angular.
         self.saveProgress = function saveProgress(){
           localStorage.setItem(self.response.path.key,JSON.stringify(self));
         }
+
+        self.showPathGoals = function showPathGoals(){
+          var primaryGoalsAchieved = true;
+          self.response.goals.forEach(function(goal){
+            goal.progress = 0;
+            goal.objective = 0;
+            if(goal.open_objects){
+              goal.open_objects.forEach(function(openObj){
+                goal.objective ++;
+                goal.progress += self.getObjectFromId(openObj).is_visible||0;
+              });
+            }
+            if(goal.open_places){
+              goal.open_places.forEach(function(openPla){
+                goal.objective ++;
+                goal.progress += self.getPlaceFromId(openPla).is_visible||0;
+              });
+            }
+            if(goal.success_objects){
+              goal.success_objects.forEach(function(sucObj){
+                goal.objective++;
+                goal.progress += self.getObjectFromId(sucObj).is_succeeded||0;
+              });
+            }
+            if(goal.success_places){
+              goal.success_places.forEach(function(sucPla){
+                goal.objective++;
+                goal.progress += self.getPlaceFromId(sucPla).is_succeeded||0;
+              });
+            }
+            if(goal.type=="primary" && goal.progress != goal.objective){
+              primaryGoalsAchieved = false;
+            }
+          });
+          self.showContent({
+            name:"Objectifs",
+            init_content:"",
+            is_goals:true, 
+            is_succeeded:primaryGoalsAchieved,
+            success_content: self.response.path.success_content
+          });
+        }
+
+        self.showPathInfo = function showPathInfo(){
+          self.showContent(self.response.path);
+        }
+
         self.initPath = function initPath(data){
           self.response = data;
 
           data.path.__t="Path";
 
-          self.showContent(data.path);
 
           self.openObjects(data.path.init_objects);
           self.openPlaces(data.path.init_places);
 
           self.response = data;
+          self.showPathInfo();
+
           self.centerMap(self.response.path);
         }
+
+
 // GETTING DATA
         // init with dummy values
         $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };

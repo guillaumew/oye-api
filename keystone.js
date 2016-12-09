@@ -80,7 +80,8 @@ keystone.set('nav', {
 	paths: 'paths',
 	objects: 'objects',
 	places: 'places',
-	Contents: 'contents'
+	contents: 'contents',
+	goals: 'goals',
 });
 
 // Start Keystone to connect to your database and initialise the web server
