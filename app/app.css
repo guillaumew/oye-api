@@ -2,8 +2,10 @@ body {
     margin: 0;
     color: #121326;
     font-family: Trebuchet MS;
+    min-height:540px;
 }
-
+body[orient="portrait"] { min-height:540px; }
+body[orient="landscape"] { min-height:400px; }
 input[type=text] {
     padding:5px; 
     border:2px solid #121326; 
