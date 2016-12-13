@@ -77,7 +77,9 @@
 				
 				<div class="media_content">
 					<a href="{{$ctrl.current_content.init_content.media.url}}" target="_new">
-						<img ng-src="{{$ctrl.current_content.init_content.media.url}}" ng-if="$ctrl.current_content.init_content.media_type == 'img'" ng-pinch-zoom max-scale=“4”>
+						<div class="image_holder">
+							<img ng-src="{{$ctrl.current_content.init_content.media.url}}" ng-if="$ctrl.current_content.init_content.media_type == 'img'" ng-pinch-zoom max-scale=“4”>
+						</div>
 					</a>
 					<div class="embed-responsive embed-responsive-16by9" ng-if="$ctrl.current_content.init_content.media_type == 'youtube'">
 						<youtube-video class="embed-responsive-item" video-url="$ctrl.current_content.init_content.media_url" player-vars="{'cc_load_policy':1,'modestbranding':1, 'rel':0, 'cc_lang_pref':'fr', 'hl':'fr'}"></youtube-video>
@@ -149,6 +151,10 @@
 </div>
 
 <style type="text/css">
+.image_holder{
+	overflow: hidden;
+    position: relative;
+}
 .goal-progress{
 	height: 5px;
 	background-color: #34B3AC;
