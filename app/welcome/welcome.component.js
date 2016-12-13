@@ -2,9 +2,9 @@ angular.
   module('welcome').
   component('welcome', {
     templateUrl: 'welcome/welcome.template.html',
-    controller: ['$location' ,
-      function UserController($location) {
-
+    controller: ['$location' , 'Analytics',
+      function UserController($location, Analytics) {
+        Analytics.pageView();
         // FEATURES
         var self = this;
         self.openApp = function openApp(){

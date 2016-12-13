@@ -17,6 +17,7 @@ angular.
       '$animate', 
       '$translate',
       '$window',
+      'Analytics',
       function PathDetailsController(
         geolocation, 
         Apiurl, 
@@ -26,7 +27,8 @@ angular.
         uiGmapIsReady, 
         $animate, 
         $translate,
-        $window
+        $window,
+        Analytics
       ) {
         var self = this;
         $scope.markers = [];
@@ -350,6 +352,8 @@ angular.
           data.path.__t="Path";
 
           $window.document.title = data.path.name + " - Open Your Eyes";
+
+          Analytics.pageView();
 
           self.openObjects(data.path.init_objects);
           self.openPlaces(data.path.init_places);

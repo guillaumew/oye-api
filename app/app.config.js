@@ -1,12 +1,32 @@
 angular.
   module('oyeApp').
-  config(['$locationProvider', '$routeProvider', 'uiGmapGoogleMapApiProvider', '$translateProvider',
-    function config($locationProvider, $routeProvider, uiGmapGoogleMapApiProvider, $translateProvider) {
+  config([
+    '$locationProvider', 
+    '$routeProvider', 
+    'uiGmapGoogleMapApiProvider', 
+    '$translateProvider',
+    'AnalyticsProvider',
+    function config(
+      $locationProvider, 
+      $routeProvider, 
+      uiGmapGoogleMapApiProvider, 
+      $translateProvider,
+      AnalyticsProvider) {
+      
       uiGmapGoogleMapApiProvider.configure({
         key: 'AIzaSyAk-e2vIralT717kd6wbv2_gpcSbGyByxM',
         v: '3',
         libraries: 'weather,geometry,visualization'
       });
+
+      AnalyticsProvider
+        .setAccount({
+          tracker: 'UA-88901889-1',
+          trackEvent: true,
+          set:{
+            forceSSL: true
+          }
+        });
 
       $translateProvider.useStaticFilesLoader({
         prefix: '/languages/',

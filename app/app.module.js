@@ -16,5 +16,6 @@ angular.module('oyeApp', [
   'ngSanitize',
   'youtube-embed',
   'angular.filter',
-  'ngPinchZoom'
+  'ngPinchZoom',
+  'angular-google-analytics'
   ]);
