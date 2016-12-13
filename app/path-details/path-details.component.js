@@ -7,8 +7,27 @@ angular.
    }).
   component('pathDetails', {
     templateUrl: 'path-details/path-details.template.html',
-    controller: ['geolocation', 'Apiurl', '$http', '$routeParams', '$scope', 'uiGmapIsReady', '$animate', '$translate',
-      function PathDetailsController(geolocation, Apiurl, $http, $routeParams, $scope, uiGmapIsReady, $animate, $translate) {
+    controller: [
+      'geolocation', 
+      'Apiurl', 
+      '$http', 
+      '$routeParams', 
+      '$scope', 
+      'uiGmapIsReady', 
+      '$animate', 
+      '$translate',
+      '$window',
+      function PathDetailsController(
+        geolocation, 
+        Apiurl, 
+        $http, 
+        $routeParams, 
+        $scope, 
+        uiGmapIsReady, 
+        $animate, 
+        $translate,
+        $window
+      ) {
         var self = this;
         $scope.markers = [];
 
@@ -330,6 +349,7 @@ angular.
 
           data.path.__t="Path";
 
+          $window.document.title = data.path.name + " - Open Your Eyes";
 
           self.openObjects(data.path.init_objects);
           self.openPlaces(data.path.init_places);
