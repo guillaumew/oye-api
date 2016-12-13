@@ -15,5 +15,6 @@ angular.module('oyeApp', [
   'pascalprecht.translate',
   'ngSanitize',
   'youtube-embed',
-  'angular.filter'
+  'angular.filter',
+  'ngPinchZoom'
   ]);
