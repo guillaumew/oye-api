@@ -2,8 +2,15 @@
 	"WELCOME":{
 		"CALL_TO_ACTION": "Commencer l'enquête"
 	},
+	"MENU":{
+		"SOCIAL": "Retrouvez-nous sur :",
+		"OPTIONS": "Options",
+		"FULLSCREEN": "Mode plein écran",
+		"CONTACT": "Nous contacter"
+	},
 	"USER":{
-		"LOGIN": "Connexion"
+		"LOGIN": "Connexion",
+		"LOGGED": "Enregistré en tant que"
 	},
 	"PATH_LIST":{
 		"AUTHOR":"Auteur : ",

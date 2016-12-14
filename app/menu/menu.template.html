@@ -1,3 +1,5 @@
+<user></user>
+
 <a href="/#!/paths" aside-menu-toggle="left-menu" class="menu_head">
     <img ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/home.png" style="width:25px;">
     <div class="menu_title" class="unselectionable">Open Your Eyes</div>
@@ -8,30 +10,23 @@
     <p  class="unselectionable"ng-click="$ctrl.deleteProgress()">Effacer progression</p>
 </div>
 <div>
-	<span class="menu_sub">General</span>
-    <p class="unselectionable" ng-click="$ctrl.toggleFullScreen()">Mode plein écran</p>
-	<a href="http://twitter.com/geeyom" target="_new"><p class="unselectionable">Contact</p></a>
-</div>
-<div class="social_media">
-    <a href="https://www.facebook.com/openyoureyesapp" target="_new">
-        <img ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/facebook.png">
-    </a>
-    <a href="https://twitter.com/OpenYourEyesApp" target="_new">
-        <img ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/twitter.png">
-    </a>
+    <div>
+        <span class="menu_sub">{{'MENU.SOCIAL' | translate }}</span>
+        <a ng-repeat="network in $ctrl.social" href="{{network.url}}" target="_new">
+            <p>
+                <img ng-src="{{network.thumb}}">
+                <span>{{network.name}}</span>
+            </p>
+        </a>
+    </div>
+    <div>
+        <span class="menu_sub">{{'MENU.OPTIONS' | translate }}</span>
+        <p class="unselectionable" ng-click="$ctrl.toggleFullScreen()">{{'MENU.FULLSCREEN' | translate }}</p>
+        <a href="http://twitter.com/geeyom" target="_new"><p class="unselectionable">{{'MENU.CONTACT' | translate }}</p></a>
+    </div>   
 </div>
 
 <style type="text/css">
-.social_media{
-    width:100%;
-    text-align: center;
-    position: absolute;
-    bottom: 0;
-    left:0;
-}
-.social_media img{
-    margin:20px;
-}
 .menu_head{
     display: inline-block;
 }
@@ -45,7 +40,9 @@
     display: inline-block;
     line-height: 25px;
 }
-
+.menu_sub{
+    font-weight: bold;
+}
 #left-menu{
     background-color: #121326;
     color: #FFFFFF;
@@ -60,7 +57,10 @@ menu a{
     text-decoration: none;
     color:#FFFFFF;
 }
-
+menu a:active{
+    color:#FFFFFF;
+    text-decoration: none;
+}
 menu p{
     border: 1px solid white;
     border-radius: 5px;

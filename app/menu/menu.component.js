@@ -6,6 +6,18 @@ angular.
             function MenuController($routeParams, $scope) {
                 var self = this;
 
+                self.social=[
+                {
+                    name:'Facebook',
+                    url:'https://www.facebook.com/openyoureyesapp',
+                    thumb:'//s3.eu-central-1.amazonaws.com/openyoureyes/facebook.png'
+                },
+                {
+                    name:'Twitter',
+                    url:'https://twitter.com/OpenYourEyesApp',
+                    thumb:'//s3.eu-central-1.amazonaws.com/openyoureyes/twitter.png'
+                }];
+
                 self.show_path_options = false;
                 $scope.$routeParams = $routeParams;
                 $scope.$watch('$routeParams.pathId',function(newVal, oldVal){

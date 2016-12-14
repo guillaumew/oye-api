@@ -2,8 +2,15 @@
 	"WELCOME":{
 		"CALL_TO_ACTION": "Start investigating"
 	},
+	"MENU":{
+		"SOCIAL": "Find us on:",
+		"OPTIONS": "Options",
+		"FULLSCREEN": "Toggle fullscreen",
+		"CONTACT": "Contact us"
+	},
 	"USER":{
-		"LOGIN": "Log in"
+		"LOGIN": "Log in",
+		"LOGGED": "Logged as"
 	},
 	"PATH_LIST":{
 		"AUTHOR":"Author: ",
