@@ -226,6 +226,9 @@ angular.
             tmp_item = response.data;
             tmp_item.is_visible = true;
             self.response[type+"s"].push(tmp_item);
+            if(type=="place"){
+              self.showOnMap(tmp_item);
+            }
           })
         }
 
