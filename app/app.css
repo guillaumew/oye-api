@@ -105,3 +105,22 @@ p{
     height: 50px;
     z-index: 1;
 }
+
+.main-view {
+  transition: transform 0.5s ease;
+  transform: translate3d(0, 0, 0);
+  position: relative;
+  height: 100%;
+}
+.main-view.ng-enter {
+    transform: translate3d(100%, 0, 0); 
+}
+.main-view.ng-enter-active {
+    transform: translate3d(0, 0, 0);
+}
+.main-view.ng-leave {
+    transform: translate3d(0, 0, 0);
+}
+.main-view.ng-leave-active {
+    transform: translate3d(-100%, 0, 0);  
+}
