@@ -22,12 +22,9 @@
 		"LOGGED": "Logged as"
 	},
 	"PATH_LIST":{
-		"AUTHOR":"Author: ",
+		"FROM":"By:",
 		"FILTER": "Filter: ",
 		"INTRO": "Available paths:",
-		"CITY": "City: ",
-		"LANG": "Language: ",
-		"LENGTH": "Duration: ",
 		"HOURS": "H"
 	},
 	"PATH_DETAILS":{

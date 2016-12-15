@@ -12,27 +12,23 @@
 			<div class="item">
 				<img ng-src="{{path.thumb.url}}" class="path_thumb">
 				<div>
-					<div>
+					<div class="item-title">
 						<h4>{{path.name}}</h4>
 					</div>
-					<div class='inline-item column1'>
-						<div ng-if="path.city">
-							<span class="strong">{{'PATH_LIST.CITY' | translate }}</span>
+					<div>
+						<div ng-if="path.city" class="path-info">
+							<img class="path_logos" ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/pin.png">
 							<span>{{path.city}}</span>
 						</div>
-						<div ng-if="path.language">
-							<span class="strong">{{'PATH_LIST.LANG' | translate }}</span>
-							<span>{{path.language}}</span>
-						</div>
-					</div>
-					<div class='inline-item'>
-						<div ng-if="path.length">
-							<span class="strong">{{'PATH_LIST.LENGTH' | translate }}</span>
+						<div ng-if="path.length" class="path-info">
+							<img class="path_logos" ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/duration.png">
 							<span>{{path.length}}{{'PATH_LIST.HOURS' | translate }}</span>
 						</div>
-						<div  ng-if="path.author">
-							<span class="strong">{{'PATH_LIST.AUTHOR' | translate }}</span>
-							<span>{{path.author.name.first + " " + path.author.name.last}}</span>
+						<div ng-if="path.language" class="path-info">
+							<img class="path_logos" ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/lang/{{path.language}}.png">
+						</div>
+						<div  ng-if="path.author" class="path-info">
+							<span>{{'PATH_LIST.FROM' | translate }}</span> <img class="path_logos" ng-src="{{path.author.avatar.url}}">
 						</div>
 					</div>
 				</div>
@@ -43,19 +39,19 @@
 </div>
 
 <style type="text/css">
+.path-info{
+	display: inline-block;
+	margin-right: 10px;
+}
+.path_logos{
+	height: 16px;
+	width: 16px;
+	display: inline-block;
+}
+
 .logo{
 	background-image: url(//s3.eu-central-1.amazonaws.com/openyoureyes/logo.png);
 	background-size: contain;
-}
-.inline-item{
-	display: inline-block;
-	height: 40px;
-	overflow: hidden;
-	
-}
-.column1{
-	max-width: 120px;
-	padding-right: 10px;
 }
 
 .item{
@@ -70,13 +66,19 @@
 	text-decoration: none;
 	margin-top: 20px;
 }
-
-h4{
+.item-title{
+	position: relative;
+	vertical-align: middle;
+	line-height:40px;
+	height: 40px;
+}
+.item h4{
 	text-align: left;
     margin: 0;
+    display:inline-block;
 }
 
-.item img{
+.path_thumb{
 	width: 50px;
 	height: 50px;
 	border-radius: 25px;
