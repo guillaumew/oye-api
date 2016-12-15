@@ -354,8 +354,6 @@ angular.
 
           data.path.__t="Path";
 
-          $window.document.title = data.path.name + " - Open Your Eyes";
-
           Analytics.pageView();
 
           self.openObjects(data.path.init_objects);
