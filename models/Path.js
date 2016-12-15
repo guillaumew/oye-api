@@ -13,7 +13,7 @@ Path.add({
 	thumb: { 
 		type: Types.S3File
 	},
-	author: { type: Types.Relationship, ref: 'Y' },
+	author: { type: Types.Relationship, ref: 'User' },
 	places: { type: Types.Relationship, ref: 'Place', many: true },
 	longitude: { type: Types.Number },
 	latitude: { type: Types.Number },
