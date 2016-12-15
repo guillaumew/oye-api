@@ -5,6 +5,7 @@ angular.module('oyeApp', [
   'pathsList',
   'pathDetails',
   'menu',
+  'about',
   'asideModule',
   'map',
   'geolocation',

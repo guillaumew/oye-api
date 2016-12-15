@@ -6,15 +6,15 @@
 </a>
 <hr>
 <div id="menu_path" ng-if="$ctrl.show_path_options">
-	<span class="menu_sub">Parcours</span>
-    <p  class="unselectionable"ng-click="$ctrl.deleteProgress()">Effacer progression</p>
+	<span class="menu_sub">{{'MENU.PATH' | translate }}</span>
+    <p  class="unselectionable"ng-click="$ctrl.deleteProgress()">{{'MENU.DELETE_PROGRESS' | translate }}</p>
 </div>
 <div>
     <div>
         <span class="menu_sub">{{'MENU.SOCIAL' | translate }}</span>
         <a ng-repeat="network in $ctrl.social" href="{{network.url}}" target="_new">
             <p>
-                <img ng-src="{{network.thumb}}">
+                <img class="menu_thumb" ng-src="{{network.thumb}}">
                 <span>{{network.name}}</span>
             </p>
         </a>
@@ -22,7 +22,7 @@
     <div>
         <span class="menu_sub">{{'MENU.OPTIONS' | translate }}</span>
         <p class="unselectionable" ng-click="$ctrl.toggleFullScreen()">{{'MENU.FULLSCREEN' | translate }}</p>
-        <a href="http://twitter.com/geeyom" target="_new"><p class="unselectionable">{{'MENU.CONTACT' | translate }}</p></a>
+        <a href="/#!/about" aside-menu-toggle="left-menu"><p class="unselectionable">{{'MENU.ABOUT' | translate }}</p></a>
     </div>   
 </div>
 
@@ -52,7 +52,9 @@ menu{
     padding: 15px;
     font-size: 20px;
 }
-
+.menu_thumb{
+    width: 24px;
+}
 menu a{
     text-decoration: none;
     color:#FFFFFF;

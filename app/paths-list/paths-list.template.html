@@ -2,7 +2,7 @@
 <div class="page-title">
 	<H1>Open Your Eyes</H1>
 </div>
-<img ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/logo.png" class="logo" />
+<div class="upper-right logo"></div>
 
 <p>{{'PATH_LIST.INTRO' | translate }}</p>
 <p>{{'PATH_LIST.FILTER' | translate }}<input ng-model="$ctrl.query" /></p>
@@ -43,6 +43,10 @@
 </div>
 
 <style type="text/css">
+.logo{
+	background-image: url(//s3.eu-central-1.amazonaws.com/openyoureyes/logo.png);
+	background-size: contain;
+}
 .inline-item{
 	display: inline-block;
 	height: 40px;
@@ -52,12 +56,6 @@
 .column1{
 	max-width: 120px;
 	padding-right: 10px;
-}
-.logo{
-	width: 100px;
-    margin-left: -50px;
-	left:50%;
-    position: relative;
 }
 
 .item{

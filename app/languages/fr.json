@@ -2,15 +2,24 @@
 	"WELCOME":{
 		"CALL_TO_ACTION": "Commencer l'enquête"
 	},
+	"ABOUT":{
+		"TITLE": "A propos de nous",
+		"ORIGIN": "Open Your Eyes est un projet né lors d'un Start-up week-end à Nantes",
+		"PURPOSE":"Notre but est de mettre en valeur le patrimoine culturel au travers d'enquêtes ludiques.",
+		"CONTACT": "Le projet est tout neuf et en cours de création. Merci de bien vouloir nous signaler toute erreur rencontrée. Vous pouvez aussi discuter avec nous soit par email soit sur les réseaux sociaux.",
+		"CHEERS":"En espérant que vous appréciez cette application. A bientôt !"
+	},
 	"MENU":{
 		"SOCIAL": "Retrouvez-nous sur :",
 		"OPTIONS": "Options",
 		"FULLSCREEN": "Mode plein écran",
-		"CONTACT": "Nous contacter"
+		"ABOUT": "A propos de nous",
+		"PATH": "Ce parcours",
+		"DELETE_PROGRESS": "Effacer progression"
 	},
 	"USER":{
 		"LOGIN": "Connexion",
-		"LOGGED": "Enregistré en tant que"
+		"LOGGED": "Connecté(e) :"
 	},
 	"PATH_LIST":{
 		"AUTHOR":"Auteur : ",

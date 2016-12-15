@@ -2,11 +2,20 @@
 	"WELCOME":{
 		"CALL_TO_ACTION": "Start investigating"
 	},
+	"ABOUT":{
+		"TITLE": "About Us",
+		"ORIGIN": "Open Your Eyes was born during a Startup Week-end in Nantes (France).",
+		"PURPOSE":"Our goal is to make people benefit from their cultural heritage. We provide a gaming experience that highlight local attractions.",
+		"CONTACT": "We're still under developpment. If you spot any issue please report it. You're also welcome to open discussion with using email or on social medias.",
+		"CHEERS":"We hope you enjoy our app. Cheers :)"
+	},
 	"MENU":{
 		"SOCIAL": "Find us on:",
 		"OPTIONS": "Options",
 		"FULLSCREEN": "Toggle fullscreen",
-		"CONTACT": "Contact us"
+		"ABOUT": "About us",
+		"PATH": "Current path",
+		"DELETE_PROGRESS": "Delete progress"
 	},
 	"USER":{
 		"LOGIN": "Log in",

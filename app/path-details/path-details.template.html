@@ -23,7 +23,7 @@
 }
 </style>
 
-<div class="goals" ng-click="$ctrl.showPathGoals()"></div>
+<div class="goals upper-right" ng-click="$ctrl.showPathGoals()"></div>
 <div class="page-title" ng-click="$ctrl.showPathInfo()">
 	<H1>{{$ctrl.response.path.name}}</H1>
 </div>
@@ -166,14 +166,6 @@
 .goals{
 	background: url(https://s3.eu-central-1.amazonaws.com/openyoureyes/goals.png);
 	background-size: contain;
-	position: absolute;
-	right:0;
-	top:0;
-	overflow: hidden;
-	margin: 5px;
-	width: 50px;
-	height: 50px;
-	z-index: 1;
 }
 .goal-content{
 	font-size: 16px;

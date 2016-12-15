@@ -53,6 +53,9 @@ angular.
         when('/welcome', {
           template: '<welcome></welcome>'
         }).
+        when('/about', {
+          template: '<about></about>'
+        }).
         otherwise('/welcome');
     }
   ]);
