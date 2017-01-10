@@ -21,6 +21,10 @@
 	background-color: #121326;
 	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
+.marker_labels{
+	color:#000000;
+	text-align: center;
+}
 </style>
 
 <div id="nav-icon" aside-menu-toggle="left-menu" ></div>
@@ -34,8 +38,8 @@
 </div>
 <div class="map-container">
 	<img ng-if="$ctrl.response.is_editable" ng-src="https://cdn3.iconfinder.com/data/icons/flat-circle-content/512/flat-style-circle-add-2-64.png" ng-click="$ctrl.addPlace()" class="add_place">
-	<ui-gmap-google-map center="map.center" zoom='map.zoom'>
-		<ui-gmap-markers models="markers" coords="'self'" icon="'icon'", click="click"></ui-gmap-markers>
+	<ui-gmap-google-map center="map.center" zoom='map.zoom' options="options">
+		<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="click" options="'options'"></ui-gmap-markers>
 	</ui-gmap-google-map>
 </div>
 

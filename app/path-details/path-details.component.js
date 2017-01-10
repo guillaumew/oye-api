@@ -155,7 +155,8 @@ angular.
             id: $scope.markers.length,
             title: place.name,
             click: self.test_click,
-            icon: icon
+            options: {labelClass:'marker_labels',labelAnchor:'50 50',labelContent:place.name},
+            icon:icon
           };
 
           if(!place.marker){
