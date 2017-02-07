@@ -103,8 +103,36 @@ angular.
           }
 
           if(!item.preview){
-            self.openPlaces(item.places_on_open);
-            self.openObjects(item.objects_on_open);
+            if(item.places_on_open){
+              item.places_opened_name = [];
+              item.places_on_open.forEach(function(plaId){
+                var tmp_place = self.getPlaceFromId(plaId);
+                item.places_opened_name.push(tmp_place.name);
+                self.showOnMap(tmp_place);
+              });
+            }
+            if(item.objects_on_open){
+              item.objects_opened_name = [];
+              item.objects_on_open.forEach(function(objId){
+                var tmp_object = self.getObjectFromId(objId);
+                item.objects_opened_name.push(tmp_object.name);
+                tmp_object.is_visible =true;
+              });
+            }
+            if(item.places_on_success){
+              item.places_success_name = [];
+              item.places_on_success.forEach(function(plaId){
+                var tmp_place = self.getPlaceFromId(plaId);
+                item.places_success_name.push(tmp_place.name);
+              });
+            }
+            if(item.objects_on_success){
+              item.objects_success_name = [];
+              item.objects_on_success.forEach(function(objId){
+                var tmp_object = self.getObjectFromId(objId);
+                item.objects_success_name.push(tmp_object.name);
+              });
+            }
             
             if(item.success_condition === "place"){
               if(self.getPlaceFromId(item.success_key) && self.getPlaceFromId(item.success_key).is_visited){
@@ -126,7 +154,8 @@ angular.
             id: item._id
           };
 
-          
+          // Fix temporraire
+
           // if(self.current_content && self.current_content.is_shown){
           //   self.current_content.is_shown = false;
           //   setTimeout(function(){
@@ -136,6 +165,9 @@ angular.
           //   item.is_shown =true;
           // }
           item.is_shown =true;
+
+          // Fin de fix tmp
+
           self.current_content = item;
 
           if(!item.preview){

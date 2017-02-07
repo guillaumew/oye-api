@@ -48,6 +48,10 @@
 			"EDIT":"Modifier cet élément",
 			"SUCCESS": "Bravo ! "
 		},
+		"GAIN":{
+			"OBJECT" : "Tu as reçu :",
+			"PLACE" : "Nouveau(x) lieu(x) à découvrir :"
+		},
 		"OBJECTS": "Objets",
 		"GOALS": {
 			"NAME": "Objectifs",

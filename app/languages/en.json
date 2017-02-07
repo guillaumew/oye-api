@@ -48,6 +48,10 @@
 			"EDIT":"Edit this element",
 			"SUCCESS": "Success ! "
 		},
+		"GAIN":{
+			"OBJECT" : "You've got new item(s):",
+			"PLACE" : "New place(s) to discover:"
+		},
 		"OBJECTS": "Objects",
 		"GOALS": {
 			"NAME":"Goals",

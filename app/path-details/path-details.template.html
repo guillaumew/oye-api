@@ -109,6 +109,25 @@
 					</div>
 				</div>
 
+				<div class="content_opened">
+					<div id="places_opened" ng-if="$ctrl.current_content.places_opened_name.length>0">
+						<p>{{'PATH_DETAILS.GAIN.PLACE' | translate }}</p>
+						<ul>
+							<li class="places_opened" ng-repeat="place in $ctrl.current_content.places_opened_name">
+								<span>{{place}}</span>
+							</li>
+						</ul>	
+					</div>
+					<div id="objects_opened" ng-if="$ctrl.current_content.objects_opened_name.length>0">
+						<p>{{'PATH_DETAILS.GAIN.OBJECT' | translate }}</p>
+						<ul>
+							<li class="objects_opened" ng-repeat="object in $ctrl.current_content.objects_opened_name">
+								<span>{{object}}</span>
+							</li>
+						</ul>	
+					</div>
+				</div>
+
 				<div class="goal-content" ng-if="$ctrl.current_content.is_goals">
 					<div class="goal-item" ng-repeat="(group, goals) in $ctrl.response.goals | orderBy: 'type' | groupBy: 'type'">
 						<h4 translate="PATH_DETAILS.GOALS.{{group}}"></h4>
@@ -136,6 +155,26 @@
 				<div class="media_content">
 					<img ng-src="{{$ctrl.current_content.success_content.media.url}}" ng-if="$ctrl.current_content.success_content.media_type == 'img'">
 				</div>
+				
+				<div class="content_opened">
+					<div id="places_opened" ng-if="$ctrl.current_content.places_success_name.length>0">
+						<p>{{'PATH_DETAILS.GAIN.PLACE' | translate }}</p>
+						<ul>
+							<li class="places_success" ng-repeat="place in $ctrl.current_content.places_success_name">
+								<span>{{place}}</span>
+							</li>
+						</ul>	
+					</div>
+					<div id="objects_success" ng-if="$ctrl.current_content.objects_success_name.length>0">
+						<p>{{'PATH_DETAILS.GAIN.OBJECT' | translate }}</p>
+						<ul>
+							<li class="objects_success" ng-repeat="object in $ctrl.current_content.objects_success_name">
+								<span>{{object}}</span>
+							</li>
+						</ul>	
+					</div>
+				</div>
+
 				<div></div>
 			</figure>
 		</div>
@@ -158,6 +197,11 @@
 </div>
 
 <style type="text/css">
+.content_opened{
+    border: 1px solid #121326;
+    margin: 10px;
+    background-color: rgba(18,19,38,0.1);
+}
 .image_holder{
 	overflow: hidden;
     position: relative;
