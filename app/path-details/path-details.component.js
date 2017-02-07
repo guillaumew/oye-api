@@ -105,7 +105,7 @@ angular.
           if(!item.preview){
             self.openPlaces(item.places_on_open);
             self.openObjects(item.objects_on_open);
-            //check if success condition met 
+            
             if(item.success_condition === "place"){
               if(self.getPlaceFromId(item.success_key) && self.getPlaceFromId(item.success_key).is_visited){
                 self.itemSuccess(item);
@@ -117,6 +117,7 @@ angular.
                 self.itemSuccess(item);
               }
             }
+
             self.saveProgress();
           }
 
@@ -125,16 +126,16 @@ angular.
             id: item._id
           };
 
-          if(self.current_content && self.current_content.is_shown){
-            self.current_content.is_shown = false;
-            setTimeout(function(){
-              self.current_content.is_shown = true;
-            },250);
-          }else{
-            item.is_shown =true;
-          }
           
-          
+          // if(self.current_content && self.current_content.is_shown){
+          //   self.current_content.is_shown = false;
+          //   setTimeout(function(){
+          //     self.current_content.is_shown = true;
+          //   },1000);
+          // }else{
+          //   item.is_shown =true;
+          // }
+          item.is_shown =true;
           self.current_content = item;
 
           if(!item.preview){
