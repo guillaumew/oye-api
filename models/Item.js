@@ -13,7 +13,7 @@ Item.add({
 	success_condition: { 
 		type: Types.Select, 
 		emptyOption: true, 
-		options: 'object, occurence, password'
+		options: 'object, occurence, password, place'
 	},
 	success_key: { type: Types.Text },
 	places_on_open : { type: Types.Relationship, ref: 'Place', many: true },

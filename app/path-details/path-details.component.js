@@ -105,6 +105,17 @@ angular.
           if(!item.preview){
             self.openPlaces(item.places_on_open);
             self.openObjects(item.objects_on_open);
+            //check if success condition met 
+            if(item.success_condition === "place"){
+              if(self.getPlaceFromId(item.success_key) && self.getPlaceFromId(item.success_key).is_visible){
+                self.itemSuccess(item);
+              }
+            }
+            if(item.success_condition === "object"){
+              if(self.getObjectFromId(item.success_key) && self.getObjectFromId(item.success_key).is_visible){
+                self.itemSuccess(item);
+              }
+            }
             self.saveProgress();
           }
 
