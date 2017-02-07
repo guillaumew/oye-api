@@ -25,5 +25,8 @@
     "angular-filter": "^0.5.14",
     "angular-pinch-zoom": "^0.2.1",
     "angular-google-analytics": "^1.1.8"
+  },
+  "resolutions": {
+    "angular": "1.5.11"
   }
 }
