@@ -2,6 +2,10 @@
   "name": "oye-api",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "4.2.6",
+    "nmp": "3.5.2"
+  },
   "dependencies": {
     "async": "^1.5.0",
     "bower": "^1.7.7",
