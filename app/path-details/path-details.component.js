@@ -107,8 +107,9 @@ angular.
             self.openObjects(item.objects_on_open);
             //check if success condition met 
             if(item.success_condition === "place"){
-              if(self.getPlaceFromId(item.success_key) && self.getPlaceFromId(item.success_key).is_visible){
+              if(self.getPlaceFromId(item.success_key) && self.getPlaceFromId(item.success_key).is_visited){
                 self.itemSuccess(item);
+                console.log(self.getPlaceFromId(item.success_key));
               }
             }
             if(item.success_condition === "object"){
@@ -139,9 +140,13 @@ angular.
           if(!item.preview){
             setTimeout(function(){
               if(item.is_succeeded){
-                document.getElementById("card").classList.add("flipped");
+                if(document.getElementById("card")){
+                  document.getElementById("card").classList.add("flipped");
+                }
               }else{
-                document.getElementById("card").classList.remove("flipped");
+                if(document.getElementById("card")){
+                  document.getElementById("card").classList.remove("flipped");
+                }
               }
             },550);
           }
