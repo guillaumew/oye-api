@@ -76,6 +76,7 @@ angular.
         }
 
         self.showContent = function showContent(item, forcePreview){
+          console.log(item);
           if(item.__t=="Place"){
             if(self.position){
               distance = Math.round(1000*self.computeDistance(item, self.position));
@@ -95,10 +96,16 @@ angular.
           }
 
           
-          if (item.init_content.sub_objects){
+          if (item.init_content && item.init_content.sub_objects){
             item.init_content.sub_obj = [];
             item.init_content.sub_objects.forEach(function(objId){
               item.init_content.sub_obj.push(self.getObjectFromId(objId));
+            });
+          }
+          if (item.success_content && item.success_content.sub_objects){
+            item.success_content.sub_obj = [];
+            item.success_content.sub_objects.forEach(function(objId){
+              item.success_content.sub_obj.push(self.getObjectFromId(objId));
             });
           }
 

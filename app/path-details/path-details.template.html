@@ -154,6 +154,13 @@
 				<div ng-bind-html="$ctrl.current_content.success_content.description | trusted"></div>
 				<div class="media_content">
 					<img ng-src="{{$ctrl.current_content.success_content.media.url}}" ng-if="$ctrl.current_content.success_content.media_type == 'img'">
+					<div ng-if="$ctrl.current_content.success_content.media_type == 'group'" class="subobjects">
+						<div ng-repeat="subobject in $ctrl.current_content.success_content.sub_obj | orderBy:'+name'" ng-click="$ctrl.showContent(subobject)" class="object">
+							<img ng-src="{{subobject.thumb.url}}">
+							<span class="object_title">{{subobject.name}}</span>
+							<div class="subobj_checked" ng-if="subobject.is_succeeded"></div>
+						</div>
+					</div>
 				</div>
 				
 				<div class="content_opened">
