@@ -111,20 +111,10 @@ angular.
 
           if(!item.preview){
             if(item.places_on_open){
-              item.places_opened_name = [];
-              item.places_on_open.forEach(function(plaId){
-                var tmp_place = self.getPlaceFromId(plaId);
-                item.places_opened_name.push(tmp_place.name);
-                self.showOnMap(tmp_place);
-              });
+              self.openPlaces(item.places_on_open);
             }
             if(item.objects_on_open){
-              item.objects_opened_name = [];
-              item.objects_on_open.forEach(function(objId){
-                var tmp_object = self.getObjectFromId(objId);
-                item.objects_opened_name.push(tmp_object.name);
-                tmp_object.is_visible =true;
-              });
+              self.openObjects(item.objects_on_open);
             }
             if(item.places_on_success){
               item.places_success_name = [];
@@ -328,6 +318,11 @@ angular.
           if(extIdArray){
             extIdArray.forEach(function(objId){
               self.getObjectFromId(objId).is_visible = true;
+              if(!self.getObjectFromId(objId).open_date){
+                var now = new Date();
+                self.getObjectFromId(objId).open_date = now;
+                console.log(now);
+              }
             });
           }
         }
