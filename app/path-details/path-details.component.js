@@ -111,9 +111,19 @@ angular.
 
           if(!item.preview){
             if(item.places_on_open){
+              item.places_opened_name = [];
+              item.places_on_open.forEach(function(plaId){
+                var tmp_place = self.getPlaceFromId(plaId);
+                item.places_opened_name.push(tmp_place.name);
+              });
               self.openPlaces(item.places_on_open);
             }
             if(item.objects_on_open){
+              item.objects_opened_name = [];
+              item.objects_on_open.forEach(function(objId){
+                var tmp_object = self.getObjectFromId(objId);
+                item.objects_opened_name.push(tmp_object.name);
+              });
               self.openObjects(item.objects_on_open);
             }
             if(item.places_on_success){
