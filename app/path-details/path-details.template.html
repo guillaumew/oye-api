@@ -64,7 +64,7 @@
 </div>
 
 <div class="content" ng-if="$ctrl.current_content.is_shown">
-	<div class="flip_content" ng-click="$ctrl.flipContent()" ng-if="$ctrl.current_content.is_succeeded && !$ctrl.current_content.preview"></div>
+	<div class="flip_content" ng-click="$ctrl.showContent($ctrl.current_content,true,$ctrl.current_content.shown_content.other)" ng-if="$ctrl.current_content.shown_content.other && !$ctrl.current_content.preview"></div>
 	<div class="close_content" ng-click="$ctrl.closeContent()"></div>
 	<section id="content_container">
 		<div id="place-preview" ng-if="$ctrl.current_content.preview">
@@ -80,20 +80,20 @@
 		<div id="card" ng-if="!$ctrl.current_content.preview">
 			<figure class="front">
 				<h3>{{$ctrl.current_content.name}}</h3>
-				<div ng-bind-html="$ctrl.current_content.init_content.description | trusted"></div>
+				<div ng-bind-html="$ctrl.current_content.shown_content.description | trusted"></div>
 				
 				<div class="media_content">
-					<a href="{{$ctrl.current_content.init_content.media.url}}" target="_new">
+					<a href="{{$ctrl.current_content.shown_content.media.url}}" target="_new">
 						<div class="image_holder">
-							<img ng-src="{{$ctrl.current_content.init_content.media.url}}" ng-if="$ctrl.current_content.init_content.media_type == 'img'" ng-pinch-zoom max-scale=“4”>
+							<img ng-src="{{$ctrl.current_content.shown_content.media.url}}" ng-if="$ctrl.current_content.shown_content.media_type == 'img'" ng-pinch-zoom max-scale=“4”>
 						</div>
 					</a>
-					<div class="embed-responsive embed-responsive-16by9" ng-if="$ctrl.current_content.init_content.media_type == 'youtube'">
-						<youtube-video class="embed-responsive-item" video-url="$ctrl.current_content.init_content.media_url" player-vars="{'cc_load_policy':1,'modestbranding':1, 'rel':0, 'cc_lang_pref':'fr', 'hl':'fr'}"></youtube-video>
+					<div class="embed-responsive embed-responsive-16by9" ng-if="$ctrl.current_content.shown_content.media_type == 'youtube'">
+						<youtube-video class="embed-responsive-item" video-url="$ctrl.current_content.shown_content.media_url" player-vars="{'cc_load_policy':1,'modestbranding':1, 'rel':0, 'cc_lang_pref':'fr', 'hl':'fr'}"></youtube-video>
 					</div>
 
-					<div ng-if="$ctrl.current_content.init_content.media_type == 'group'" class="subobjects">
-						<div ng-repeat="subobject in $ctrl.current_content.init_content.sub_obj | orderBy:'+name'" ng-click="$ctrl.showContent(subobject)" class="object">
+					<div ng-if="$ctrl.current_content.shown_content.media_type == 'group'" class="subobjects">
+						<div ng-repeat="subobject in $ctrl.current_content.shown_content.sub_obj | orderBy:'+name'" ng-click="$ctrl.showContent(subobject)" class="object">
 							<img ng-src="{{subobject.thumb.url}}">
 							<span class="object_title">{{subobject.name}}</span>
 							<div class="subobj_checked" ng-if="subobject.is_succeeded"></div>
@@ -101,7 +101,7 @@
 					</div>
 				</div>
 
-				<div id="media_password" ng-if="$ctrl.current_content.success_condition == 'password'">
+				<div id="media_password" ng-if="$ctrl.current_content.success_condition == 'password' && $ctrl.current_content.shown_content.type == 'init'">
 					<p>{{'PATH_DETAILS.ITEM.PASSWORD.INTRO' | translate }}</p>
 					<div id="password_input">
 						<input type="text" ng-model="$ctrl.current_content.user_password" ng-keyup="$ctrl.keyboardPassword($event)">
@@ -110,18 +110,18 @@
 				</div>
 
 				<div class="content_opened">
-					<div id="places_opened" ng-if="$ctrl.current_content.places_opened_name.length>0">
+					<div id="places_opened" ng-if="$ctrl.current_content.shown_content.places_opened_name.length>0">
 						<p>{{'PATH_DETAILS.GAIN.PLACE' | translate }}</p>
 						<ul>
-							<li class="places_opened" ng-repeat="place in $ctrl.current_content.places_opened_name">
+							<li class="places_opened" ng-repeat="place in $ctrl.current_content.shown_content.places_opened_name">
 								<span>{{place}}</span>
 							</li>
 						</ul>	
 					</div>
-					<div id="objects_opened" ng-if="$ctrl.current_content.objects_opened_name.length>0">
+					<div id="objects_opened" ng-if="$ctrl.current_content.shown_content.objects_opened_name.length>0">
 						<p>{{'PATH_DETAILS.GAIN.OBJECT' | translate }}</p>
 						<ul>
-							<li class="objects_opened" ng-repeat="object in $ctrl.current_content.objects_opened_name">
+							<li class="objects_opened" ng-repeat="object in $ctrl.current_content.shown_content.objects_opened_name">
 								<span>{{object}}</span>
 							</li>
 						</ul>	
@@ -149,41 +149,7 @@
 				</div>
 
 			</figure>
-			<figure class = "back">
-				<h3>{{'PATH_DETAILS.ITEM.SUCCESS' | translate }}{{$ctrl.current_content.name}}</h3>
-				<div ng-bind-html="$ctrl.current_content.success_content.description | trusted"></div>
-				<div class="media_content">
-					<img ng-src="{{$ctrl.current_content.success_content.media.url}}" ng-if="$ctrl.current_content.success_content.media_type == 'img'">
-					<div ng-if="$ctrl.current_content.success_content.media_type == 'group'" class="subobjects">
-						<div ng-repeat="subobject in $ctrl.current_content.success_content.sub_obj | orderBy:'+name'" ng-click="$ctrl.showContent(subobject)" class="object">
-							<img ng-src="{{subobject.thumb.url}}">
-							<span class="object_title">{{subobject.name}}</span>
-							<div class="subobj_checked" ng-if="subobject.is_succeeded"></div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="content_opened">
-					<div id="places_opened" ng-if="$ctrl.current_content.places_success_name.length>0">
-						<p>{{'PATH_DETAILS.GAIN.PLACE' | translate }}</p>
-						<ul>
-							<li class="places_success" ng-repeat="place in $ctrl.current_content.places_success_name">
-								<span>{{place}}</span>
-							</li>
-						</ul>	
-					</div>
-					<div id="objects_success" ng-if="$ctrl.current_content.objects_success_name.length>0">
-						<p>{{'PATH_DETAILS.GAIN.OBJECT' | translate }}</p>
-						<ul>
-							<li class="objects_success" ng-repeat="object in $ctrl.current_content.objects_success_name">
-								<span>{{object}}</span>
-							</li>
-						</ul>	
-					</div>
-				</div>
-
-				<div></div>
-			</figure>
+			
 		</div>
 	</section>
 </div>
