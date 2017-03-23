@@ -110,6 +110,9 @@ angular.
           }
 
           if(!item.preview){
+            
+            Analytics.trackEvent('content', item.__t, item.name);
+
             if(item.places_on_open){
               item.places_opened_name = [];
               item.places_on_open.forEach(function(plaId){
@@ -161,19 +164,8 @@ angular.
             id: item._id
           };
 
-          // Fix temporraire
-
-          // if(self.current_content && self.current_content.is_shown){
-          //   self.current_content.is_shown = false;
-          //   setTimeout(function(){
-          //     self.current_content.is_shown = true;
-          //   },1000);
-          // }else{
-          //   item.is_shown =true;
-          // }
           item.is_shown =true;
 
-          // Fin de fix tmp
 
           self.current_content = item;
 
@@ -260,7 +252,7 @@ angular.
             myMarker.longitude = data.coords.longitude;
             myMarker.latitude = data.coords.latitude;
           }, function(error) {
-             console.log(error);
+             Analytics.trackEvent('error', 'geoloc', error.message);
              if(callback){callback();}
          });
         }
@@ -314,6 +306,7 @@ angular.
             return pla._id === key;
           });         
         }
+
         self.test_click = function test_click(instance,event,marker){
           self.getPosition(function(){
             self.showContent(self.getPlaceFromId(marker.extId))
@@ -336,6 +329,7 @@ angular.
             });
           }
         }
+        
         self.openPlaces = function openPlaces(extIdArray){
           self.updateProgress();
           if(extIdArray){
@@ -344,10 +338,12 @@ angular.
             });
           }
         }
+        
         self.getItinirary = function getItinirary(place){
           var url = "https://www.google.com/maps/dir/Ma+Position/"+place.latitude+","+place.longitude;
           window.open(url);
         }
+        
         self.updateProgress = function updateProgress(){
           var num=0;
           var denom=0;
@@ -357,42 +353,73 @@ angular.
           });
           document.getElementById("my-progress").style.width=num/denom*100+"%"
         }
+        
         self.saveProgress = function saveProgress(){
-          localStorage.setItem(self.response.path.key,JSON.stringify(self));
+          try{
+            localStorage.setItem(self.response.path.key,JSON.stringify(self));
+          }catch(e){
+            Analytics.trackEvent('error', 'localStorage', e.message);
+          }
+          self.checkGoalsAchieved();
+        }
+
+        self.goalProgress = function goalProgress(goal){
+          goal.progress = 0;
+          goal.objective = 0;
+          if(goal.open_objects){
+            goal.open_objects.forEach(function(openObj){
+              goal.objective ++;
+              goal.progress += self.getObjectFromId(openObj).is_visible||0;
+            });
+          }
+          if(goal.open_place){
+            goal.open_place.forEach(function(openPla){
+              goal.objective ++;
+              goal.progress += self.getPlaceFromId(openPla).is_visible||0;
+            });
+          }
+          if(goal.success_objects){
+            goal.success_objects.forEach(function(sucObj){
+              goal.objective++;
+              goal.progress += self.getObjectFromId(sucObj).is_succeeded||0;
+            });
+          }
+          if(goal.success_place){
+            goal.success_place.forEach(function(sucPla){
+              goal.objective++;
+              goal.progress += self.getPlaceFromId(sucPla).is_succeeded||0;
+            });
+          }
+        }
+
+        self.checkGoalsAchieved = function checkGoalsAchieved(){
+          if(!self.response.path.is_succeeded){
+            var path_succeeded=true; 
+            self.response.goals.forEach(function(goal){
+              if(goal.type=="primary"){
+                self.goalProgress(goal);
+                if(goal.progress !=goal.objective){
+                  path_succeeded = false;
+                }
+              }
+            });
+            
+            if(path_succeeded){
+              self.response.path.is_succeeded = true;
+              Analytics.trackEvent('Path', 'Success', self.response.path.name);
+              if(document.getElementsByClassName("goals").length>0){
+                document.getElementsByClassName("goals")[0].classList.add("achieved");
+              }
+            }
+          
+          }
         }
 
         self.showPathGoals = function showPathGoals(){
-          var primaryGoalsAchieved = true;
+          document.getElementsByClassName("goals")[0].classList.remove("achieved");
+
           self.response.goals.forEach(function(goal){
-            goal.progress = 0;
-            goal.objective = 0;
-            if(goal.open_objects){
-              goal.open_objects.forEach(function(openObj){
-                goal.objective ++;
-                goal.progress += self.getObjectFromId(openObj).is_visible||0;
-              });
-            }
-            if(goal.open_place){
-              goal.open_place.forEach(function(openPla){
-                goal.objective ++;
-                goal.progress += self.getPlaceFromId(openPla).is_visible||0;
-              });
-            }
-            if(goal.success_objects){
-              goal.success_objects.forEach(function(sucObj){
-                goal.objective++;
-                goal.progress += self.getObjectFromId(sucObj).is_succeeded||0;
-              });
-            }
-            if(goal.success_place){
-              goal.success_place.forEach(function(sucPla){
-                goal.objective++;
-                goal.progress += self.getPlaceFromId(sucPla).is_succeeded||0;
-              });
-            }
-            if(goal.type=="primary" && goal.progress != goal.objective){
-              primaryGoalsAchieved = false;
-            }
+            self.goalProgress(goal);
           });
 
           $translate('PATH_DETAILS.GOALS.NAME').then(function (goal_string) {
@@ -400,7 +427,7 @@ angular.
               name:goal_string,
               init_content:"",
               is_goals:true, 
-              is_succeeded:primaryGoalsAchieved,
+              is_succeeded:self.response.path.is_succeeded,
               success_content: self.response.path.success_content
             });
           });
@@ -440,7 +467,12 @@ angular.
         });
 
         //getting data
-        var previous_self = localStorage.getItem($routeParams.pathId);
+        try{
+          var previous_self = localStorage.getItem($routeParams.pathId);
+        }catch(e){
+          Analytics.trackEvent('error', 'localStorage', e.message);
+        }
+
         if(previous_self){
           previous_self = JSON.parse(previous_self);
           self.initPath(previous_self.response);

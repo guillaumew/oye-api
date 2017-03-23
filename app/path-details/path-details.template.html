@@ -29,7 +29,8 @@
 
 <div id="nav-icon" aside-menu-toggle="left-menu" ></div>
 
-<div class="goals upper-right" ng-click="$ctrl.showPathGoals()"></div>
+<div class="goals upper-right" ng-click="$ctrl.showPathGoals()">
+</div>
 <div class="page-title" ng-click="$ctrl.showPathInfo()">
 	<H1>{{$ctrl.response.path.name}}</H1>
 </div>
@@ -99,7 +100,6 @@
 						</div>
 					</div>
 				</div>
-				
 
 				<div id="media_password" ng-if="$ctrl.current_content.success_condition == 'password'">
 					<p>{{'PATH_DETAILS.ITEM.PASSWORD.INTRO' | translate }}</p>
@@ -223,6 +223,10 @@
 }
 .goals{
 	background: url(https://s3.eu-central-1.amazonaws.com/openyoureyes/goals.png);
+	background-size: contain;
+}
+.goals.achieved{
+	background: url(https://s3.eu-central-1.amazonaws.com/openyoureyes/goals_achieved.gif);
 	background-size: contain;
 }
 .goal-content{
