@@ -42,6 +42,7 @@ angular.
         }
 
         self.testPassword = function testPassword(){
+
           if(self.current_content.user_password){
             
             var accent = [
@@ -62,12 +63,12 @@ angular.
             }
 
             if(tmp_password.indexOf(password)>-1){
-              self.flipContent();
               if(self.current_content.source.type == "Object"){
                 self.itemSuccess(self.getObjectFromId(self.current_content._id));
               }else{
                 self.itemSuccess(self.getPlaceFromId(self.current_content._id));
               }
+              self.showContent(self.current_content,true);
             }else{
               var element = document.getElementById("password_input");
               $animate.addClass(element, 'shake').then(function() {
@@ -84,12 +85,6 @@ angular.
           }
         }
 
-        self.flipContent = function flipContent(){
-          document.getElementById("card").classList.toggle("flipped");
-          $("#content_container").animate({scrollTop: 0},1000);
-          //document.getElementById("content_container").scrollTop = 0;
-        }
-
         self.computeDistance = function computeDistance(pointA,pointB){
           var lat_place1 = pointA.latitude;
           var lat_place2 = pointB.latitude;
@@ -98,8 +93,9 @@ angular.
           return Math.acos(Math.sin(lat_place1 * Math.PI / 180)*Math.sin((Math.PI / 180 * lat_place2))+Math.cos((Math.PI / 180 * lat_place1))*Math.cos((Math.PI / 180 * lat_place2))*Math.cos(Math.PI / 180 * (long_place1-long_place2)))*6371 ;
         }
 
-        self.showContent = function showContent(item, forcePreview){
-          console.log(item);
+        self.showContent = function showContent(item, forcePreview, forceContent){
+
+          
           if(item.__t=="Place"){
             if(self.position){
               distance = Math.round(1000*self.computeDistance(item, self.position));
@@ -119,53 +115,11 @@ angular.
           }
 
           
-          if (item.init_content && item.init_content.sub_objects){
-            item.init_content.sub_obj = [];
-            item.init_content.sub_objects.forEach(function(objId){
-              item.init_content.sub_obj.push(self.getObjectFromId(objId));
-            });
-          }
-          if (item.success_content && item.success_content.sub_objects){
-            item.success_content.sub_obj = [];
-            item.success_content.sub_objects.forEach(function(objId){
-              item.success_content.sub_obj.push(self.getObjectFromId(objId));
-            });
-          }
 
           if(!item.preview){
             
             Analytics.trackEvent('content', item.__t, item.name);
 
-            if(item.places_on_open){
-              item.places_opened_name = [];
-              item.places_on_open.forEach(function(plaId){
-                var tmp_place = self.getPlaceFromId(plaId);
-                item.places_opened_name.push(tmp_place.name);
-              });
-              self.openPlaces(item.places_on_open);
-            }
-            if(item.objects_on_open){
-              item.objects_opened_name = [];
-              item.objects_on_open.forEach(function(objId){
-                var tmp_object = self.getObjectFromId(objId);
-                item.objects_opened_name.push(tmp_object.name);
-              });
-              self.openObjects(item.objects_on_open);
-            }
-            if(item.places_on_success){
-              item.places_success_name = [];
-              item.places_on_success.forEach(function(plaId){
-                var tmp_place = self.getPlaceFromId(plaId);
-                item.places_success_name.push(tmp_place.name);
-              });
-            }
-            if(item.objects_on_success){
-              item.objects_success_name = [];
-              item.objects_on_success.forEach(function(objId){
-                var tmp_object = self.getObjectFromId(objId);
-                item.objects_success_name.push(tmp_object.name);
-              });
-            }
             
             if(item.success_condition === "place"){
               if(self.getPlaceFromId(item.success_key) && self.getPlaceFromId(item.success_key).is_visited){
@@ -187,24 +141,72 @@ angular.
             id: item._id
           };
 
-          item.is_shown =true;
-
-
-          self.current_content = item;
-
-          if(!item.preview){
-            setTimeout(function(){
-              if(item.is_succeeded){
-                if(document.getElementById("card")){
-                  document.getElementById("card").classList.add("flipped");
-                }
-              }else{
-                if(document.getElementById("card")){
-                  document.getElementById("card").classList.remove("flipped");
-                }
-              }
-            },550);
+          if(!forceContent){
+            if(item.is_succeeded){
+              forceContent = "success";
+            }else{
+              forceContent = "init";
+            }
           }
+          if(forceContent == "success"){
+            item.shown_content = item.success_content;
+            item.shown_content.type = "success";
+            item.shown_content.other = 'init';
+            if(item.success_content.sub_objects){
+              item.shown_content.sub_obj = [];
+              item.success_content.sub_objects.forEach(function(objId){
+                item.shown_content.sub_obj.push(self.getObjectFromId(objId));
+              });
+            }
+            if(item.places_on_success){
+              item.shown_content.places_opened_name = [];
+              item.places_on_success.forEach(function(plaId){
+                var tmp_place = self.getPlaceFromId(plaId);
+                item.shown_content.places_opened_name.push(tmp_place.name);
+              });
+            }
+            if(item.objects_on_success){
+              item.shown_content.objects_opened_name = [];
+              item.objects_on_success.forEach(function(objId){
+                var tmp_object = self.getObjectFromId(objId);
+                item.shown_content.objects_opened_name.push(tmp_object.name);
+              });
+            }
+          }else{
+            item.shown_content = item.init_content;
+            item.shown_content.type = "init";
+            if(item.is_succeeded){
+              item.shown_content.other = 'success';
+            }
+            if (item.init_content.sub_objects){
+              item.shown_content.sub_obj = [];
+              item.init_content.sub_objects.forEach(function(objId){
+                item.shown_content.sub_obj.push(self.getObjectFromId(objId));
+              });
+            }
+            if(item.places_on_open){
+              item.shown_content.places_opened_name = [];
+              item.places_on_open.forEach(function(plaId){
+                var tmp_place = self.getPlaceFromId(plaId);
+                item.shown_content.places_opened_name.push(tmp_place.name);
+              });
+              self.openPlaces(item.places_on_open);
+            }
+            if(item.objects_on_open){
+              item.shown_content.objects_opened_name = [];
+              item.objects_on_open.forEach(function(objId){
+                var tmp_object = self.getObjectFromId(objId);
+                item.shown_content.objects_opened_name.push(tmp_object.name);
+              });
+              self.openObjects(item.objects_on_open);
+            }
+          }
+
+
+          item.is_shown =true;
+          self.current_content = item;
+          console.log(item);
+
         }
 
         self.closeContent = function closeContent(){
@@ -343,12 +345,11 @@ angular.
         self.openObjects = function openObjects(extIdArray){
           if(extIdArray){
             extIdArray.forEach(function(objId){
-              self.getObjectFromId(objId).is_visible = true;
               if(!self.getObjectFromId(objId).open_date){
                 var now = new Date();
                 self.getObjectFromId(objId).open_date = now;
-                console.log(now);
               }
+              self.getObjectFromId(objId).is_visible = true;
             });
           }
         }
