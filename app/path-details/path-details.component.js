@@ -119,7 +119,6 @@ angular.
           if(!item.preview){
             
             Analytics.trackEvent('content', item.__t, item.name);
-
             
             if(item.success_condition === "place"){
               if(self.getPlaceFromId(item.success_key) && self.getPlaceFromId(item.success_key).is_visited){
@@ -133,6 +132,8 @@ angular.
               }
             }
 
+            self.openPlaces(item.places_on_open);
+            self.openObjects(item.objects_on_open);
             self.saveProgress();
           }
 
@@ -190,7 +191,6 @@ angular.
                 var tmp_place = self.getPlaceFromId(plaId);
                 item.shown_content.places_opened_name.push(tmp_place.name);
               });
-              self.openPlaces(item.places_on_open);
             }
             if(item.objects_on_open){
               item.shown_content.objects_opened_name = [];
@@ -198,13 +198,15 @@ angular.
                 var tmp_object = self.getObjectFromId(objId);
                 item.shown_content.objects_opened_name.push(tmp_object.name);
               });
-              self.openObjects(item.objects_on_open);
             }
           }
 
 
           item.is_shown =true;
           self.current_content = item;
+          if(document.getElementById("content_container")){
+            document.getElementById("content_container").scrollTop = 0;
+          }
           console.log(item);
 
         }
