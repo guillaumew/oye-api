@@ -354,7 +354,7 @@ angular.
           if(extIdArray){
             extIdArray.forEach(function(objId){
               if(!self.getObjectFromId(objId).open_date){
-                var now = new Date();
+                var now = new Date().getTime();;
                 self.getObjectFromId(objId).open_date = now;
               }
               self.getObjectFromId(objId).is_visible = true;
