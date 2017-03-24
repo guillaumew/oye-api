@@ -1,4 +1,7 @@
 {
+	"GLOBAL":{
+		"ERROR" : "Shoot! An error occured:"
+	},
 	"WELCOME":{
 		"CALL_TO_ACTION": "Start investigating"
 	},

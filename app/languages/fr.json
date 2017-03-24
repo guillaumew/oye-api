@@ -1,4 +1,7 @@
 {
+	"GLOBAL":{
+		"ERROR" : "Aie ! Une erreur vient de se produire :"
+	},
 	"WELCOME":{
 		"CALL_TO_ACTION": "Commencer l'enquête"
 	},

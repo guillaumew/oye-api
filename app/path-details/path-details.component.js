@@ -19,6 +19,7 @@ angular.
       '$window',
       'Analytics',
       'Flash',
+      '$exceptionHandler',
       function PathDetailsController(
         geolocation, 
         Apiurl, 
@@ -30,7 +31,8 @@ angular.
         $translate,
         $window,
         Analytics,
-        Flash
+        Flash,
+        $exceptionHandler
       ) {
         var self = this;
         $scope.markers = [];
@@ -216,6 +218,7 @@ angular.
 
         self.closeContent = function closeContent(){
           self.current_content.is_shown = false;
+          //try{console.log(dummy);}catch(e){$exceptionHandler(e);}
         }
 
         self.showOnMap = function showOnMap(place){

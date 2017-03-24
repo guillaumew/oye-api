@@ -26,6 +26,9 @@ angular.module('oyeApp', [
       var Analytics = $injector.get('Analytics');
       Analytics.trackEvent('error', exception, cause);
       var Flash = $injector.get('Flash');
-      Flash.create('danger',"<p>Aie ! Une erreur vient de se produire :</p><p>"+exception+"</p>");
+      var $translate = $injector.get('$translate');
+      $translate('GLOBAL.ERROR').then(function (message) {
+        Flash.create('danger',"<p>"+message+"</p><p>"+exception+"</p>");
+      });
     };
   }]);;
