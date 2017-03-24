@@ -28,6 +28,7 @@
     <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
     <script src="bower_components/angular-pinch-zoom/dist/ng-pinch-zoom.min.js"></script>
     <script src="bower_components/angular-google-analytics/dist/angular-google-analytics.js"></script>
+    <script src="bower_components/angular-flash-alert/dist/angular-flash.min.js"></script>
 
     <script src='bower_components/lodash/dist/lodash.min.js'></script>
     <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
@@ -37,7 +38,7 @@
     <script src="app.config.js"></script>
     <script src="core/apiurl/apiurl.module.js"></script>
     <script src="core/apiurl/apiurl.service.js"></script>
-
+    
     <script src="map/map.module.js"></script>
     <script src="map/map.component.js"></script>
     <script src="welcome/welcome.module.js"></script>
@@ -62,7 +63,7 @@
     <aside-menu-content>
         <div ng-view class="main-view"></div>
     </aside-menu-content>
-    
+    <flash-message></flash-message> 
 
   </body>
 </html>

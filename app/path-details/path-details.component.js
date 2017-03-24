@@ -18,6 +18,7 @@ angular.
       '$translate',
       '$window',
       'Analytics',
+      'Flash',
       function PathDetailsController(
         geolocation, 
         Apiurl, 
@@ -28,7 +29,8 @@ angular.
         $animate, 
         $translate,
         $window,
-        Analytics
+        Analytics,
+        Flash
       ) {
         var self = this;
         $scope.markers = [];
@@ -113,8 +115,6 @@ angular.
               self.centerMap(item);
             }            
           }
-
-          
 
           if(!item.preview){
             
@@ -279,7 +279,7 @@ angular.
             myMarker.longitude = data.coords.longitude;
             myMarker.latitude = data.coords.latitude;
           }, function(error) {
-             Analytics.trackEvent('error', 'geoloc', error.message);
+             $exceptionHandler(error);
              if(callback){callback();}
          });
         }
@@ -384,7 +384,7 @@ angular.
           try{
             localStorage.setItem(self.response.path.key,JSON.stringify(self));
           }catch(e){
-            Analytics.trackEvent('error', 'localStorage', e.message);
+            $exceptionHandler(e);
           }
           self.checkGoalsAchieved();
         }
@@ -435,6 +435,9 @@ angular.
               Analytics.trackEvent('Path', 'Success', self.response.path.name);
               if(document.getElementsByClassName("goals").length>0){
                 document.getElementsByClassName("goals")[0].classList.add("achieved");
+                $translate('PATH_DETAILS.GOALS.VICTORY').then(function (message) {
+                  Flash.create('success',message);
+                });
               }
             }
           
@@ -496,7 +499,7 @@ angular.
         try{
           var previous_self = localStorage.getItem($routeParams.pathId);
         }catch(e){
-          Analytics.trackEvent('error', 'localStorage', e.message);
+          $exceptionHandler(e);
         }
 
         if(previous_self){

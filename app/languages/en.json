@@ -57,7 +57,8 @@
 			"NAME":"Goals",
 			"EXPLAINATION": "There are two kinds of goals. To succeed in your mission, you must fullfil primary goals, while secondary goals are optional.",
 			"primary": "Primary",
-			"secondary" : "Secondary"
+			"secondary" : "Secondary",
+			"VICTORY" : "Congratulations! You solved this case."
 		}
 
 	}

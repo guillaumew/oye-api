@@ -57,7 +57,8 @@
 			"NAME": "Objectifs",
 			"EXPLAINATION": "Il existe deux types d'objectifs pour réussir votre enqête. Les objectifs principaux sont obligatoires. Les objectifs secondaires sont facultatifs.",
 			"primary": "Principaux",
-			"secondary" : "Secondaires"
+			"secondary" : "Secondaires",
+			"VICTORY" : "Bien joué ! Tu as résolu l'enquête."
 		}
 	}
 }
