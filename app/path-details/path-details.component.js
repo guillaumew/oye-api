@@ -73,6 +73,9 @@ angular.
               self.showContent(self.current_content,true);
             }else{
               var element = document.getElementById("password_input");
+              $translate('PATH_DETAILS.ITEM.PASSWORD.WRONG').then(function (message) {
+                Flash.create('warning',message)
+              });
               $animate.addClass(element, 'shake').then(function() {
                 element.classList.remove('shake');
               });

@@ -43,7 +43,8 @@
 		"ITEM":{
 			"PASSWORD":{
 				"INTRO" : "Tu as trouvé la solution ?",
-				"SEND": "Envoyer"
+				"SEND": "Envoyer",
+				"WRONG": "Désolé, ce n'est pas la solution."
 			},
 			"EDIT":"Modifier cet élément",
 			"SUCCESS": "Bravo ! "

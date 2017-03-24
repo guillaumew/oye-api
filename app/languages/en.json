@@ -43,7 +43,8 @@
 		"ITEM":{
 			"PASSWORD":{
 				"INTRO" : "Did you figured this out?",
-				"SEND": "Send"
+				"SEND": "Send",
+				"WRONG": "This is not the excpeted answer."
 			},
 			"EDIT":"Edit this element",
 			"SUCCESS": "Success ! "
