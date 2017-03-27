@@ -41,5 +41,4 @@ exports = module.exports = function (app) {
 	app.get('/api/pathdetails', routes.api.pathdetails);
 	app.get('/api/user', routes.api.user);
 	app.all('/api/additem', routes.api.additem);
-
 };

@@ -10,6 +10,7 @@ var Goal = new keystone.List('Goal');
 
 Goal.add({
 	name: { type: Types.Text, required: true, index: true },
+	name_en: { type: Types.Text, required: false },
 	parent: {type: Types.Relationship, ref: 'Path', many: false},
 	type: { 
 		type: Types.Select,

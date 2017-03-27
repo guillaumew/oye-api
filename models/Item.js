@@ -8,8 +8,14 @@ var Types = keystone.Field.Types;
 var Item = new keystone.List('Item');
 
 Item.add({
+	name: { type: Types.Text, required: true, index: true },
+	name_en: { type: Types.Text, required: false },
 	init_content : { type: Types.Relationship, ref: 'Content' },
 	success_content : { type: Types.Relationship, ref: 'Content' },
+	
+	init_content_en : { type: Types.Relationship, ref: 'Content' },
+	success_content_en : { type: Types.Relationship, ref: 'Content' },
+
 	success_condition: { 
 		type: Types.Select, 
 		emptyOption: true, 

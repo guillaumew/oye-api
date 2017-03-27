@@ -12,7 +12,6 @@ var Object = new keystone.List('Object',{
 });
 
 Object.add({
-	name: { type: Types.Text, required: true, index: true },
 	thumb: { 
 		type: Types.S3File
 	},

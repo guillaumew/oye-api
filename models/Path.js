@@ -10,6 +10,7 @@ var Path = new keystone.List('Path',
 
 Path.add({
 	name: { type: Types.Text, required: true, index: true },
+	name_en: { type: Types.Text, required: false },
 	thumb: { 
 		type: Types.S3File
 	},
@@ -24,6 +25,8 @@ Path.add({
 	init_objects: { type: Types.Relationship, ref: 'Object', many: true, filters: { path: ':_id' } },
 	init_content: { type: Types.Relationship, ref: 'Content', filters: { parent: ':_id' }, many: false },
 	success_content: { type: Types.Relationship, ref: 'Content', filters: { parent: ':_id' }, many: false },
+	init_content_en: { type: Types.Relationship, ref: 'Content', filters: { parent: ':_id' }, many: false },
+	success_content_en: { type: Types.Relationship, ref: 'Content', filters: { parent: ':_id' }, many: false },
 	type: { 
 		type: Types.Select,
 		options: 'walk, inquiry, hunt',
