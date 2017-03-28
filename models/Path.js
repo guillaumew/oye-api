@@ -39,8 +39,10 @@ Path.add({
 		options: 'FR, EN',
 		emptyOption: false,
 		required: true,
-		default: 'FR'
+		default: 'FR',
+		many:true
 	},
+	english_translation:{ type: Types.Boolean, default: false },
 	length : {type: Types.Number },
 	city: { type: Types.Text},
 	is_available:{ type: Types.Boolean, default: false },

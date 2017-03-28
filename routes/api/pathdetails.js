@@ -34,6 +34,9 @@ exports = module.exports = function(req, res) {
 	if(req.user && req.user.language=='en'){
 		lang='en'
 	}
+	if(req.query.language){
+		lang = req.query.language;
+	}
 
 	Path.model.findOne()
 	.where('key', req.query.key)

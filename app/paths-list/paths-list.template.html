@@ -27,6 +27,7 @@
 						</div>
 						<div ng-if="path.language" class="path-info">
 							<img class="path_logos" ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/lang/{{path.language}}.png">
+							<img ng-if="path.english_translation" class="path_logos" ng-src="//s3.eu-central-1.amazonaws.com/openyoureyes/lang/EN.png">
 						</div>
 						<div  ng-if="path.author" class="path-info">
 							<span>{{'PATH_LIST.FROM' | translate }}</span> <img class="path_logos" ng-src="{{path.author.avatar.url}}">

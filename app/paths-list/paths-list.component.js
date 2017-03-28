@@ -5,14 +5,16 @@ angular.
   module('pathsList').
   component('pathsList', {
     templateUrl: 'paths-list/paths-list.template.html',
-    controller: ['$http', 'Apiurl', 'Analytics',
-      function PathsListController($http, Apiurl, Analytics) {
+    controller: ['$http', 'Apiurl', 'Analytics', '$translate',
+      function PathsListController($http, Apiurl, Analytics, $translate) {
         var self = this;
 
         Analytics.pageView();
 
+        var lang = $translate.proposedLanguage() || $translate.use();
+
         $http({
-            url: Apiurl.host + '/api/pathlist',
+            url: Apiurl.host + '/api/pathlist?language=' + lang,
             method: 'GET'
           })
         .then(function(response) {
