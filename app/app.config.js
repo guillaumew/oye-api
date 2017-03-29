@@ -53,6 +53,9 @@ angular.
         when('/welcome', {
           template: '<welcome></welcome>'
         }).
+        when('/tutorial', {
+          template: '<tutorial></tutorial>'
+        }).
         when('/about', {
           template: '<about></about>'
         }).

@@ -12,6 +12,26 @@
 		"CONTACT": "Le projet est tout neuf et en cours de création. Merci de bien vouloir nous signaler toute erreur rencontrée. Vous pouvez aussi discuter avec nous soit par email soit sur les réseaux sociaux.",
 		"CHEERS":"En espérant que vous appréciez cette application. A bientôt !"
 	},
+	"TUTORIAL":{
+		"TITLE": "Tutoriel",
+		"GOTIT": "Passer le tutoriel",
+		"INTRO":{
+			"TITLE": "C'est quoi, Open Your Eyes ?",
+			"TEXT" : "<p>Open Your Eyes un jeu dans lequel tu dois résoudre une enqête. Pour faire cela, tu devras trouver des indices autour de toi.</p><p>Merci de noter que cette application est encore en beta. Cela implique qu'il est possible qu'il reste des bugs. Si cela arrive, merci de <a href='mailto:geeyom12@gmail.com'>nous contacter</a>.</p>"
+		},
+		"MAP":{
+			"TITLE": "Où trouve les indices ?",
+			"TEXT": "<p>Afin d'avancer dans ton enquêtes, tu vas devoir te rendre à certains points d'intérêt. Ils sont indiqués sur la carte. Quand tu es près d'un point, appuie sur le bouton 'Vérifier ma position' pour accéder au contenu.</p><p>En cas de mauvais fonctionnement du GPS, tu peux appuyer sur le marqueur sur la carte pour débloquer le contenu.</p>"
+		},
+		"OBJECTS":{
+			"TITLE": "A quoi servent les objets ?",
+			"TEXT": "<p>Tu vas probablement ramasser des objets dans ta quête. Tu les retrouveras en bas de l'écran.</p>"
+		},
+		"GOALS":{
+			"TITLE": "Comment on gagne ?",
+			"TEXT": "<p>Pour trouver quels sont les objectifs de l'enquête, appuye sur le drapeau en haut à droite. Lorque tous les objectifs principaux seront atteints, un message te préviendra que tu as gagné.</p>"
+		}
+	},
 	"MENU":{
 		"SOCIAL": "Retrouvez-nous sur :",
 		"OPTIONS": "Options",
