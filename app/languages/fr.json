@@ -20,7 +20,7 @@
 			"TEXT" : "<p>Open Your Eyes un jeu dans lequel tu dois résoudre une enqête. Pour faire cela, tu devras trouver des indices autour de toi.</p><p>Merci de noter que cette application est encore en beta. Cela implique qu'il est possible qu'il reste des bugs. Si cela arrive, merci de <a href='mailto:geeyom12@gmail.com'>nous contacter</a>.</p>"
 		},
 		"MAP":{
-			"TITLE": "Où trouve les indices ?",
+			"TITLE": "Où trouver les indices ?",
 			"TEXT": "<p>Afin d'avancer dans ton enquêtes, tu vas devoir te rendre à certains points d'intérêt. Ils sont indiqués sur la carte. Quand tu es près d'un point, appuie sur le bouton 'Vérifier ma position' pour accéder au contenu.</p><p>En cas de mauvais fonctionnement du GPS, tu peux appuyer sur le marqueur sur la carte pour débloquer le contenu.</p>"
 		},
 		"OBJECTS":{
