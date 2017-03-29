@@ -12,6 +12,26 @@
 		"CONTACT": "We're still under developpment. If you spot any issue please report it. You're also welcome to open discussion with using email or on social medias.",
 		"CHEERS":"We hope you enjoy our app. Cheers :)"
 	},
+	"TUTORIAL":{
+		"TITLE": "Tutorial",
+		"GOTIT": "Skip tutorial",
+		"INTRO":{
+			"TITLE": "What is Open Your Eyes?",
+			"TEXT" : "<p>Open Your Eyes is a game where you have to solve a case. To do so, you will have to find out clues in your environment.</p><p>Please note that this application is still in beta mode. You might encounter some technical problems while using it. If it happens make sure to <a href='mailto:geeyom12@gmail.com'>contact us</a>.</p>"
+		},
+		"MAP":{
+			"TITLE": "How do I find clues?",
+			"TEXT": "<p>In order to move forward in your investigation, you will have to visit places indicated on the map. When you're near a place of interest just hit the 'Update my position' button to access its content.</p><p> If the GPS does not work properly, you can click on the pin on the map to bypass it.</p>"
+		},
+		"OBJECTS":{
+			"TITLE": "What about objects?",
+			"TEXT": "<p>You'll probably pick up items to help you in your investigations. They are available at the bottom of the screen.</p>"
+		},
+		"GOALS":{
+			"TITLE": "How do I win?",
+			"TEXT": "<p>The goals of your investigation can be found by clicking on the top right icon (the flag). When you complete your mission, a message will pop.</p>"
+		}
+	},
 	"MENU":{
 		"SOCIAL": "Find us on:",
 		"OPTIONS": "Options",

@@ -13,6 +13,7 @@ angular.module('oyeApp', [
   'user',
   'ngAnimate',
   'welcome',
+  'tutorial',
   'pascalprecht.translate',
   'ngSanitize',
   'youtube-embed',
@@ -20,6 +21,7 @@ angular.module('oyeApp', [
   'ngPinchZoom',
   'angular-google-analytics',
   'ngFlash',
+  'angular-carousel'
   ]).factory('$exceptionHandler', ['$log','$injector', function($log,$injector) {
     return function myExceptionHandler(exception, cause) {
       $log.error(exception,cause);
