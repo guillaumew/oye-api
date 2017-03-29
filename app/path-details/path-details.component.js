@@ -501,6 +501,8 @@ angular.
           title: "me"
         });
 
+        var lang = $translate.proposedLanguage() || $translate.use();
+
         //getting data
         try{
           var previous_self = localStorage.getItem($routeParams.pathId);
@@ -520,7 +522,7 @@ angular.
           $http({
             url: Apiurl.host + '/api/pathdetails',
             method: 'GET',
-            params: {key: $routeParams.pathId}
+            params: {key: $routeParams.pathId, language:lang}
           })
           .then(function(response) {
             self.initPath(response.data);
