@@ -18,7 +18,7 @@
       "sizes": "200x200"
     }
   ],
-  "start_url": "#!/paths",
+  "start_url": "/#!/paths",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#121326",
