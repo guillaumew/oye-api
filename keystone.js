@@ -89,3 +89,14 @@ keystone.set('nav', {
 keystone.app = app;
 
 keystone.start();
+
+var io = require('socket.io')(server);
+var player_number = 0 ;
+
+io.on('connection', function (socket) {
+  socket.emit('number', player_number );
+  player_number++;
+  socket.on('update_position', function (data) {
+    socket.broadcast.emit('updateMap',data);
+  });
+});
