@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0">
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
+    <link rel="manifest" href="/manifest.json">
+
     <title>Open Your Eyes</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/angular-aside-menu/dist/aside-menu.css" />
@@ -69,6 +71,16 @@
         <div ng-view class="main-view"></div>
     </aside-menu-content>
     <flash-message></flash-message> 
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/js/service-worker.js').then(function(registration) {
+          console.log('Service Worker registered');
+        }).catch(function(err) {
+          console.log('Service Worker registration failed: ', err);
+        });
+      }
+    </script>
 
   </body>
 </html>

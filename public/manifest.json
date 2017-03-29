@@ -1,0 +1,25 @@
+{
+  "short_name": "Open Your Eyes",
+  "name": "Open Your Eyes",
+  "icons": [
+    {
+      "src": "https://s3.eu-central-1.amazonaws.com/openyoureyes/logo128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "https://s3.eu-central-1.amazonaws.com/openyoureyes/logo144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "https://s3.eu-central-1.amazonaws.com/openyoureyes/logo.png",
+      "type": "image/png",
+      "sizes": "200x200"
+    }
+  ],
+  "start_url": "#!/paths",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#121326"
+}
