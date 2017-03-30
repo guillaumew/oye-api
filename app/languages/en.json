@@ -30,6 +30,10 @@
 		"GOALS":{
 			"TITLE": "How do I win?",
 			"TEXT": "<p>The goals of your investigation can be found by clicking on the top right icon (the flag). When you complete your mission, a message will pop.</p>"
+		},
+		"HOMEPAGE":{
+			"TITLE": "Better experience",
+			"TEXT": "<p>We advise you use the 'add to homepage' feature of your browser. This will enable a native experience.</p><p>To do so, touch the three dots at the top right corner (next to the address bar), the touch 'Add to homepage'. You can then leave your browser and touch the icon that was created on your phone hompepage.</p>"
 		}
 	},
 	"MENU":{

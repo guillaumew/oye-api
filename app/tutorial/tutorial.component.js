@@ -10,7 +10,7 @@ angular.
         self.goBack = function goBack(){
           window.history.back();
         }
-        self.slides=["INTRO","MAP","OBJECTS", "GOALS"];
+        self.slides=["INTRO","MAP","OBJECTS", "GOALS", "HOMEPAGE"];
       }
     ]
   });

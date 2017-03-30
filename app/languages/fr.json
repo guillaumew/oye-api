@@ -30,6 +30,10 @@
 		"GOALS":{
 			"TITLE": "Comment on gagne ?",
 			"TEXT": "<p>Pour trouver quels sont les objectifs de l'enquête, appuye sur le drapeau en haut à droite. Lorque tous les objectifs principaux seront atteints, un message te préviendra que tu as gagné.</p>"
+		},
+		"HOMEPAGE":{
+			"TITLE": "Améliorer l'expérience",
+			"TEXT": "<p>Pour une meilleure expérience nous vous conseillons d'utiliser la fonctionnalité 'Ajouter à l'écran d'accueil'. Cela permettra une expérience plus native.</p><p>Pour cela, appuyer sur les trois points en haut à droite (à côté de la barre d'adresse), puis sur Ajouter à l'écran d'accueil. Quitter le navigateur et appuyer sur l'icone qui vient d'apparaitre sur l'accueil du téléphone.</p>"
 		}
 	},
 	"MENU":{
