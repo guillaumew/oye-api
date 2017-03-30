@@ -17,7 +17,7 @@
 		"GOTIT": "Passer le tutoriel",
 		"INTRO":{
 			"TITLE": "C'est quoi, Open Your Eyes ?",
-			"TEXT" : "<p>Open Your Eyes un jeu dans lequel tu dois résoudre une enqête. Pour faire cela, tu devras trouver des indices autour de toi.</p><p>Merci de noter que cette application est encore en beta. Cela implique qu'il est possible qu'il reste des bugs. Si cela arrive, merci de <a href='mailto:geeyom12@gmail.com'>nous contacter</a>.</p>"
+			"TEXT" : "<p>Open Your Eyes un jeu dans lequel tu dois résoudre une enqête. Pour faire cela, tu devras trouver des indices autour de toi.</p><p>Merci de noter que cette application est encore en beta. Cela implique qu'il est possible qu'il reste des bugs. Si cela arrive, merci de <a href='mailto:openyoureyes.app@gmail.com'>nous contacter</a>.</p>"
 		},
 		"MAP":{
 			"TITLE": "Où trouver les indices ?",

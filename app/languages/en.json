@@ -17,7 +17,7 @@
 		"GOTIT": "Skip tutorial",
 		"INTRO":{
 			"TITLE": "What is Open Your Eyes?",
-			"TEXT" : "<p>Open Your Eyes is a game where you have to solve a case. To do so, you will have to find out clues in your environment.</p><p>Please note that this application is still in beta mode. You might encounter some technical problems while using it. If it happens make sure to <a href='mailto:geeyom12@gmail.com'>contact us</a>.</p>"
+			"TEXT" : "<p>Open Your Eyes is a game where you have to solve a case. To do so, you will have to find out clues in your environment.</p><p>Please note that this application is still in beta mode. You might encounter some technical problems while using it. If it happens make sure to <a href='mailto:openyoureyes.app@gmail.com'>contact us</a>.</p>"
 		},
 		"MAP":{
 			"TITLE": "How do I find clues?",
