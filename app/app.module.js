@@ -26,7 +26,7 @@ angular.module('oyeApp', [
     return function myExceptionHandler(exception, cause) {
       $log.error(exception,cause);
       var Analytics = $injector.get('Analytics');
-      Analytics.trackEvent('error', exception, cause);
+      Analytics.trackEvent('error', exception.toString(), cause.toString());
       var Flash = $injector.get('Flash');
       var $translate = $injector.get('$translate');
       $translate('GLOBAL.ERROR').then(function (message) {
