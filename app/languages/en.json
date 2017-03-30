@@ -87,7 +87,10 @@
 			"primary": "Primary",
 			"secondary" : "Secondary",
 			"VICTORY" : "Congratulations! You solved this case."
+		},
+		"ERROR":{
+			"GEOLOC": "<h4>We don't have access to your location.</h4> <p>You'll still be able to use the app, but you will have to touch the pins on the map to be able to read the content.</p><p>If you want to enable geolocation, make sure your GPS in on and that your browser can access to your location (Settings > App > Chrome/Safari > Authorizations).</p>",
+			"COOKIE": "<h4>We can't save your progress</h4><p>You'll still be able to use this app, but as soon as you leave this page, all your progress will be deleted.</p>"
 		}
-
 	}
 }

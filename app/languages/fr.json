@@ -87,6 +87,10 @@
 			"primary": "Principaux",
 			"secondary" : "Secondaires",
 			"VICTORY" : "Bien joué ! Tu as résolu l'enquête."
+		},
+		"ERROR":{
+			"GEOLOC": "<h4>Pas d'accès à ta position</h4> <p>Tu peux toujours utiliser cette application, mais il faudra appuyer sur les marqueurs de la carte afin de débloquer le contenu.</p><p>Pour que la géoloc fonctionne il faut s'assurer que le GPS est bien actif et que ton navigateur ait l'authorisation d'accès à ta positon (Paramètres > App > Chrome/Safari > Authorisations).</p>",
+			"COOKIE": "<h4>Impossible de sauver ta progression</h4><p>Cela ne va pas t'empêcher d'utiliser cette application. Mais dès que tu quittes cette page, toute ta progression sera perdue.</p>"
 		}
 	}
 }

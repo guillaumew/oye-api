@@ -285,8 +285,14 @@ angular.
             myMarker.longitude = data.coords.longitude;
             myMarker.latitude = data.coords.latitude;
           }, function(error) {
-             $exceptionHandler(error);
-             if(callback){callback();}
+            if(!geoloc_warning_displayed){
+              geoloc_warning_displayed=true;
+              $translate('PATH_DETAILS.ERROR.GEOLOC').then(function (message) {
+                Flash.create('info',message,0);
+              });
+              $exceptionHandler(error);
+            }
+            if(callback){callback();}
          });
         }
 
@@ -390,7 +396,13 @@ angular.
           try{
             localStorage.setItem(self.response.path.key,JSON.stringify(self));
           }catch(e){
-            $exceptionHandler(e);
+            if(!cookie_warning_displayed){
+              cookie_warning_displayed=true;
+              $translate('PATH_DETAILS.ERROR.COOKIE').then(function (message) {
+                Flash.create('info',message,0);
+              });
+              $exceptionHandler(e);
+            }
           }
           self.checkGoalsAchieved();
         }
@@ -492,6 +504,9 @@ angular.
 
 // GETTING DATA
         // init with dummy values
+        var geoloc_warning_displayed;
+        var cookie_warning_displayed;
+
         $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
         $scope.markers.push({
           longitude: 0,
@@ -507,7 +522,13 @@ angular.
         try{
           var previous_self = localStorage.getItem($routeParams.pathId);
         }catch(e){
-          $exceptionHandler(e);
+          if(!cookie_warning_displayed){
+            cookie_warning_displayed=true;
+            $translate('PATH_DETAILS.ERROR.COOKIE').then(function (message) {
+              Flash.create('info',message,0);
+            });
+            $exceptionHandler(e);
+          }
         }
 
         if(previous_self){
