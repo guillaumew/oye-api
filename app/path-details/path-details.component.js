@@ -395,6 +395,7 @@ angular.
         self.saveProgress = function saveProgress(){
           try{
             localStorage.setItem(self.response.path.key,JSON.stringify(self));
+            console.log(sdklj);
           }catch(e){
             if(!cookie_warning_displayed){
               cookie_warning_displayed=true;
