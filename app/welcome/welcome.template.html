@@ -51,6 +51,9 @@
     }
     input{
         font-size: 24px;
+        border-radius: 5px;
+        border: solid 5px #34B3AC;
+        padding: 3px;
     }
     input[type=submit]{
         background: #34B3AC;
@@ -117,21 +120,6 @@
         </div>
     </header>
 
-    <section id="download" class="download bg-primary text-center">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="section-heading">{{'WELCOME.NEWSLETTER' | translate}}</h2>
-                    <div id="mc_embed_signup_scroll">
-                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="{{'WELCOME.EMAIL' | translate}}" required="">
-                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6629313e99fd1ec3dfa3d38cf_44714cbc27" tabindex="-1" value=""></div>
-                        <div class="clear"><input type="submit" value="{{'WELCOME.SIGNUP' | translate}}" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section id="features" class="features">
         <div class="container">
@@ -209,6 +197,22 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download bg-primary text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h2 class="section-heading">{{'WELCOME.NEWSLETTER' | translate}}</h2>
+                    <div id="mc_embed_signup_scroll">
+                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="{{'WELCOME.EMAIL' | translate}}" required="">
+                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6629313e99fd1ec3dfa3d38cf_44714cbc27" tabindex="-1" value=""></div>
+                        <div class="clear"><input type="submit" value="{{'WELCOME.SIGNUP' | translate}}" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
                     </div>
                 </div>
             </div>
