@@ -92,5 +92,44 @@
 			"GEOLOC": "<h4>Pas d'accès à ta position</h4> <p>Tu peux toujours utiliser cette application, mais il faudra appuyer sur les marqueurs de la carte afin de débloquer le contenu.</p><p>Pour que la géoloc fonctionne il faut s'assurer que le GPS est bien actif et que ton navigateur ait l'authorisation d'accès à ta positon (Paramètres > App > Chrome/Safari > Authorisations).</p>",
 			"COOKIE": "<h4>Impossible de sauver ta progression</h4><p>Cela ne va pas t'empêcher d'utiliser cette application. Mais dès que tu quittes cette page, toute ta progression sera perdue.</p>"
 		}
+	},
+	"WELCOME":{
+		"TITLE" : "S'amuser à découvrir sa ville avec des enquêtes",
+		"CTA" : "Tester la version Béta",
+		"SCREEN" : "screen-fr",
+		"NEWSLETTER" : "Suivre notre actualité et devenir beta testeur",
+		"SIGNUP" : "S'inscrire",
+		"EMAIL" : "Adresse email",
+		"FEATURES":{
+			"TITLE": "Unir culture, jeu et réflexion",
+			"SUBTITLE": "La vision : permettre aux utilisateurs de devenir Sherlock Holmes, Indiana Jones ou Robert Langdon (Da Vinci Code)",
+			"PHONE":{
+				"TITLE":"Sans contrainte",
+				"DESCRIPTION" : "Toute cette expérience dans une web app gratuite et sans inscription."
+			},
+			"MAP":{
+				"TITLE":"Immersif",
+				"DESCRIPTION" : "Pour résoudre l'enqête proposée, il faudra trouver des indices tout autour de vous."
+			},
+			"MAGNIFIER":{
+				"TITLE":"Instructif",
+				"DESCRIPTION" : "Des enquêtes de tous les niveaux pour que chacun puisse s'y retrouver."
+			},
+			"DIAMOND":{
+				"TITLE" : "Insolite",
+				"DESCRIPTION" : "Au fil de l'enquête, vous allez découvrir des lieux originaux et apprendre des anecdotes."
+			},
+			"TROPHY":{
+				"TITLE" : "Social",
+				"DESCRIPTION" : "Mettez votre sens de la déduction à l'épreuve avec vos amis."
+			},
+			"DIRECTIONS":{
+				"TITLE" : "Vivant",
+				"DESCRIPTION" : "Une nouvelle manière de se ballader et de découvrir les environs."
+			}
+		},
+		"BETA": "La beta est déjà disponible !",
+		"FRIENDS" : "Restons en contact :",
+		"COPYRIGHT" : "Tous droits réservés."
 	}
 }

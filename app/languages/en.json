@@ -92,5 +92,44 @@
 			"GEOLOC": "<h4>We don't have access to your location.</h4> <p>You'll still be able to use the app, but you will have to touch the pins on the map to be able to read the content.</p><p>If you want to enable geolocation, make sure your GPS in on and that your browser can access to your location (Settings > App > Chrome/Safari > Authorizations).</p>",
 			"COOKIE": "<h4>We can't save your progress</h4><p>You'll still be able to use this app, but as soon as you leave this page, all your progress will be deleted.</p>"
 		}
+	},
+	"WELCOME":{
+		"TITLE" : "Discover your surrounding while having fun!",
+		"CTA" : "Try our beta version",
+		"SCREEN" : "screen-en",
+		"NEWSLETTER" : "Keep up with our news and become beta tester of our app:",
+		"SIGNUP" : "Sign up",
+		"EMAIL" : "Email Address",
+		"FEATURES":{
+			"TITLE": "An adventure that joins culture, fun and puzzles",
+			"SUBTITLE": "Our goal is to let our user become true Sherlock Holmes, Indiana Jones or Robert Langdon (from Da Vinci Code)",
+			"PHONE":{
+				"TITLE":"No hussle",
+				"DESCRIPTION" : "This experience is availble thanks to a free web app (no mandatory sign up)."
+			},
+			"MAP":{
+				"TITLE":"Immersive",
+				"DESCRIPTION" : "To solve the investigation, you will have to find out clues all around you."
+			},
+			"MAGNIFIER":{
+				"TITLE":"Instructive",
+				"DESCRIPTION" : "Investigations have different difficulties for everyone to enjoy."
+			},
+			"DIAMOND":{
+				"TITLE" : "Surprising",
+				"DESCRIPTION" : "Through your inquiries, you'll find out unusual places with hidden stories."
+			},
+			"TROPHY":{
+				"TITLE" : "Social",
+				"DESCRIPTION" : "Prove your sense of deduction with your firends."
+			},
+			"DIRECTIONS":{
+				"TITLE" : "Lively",
+				"DESCRIPTION" : "A new way to walk and (re)discover an area."
+			}
+		},
+		"BETA": "Beta version is live!",
+		"FRIENDS" : "Let's stay in touch:",
+		"COPYRIGHT" : "All right reserved."
 	}
 }
