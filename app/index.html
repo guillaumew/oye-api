@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en" ng-app="oyeApp">
   <head>
-    <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0">
 
     <!-- iOS WEB APP -->
@@ -16,7 +16,6 @@
     <meta name="theme-color" content="#121326">
     <link rel="manifest" href="/manifest.json">
 
-    <title>Open Your Eyes</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/angular-aside-menu/dist/aside-menu.css" />
     <link rel="stylesheet" href="app.css" />
@@ -68,6 +67,15 @@
     <script src="paths-list/paths-list.component.js"></script>
     <script src="path-details/path-details.module.js"></script>
     <script src="path-details/path-details.component.js"></script>
+
+    <title>{{'META.TITLE' | translate}}</title>
+    <meta name="Content-Type" content="UTF-8">
+    <meta name="Content-Language" content="{{'META.LANG' | translate}}">
+    <meta name="Description" content="{{'META.DESCRIPTION' | translate}}">
+    <meta name="Author" content="Guillaume Wolf">
+    <meta name="Reply-To" content="openyoureyes.app@gmail.com">
+    <meta name="Category" content="travel">
+
   </head>
   <body>
 

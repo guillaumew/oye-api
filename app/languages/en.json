@@ -1,4 +1,9 @@
 {
+	"META":{
+		"TITLE": "Open Your Eyes : an investigation game to discover your surrounding",
+		"LANG": "en",
+		"DESCRIPTION": "Open Your Eyes is a geolocated game with investigations. In order to solve them, you will have to find out clues in your surroundings. By doing so, you'll discover unusual places and their stories."
+	},
 	"GLOBAL":{
 		"ERROR" : "Shoot! An error occured:"
 	},
