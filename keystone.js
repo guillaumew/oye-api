@@ -2,6 +2,7 @@ var express  = require('express');
 var app = express();
 var enforce = require('express-sslify');
 var port  	 = process.env.PORT || 5000; 
+app.use(require('prerender-node'));
 
 if(process.env.ENV != "development"){
 	app.use(enforce.HTTPS({ trustProtoHeader: true }));
