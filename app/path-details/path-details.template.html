@@ -60,7 +60,10 @@
 			<span>{{'PATH_DETAILS.LEGEND-DETAILS.OTHERS' | translate }}</span>
 		</div>
 	</div>
-	<div id="postion_update" ng-click="$ctrl.getPosition($ctrl.checkPlaceReached)"><span id="position_content" class="unselectionable">{{'PATH_DETAILS.CHECK_POSITION' | translate }}</span></div>
+	<div id="postion_update" ng-click="$ctrl.getPosition($ctrl.checkPlaceReached)">
+		<span id="position_content" class="unselectionable">{{'PATH_DETAILS.CHECK_POSITION' | translate }}</span>
+		<span class="position_placeholder"></span>
+	</div>
 </div>
 
 <div class="content" ng-if="$ctrl.current_content.is_shown">
@@ -272,9 +275,9 @@
 }
 
 #postion_update{
-	text-align: center;
+	text-align: left;
     background-color: #34B3AC;
-    width: 90PX;
+    width: 90Px;
     height: 90px;
     border-radius: 50px;
     display: inline-block;
@@ -282,15 +285,23 @@
     top:5px;
     right: 5px;
 }
-
+#postion_update span{
+	vertical-align: middle;
+	display: inline-block;
+}
+.position_placeholder{
+	height: 90px;
+	position: relative;
+}
 #position_content{
 	font-family: "multicolore", Helvetica, Arial, sans-serif;
-	position: absolute;
+	position: relative;
     color: white;
     font-size: 16px;
-    left: 0;
-    top: 20px;
-    right: 0;
+    left: 50%;
+	width: 80px;
+	text-align: center;
+    margin-left: -40px;
     line-height: initial;
 }
 #legend{
