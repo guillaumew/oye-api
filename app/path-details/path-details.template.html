@@ -39,7 +39,7 @@
 </div>
 <div class="map-container">
 	<img ng-if="$ctrl.response.is_editable" ng-src="https://cdn3.iconfinder.com/data/icons/flat-circle-content/512/flat-style-circle-add-2-64.png" ng-click="$ctrl.addPlace()" class="add_place">
-	<ui-gmap-google-map center="map.center" zoom='map.zoom' options="options">
+	<ui-gmap-google-map center="map.center" zoom='map.zoom' options="map.options" styles="map.styles" >
 		<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="click" options="'options'"></ui-gmap-markers>
 	</ui-gmap-google-map>
 </div>
