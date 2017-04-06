@@ -102,12 +102,13 @@
 		"TITLE" : "Discover your surrounding while having fun!",
 		"CTA" : "Try our beta version",
 		"SCREEN" : "screen-en",
+		"CAPTURE" : "Screenshot",
 		"NEWSLETTER" : "Keep up with our news and become beta tester of our app:",
 		"SIGNUP" : "Sign up",
 		"EMAIL" : "Email Address",
 		"FEATURES":{
 			"TITLE": "An adventure that joins culture, fun and puzzles",
-			"SUBTITLE": "Our goal is to let our user become true Sherlock Holmes, Indiana Jones or Robert Langdon (from Da Vinci Code)",
+			"SUBTITLE": "Open Your Eyes offers fictive investigations that take place in your surroundings.",
 			"PHONE":{
 				"TITLE":"No hussle",
 				"DESCRIPTION" : "This experience is availble thanks to a free web app (no mandatory sign up)."
@@ -126,14 +127,14 @@
 			},
 			"TROPHY":{
 				"TITLE" : "Social",
-				"DESCRIPTION" : "Prove your sense of deduction with your firends."
+				"DESCRIPTION" : "Prove your sense of deduction with your friends."
 			},
 			"DIRECTIONS":{
 				"TITLE" : "Lively",
 				"DESCRIPTION" : "A new way to walk and (re)discover an area."
 			}
 		},
-		"BETA": "Beta version is live!",
+		"BETA": "Bring out the Sherlock Holmes inside you!",
 		"FRIENDS" : "Let's stay in touch:",
 		"COPYRIGHT" : "All right reserved."
 	}

@@ -39,6 +39,13 @@
         border-radius: 10px;
         box-shadow: 5px 5px 5px 0px #121212;
         margin-bottom: 20px;
+        background-color: #121326;
+    }
+    .headertitle{
+        font-size: 5vw;
+        font-family: "multicolore", Helvetica, Arial, sans-serif;
+        color:#85E6FB;
+        display: inline-block;
     }
     .header-content-inner{
         text-align: center;
@@ -64,38 +71,16 @@
 
 <body id="page-top">
 
-<!--     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#download">Download</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#features">Features</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
-
     <header>
         <div class="container">
             <div class="row">
                 <div class="col-sm-7">
                     <div class="header-content">
                         <div class="header-content-inner">
-                            <img src="https://s3.eu-central-1.amazonaws.com/openyoureyes/header.png" class="headerimage">
+                            <div class="headerimage">
+                                <img src="https://s3.eu-central-1.amazonaws.com/openyoureyes/logo.png"  alt="Open Your Eyes">
+                                <span class="headertitle">Open Your Eyes</span>
+                            </div>
                             <h1>{{'WELCOME.TITLE' | translate }}</h1>
                             <a href="/#!/paths" target="app_tab" class="btn btn-outline btn-xl page-scroll">{{'WELCOME.CTA' | translate }}</a>
                         </div>
@@ -107,7 +92,7 @@
                             <div class="device">
                                 <div class="screen">
                                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="landing/img/{{'WELCOME.SCREEN' | translate}}.png" class="img-responsive" alt="">
+                                    <img src="landing/img/{{'WELCOME.SCREEN' | translate}}.png" class="img-responsive" alt="{{'WELCOME.CAPTURE' | translate}}">
                                 </div>
                                 <div class="button">
                                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
@@ -139,7 +124,7 @@
                             <div class="device">
                                 <div class="screen">
                                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
-                                    <img src="landing/img/{{'WELCOME.SCREEN' | translate}}.png" class="img-responsive" alt=""> </div>
+                                    <img src="landing/img/{{'WELCOME.SCREEN' | translate}}.png" class="img-responsive" alt="{{'WELCOME.CAPTURE' | translate}}"> </div>
                                 <div class="button">
                                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
                                 </div>

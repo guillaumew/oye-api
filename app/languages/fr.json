@@ -102,6 +102,7 @@
 		"TITLE" : "S'amuser à découvrir sa ville avec des enquêtes",
 		"CTA" : "Tester la version Béta",
 		"SCREEN" : "screen-fr",
+		"CAPTURE" : "Catpure d'écran",
 		"NEWSLETTER" : "Suivre notre actualité et devenir beta testeur",
 		"SIGNUP" : "S'inscrire",
 		"EMAIL" : "Adresse email",
@@ -133,7 +134,7 @@
 				"DESCRIPTION" : "Une nouvelle manière de se ballader et de découvrir les environs."
 			}
 		},
-		"BETA": "La beta est déjà disponible !",
+		"BETA": "Réveillez le Sherlock Holmes qui est en vous !",
 		"FRIENDS" : "Restons en contact :",
 		"COPYRIGHT" : "Tous droits réservés."
 	}
