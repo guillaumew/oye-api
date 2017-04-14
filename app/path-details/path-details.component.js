@@ -466,26 +466,13 @@ angular.
           }
         }
 
-        self.showPathGoals = function showPathGoals(){
+        self.showPathInfo = function showPathInfo(){
           document.getElementsByClassName("goals")[0].classList.remove("achieved");
 
           self.response.goals.forEach(function(goal){
             self.goalProgress(goal);
           });
 
-          $translate('PATH_DETAILS.GOALS.NAME').then(function (goal_string) {
-            self.showContent({
-              name:goal_string,
-              init_content:"",
-              is_goals:true, 
-              is_succeeded:self.response.path.is_succeeded,
-              success_content: self.response.path.success_content
-            });
-          });
-
-        }
-
-        self.showPathInfo = function showPathInfo(){
           self.showContent(self.response.path);
         }
 

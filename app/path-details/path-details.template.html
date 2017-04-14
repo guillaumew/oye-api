@@ -32,7 +32,7 @@
 
 <div id="nav-icon" aside-menu-toggle="left-menu" ></div>
 
-<div class="goals upper-right" ng-click="$ctrl.showPathGoals()">
+<div class="goals upper-right" ng-click="$ctrl.showPathInfo()">
 </div>
 <div class="page-title" ng-click="$ctrl.showPathInfo()">
 	<H1>{{$ctrl.response.path.name}}</H1>
@@ -134,7 +134,8 @@
 					</div>
 				</div>
 
-				<div class="goal-content" ng-if="$ctrl.current_content.is_goals">
+				<div class="goal-content" ng-if="$ctrl.current_content.__t=='Path'">
+					<h3>{{'PATH_DETAILS.GOALS.NAME' | translate }}</h3>
 					<div class="goal-item" ng-repeat="(group, goals) in $ctrl.response.goals | orderBy: 'type' | groupBy: 'type'">
 						<h4 translate="PATH_DETAILS.GOALS.{{group}}"></h4>
 						<li class="goal-item" ng-repeat="goal in goals">
