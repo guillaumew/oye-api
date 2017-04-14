@@ -1,26 +1,13 @@
 'use strict';
 
-angular.module('oyeApp', [
+angular.module('oyeLanding', [
   'ngRoute',
-  'pathsList',
-  'pathDetails',
-  'menu',
-  'about',
-  'asideModule',
-  'map',
-  'geolocation',
-  'uiGmapgoogle-maps',
-  'user',
   'ngAnimate',
-  'tutorial',
+  'welcome',
   'pascalprecht.translate',
   'ngSanitize',
-  'youtube-embed',
   'angular.filter',
-  'ngPinchZoom',
-  'angular-google-analytics',
-  'ngFlash',
-  'angular-carousel'
+  'angular-google-analytics'
   ]).factory('$exceptionHandler', ['$log','$injector', function($log,$injector) {
     return function myExceptionHandler(exception, cause) {
       $log.error(exception,cause);

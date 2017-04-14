@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="oyeLanding">
+<html lang="en" ng-app="oyeApp">
   <head>
 
     <meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1.0">
@@ -16,26 +16,57 @@
     <meta name="theme-color" content="#121326">
     <link rel="manifest" href="/manifest.json">
 
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-aside-menu/dist/aside-menu.css" />
     <link rel="stylesheet" href="app.css" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
+    <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
+
+    <script src="https://www.youtube.com/iframe_api"></script>
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angular-aside-menu/dist/aside-menu.js"></script>
+    <script src="bower_components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="bower_components/angular-translate/angular-translate.min.js"></script>
     <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="bower_components/angular-youtube-mb/dist/angular-youtube-embed.min.js"></script>
     <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+    <script src="bower_components/angular-pinch-zoom/dist/ng-pinch-zoom.min.js"></script>
     <script src="bower_components/angular-google-analytics/dist/angular-google-analytics.js"></script>
+    <script src="bower_components/angular-flash-alert/dist/angular-flash.min.js"></script>
+    <script src="bower_components/angular-carousel/dist/angular-carousel.min.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.min.js"></script>
 
-    <script src="index.module.js"></script>
-    <script src="index.config.js"></script>
-    <script src="welcome/welcome.module.js"></script>
-    <script src="welcome/welcome.component.js"></script>
+    <script src='bower_components/lodash/dist/lodash.min.js'></script>
+    <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.min.js"></script>
 
-    <title>Open Your Eyes {{'META.TITLE' | translate}}</title>
+    <script src="app.module.js"></script>
+    <script src="app.config.js"></script>
+    <script src="core/apiurl/apiurl.module.js"></script>
+    <script src="core/apiurl/apiurl.service.js"></script>
+    
+    <script src="map/map.module.js"></script>
+    <script src="map/map.component.js"></script>
+    <script src="tutorial/tutorial.module.js"></script>
+    <script src="tutorial/tutorial.component.js"></script>
+    <script src="about/about.module.js"></script>
+    <script src="about/about.component.js"></script>
+    <script src="menu/menu.module.js"></script>
+    <script src="menu/menu.component.js"></script>
+    <script src="user/user.module.js"></script>
+    <script src="user/user.component.js"></script>
+    <script src="paths-list/paths-list.module.js"></script>
+    <script src="paths-list/paths-list.component.js"></script>
+    <script src="path-details/path-details.module.js"></script>
+    <script src="path-details/path-details.component.js"></script>
+
+    <title>Open your eyes {{'META.TITLE' | translate}}</title>
     <meta name="Content-Type" content="UTF-8">
     <meta name="Content-Language" content="{{'META.LANG' | translate}}">
     <meta name="Description" content="{{'META.DESCRIPTION' | translate}}">
@@ -46,7 +77,15 @@
   </head>
   <body>
 
-    <welcome></welcome>
+    <!-- Use a custom component to render a list of paths -->
+    <aside-menu id="left-menu" side="left" width="250px" is-backdrop="true" push-content="true">
+        <menu></menu>
+    </aside-menu>
+    <aside-menu-content>
+        <div ng-view class="main-view"></div>
+    </aside-menu-content>
+    <flash-message></flash-message> 
+
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/service-worker.js', { scope: './' }).then(function(registration) {
@@ -56,5 +95,6 @@
         });
       }
     </script>
+
   </body>
 </html>

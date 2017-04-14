@@ -1,23 +1,16 @@
 angular.
-  module('oyeApp').
+  module('oyeLanding').
   config([
     '$locationProvider', 
     '$routeProvider', 
-    'uiGmapGoogleMapApiProvider', 
     '$translateProvider',
     'AnalyticsProvider',
     function config(
       $locationProvider, 
       $routeProvider, 
-      uiGmapGoogleMapApiProvider, 
       $translateProvider,
       AnalyticsProvider) {
       
-      uiGmapGoogleMapApiProvider.configure({
-        key: 'AIzaSyAk-e2vIralT717kd6wbv2_gpcSbGyByxM',
-        v: '3',
-        libraries: 'weather,geometry,visualization'
-      });
 
       AnalyticsProvider
         .setAccount({
@@ -41,27 +34,5 @@ angular.
       }
       $translateProvider.useSanitizeValueStrategy('escapeParameters');
 
-      $locationProvider.hashPrefix('!');
-
-      $routeProvider.
-        when('/paths', {
-          template: '<paths-list></paths-list>'
-        }).
-        when('/path/:pathId', {
-          template: '<path-details></path-details>'
-        }).
-        when('/welcome', {
-          template: '<welcome></welcome>'
-        }).
-        when('/tutorial', {
-          template: '<tutorial></tutorial>'
-        }).
-        when('/about', {
-          template: '<about></about>'
-        }).
-        when('index.html', {
-          template: '<welcome></welcome>'
-        }).
-        otherwise('/paths');
     }
   ]);
