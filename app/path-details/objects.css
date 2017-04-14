@@ -1,14 +1,13 @@
 #objects{
 	position: fixed;
 	bottom: 0;
-	left:2px;
+	left:0;
 	height: 90px;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
 	width: 100%;
 }
-
 #objects_container{
 	position: absolute;
 	bottom: 0;
@@ -16,7 +15,7 @@
 	height: 90px;
 	overflow-x: scroll;
 	overflow-y: hidden;
-	left: 24px;
+	left: 25px;
 }
 #objects_title{
 	font-family: "multicolore", Helvetica, Arial, sans-serif;
@@ -27,14 +26,14 @@
     width: 90px;
     position: absolute;
     text-align: center;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
     transform: rotate(-90deg);
     transform-origin: 0 0;
     -webkit-transform: rotate(-90deg);
     -webkit-transform-origin: 0 0;
     bottom: -25px;
     height: 25px;
-    padding-top: 5px;
+    padding-top: 3px;
 }
 #objects_list{
 	transition: background-color 0.5s;

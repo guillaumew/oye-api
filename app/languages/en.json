@@ -60,7 +60,7 @@
 		"HOURS": "H"
 	},
 	"PATH_DETAILS":{
-		"LEGEND": "Legend",
+		"LEGEND": "Map",
 		"LEGEND-DETAILS":{
 			"MYPOSITION": " : Your last recorded position",
 			"PLACES": " : Place visited / to visit",

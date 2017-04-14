@@ -4,7 +4,7 @@
     width: 100%;
     display: block;
     position: fixed;
-    bottom:190px;
+    bottom:165px;
     top:70px;
 }
 .angular-google-map,.angular-google-map-container { height: 100%; }
@@ -24,6 +24,9 @@
 .marker_labels{
 	color:#000000;
 	text-align: center;
+}
+.aside-menu-content{
+	overflow-y: hidden;
 }
 </style>
 
@@ -237,6 +240,7 @@
   border: 0;
 }
 
+
 .object.ng-enter, .object.ng-leave{
 	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
@@ -268,7 +272,7 @@
 #position{
 	width: 100%;
 	text-align: center;
-	height: 100px;
+	height: 75px;
 	position: fixed;
 	bottom:90px;
 	display: inline-block;
@@ -277,20 +281,21 @@
 #postion_update{
 	text-align: left;
     background-color: #34B3AC;
-    width: 90Px;
-    height: 90px;
+    width: 110Px;
+    height: 70px;
     border-radius: 50px;
     display: inline-block;
     position: absolute;
-    top:5px;
+    top:2px;
     right: 5px;
+    box-shadow: 1px 1px 5px #121326;
 }
 #postion_update span{
 	vertical-align: middle;
 	display: inline-block;
 }
 .position_placeholder{
-	height: 90px;
+	height: 70px;
 	position: relative;
 }
 #position_content{
@@ -299,9 +304,9 @@
     color: white;
     font-size: 16px;
     left: 50%;
-	width: 80px;
+	width: 100px;
 	text-align: center;
-    margin-left: -40px;
+    margin-left: -50px;
     line-height: initial;
 }
 #legend{
@@ -312,24 +317,26 @@
     padding: 2px;
     position: absolute;
     left: 1px;
-    right: 101px;
+    right: 121px;
     top: 1px;
     bottom: 1px;
 }
 #legend>div{
-	height: 22px;
+	height: 15px;
     overflow: hidden;
 }
 #legend span{
 	position: relative;
     top: -2px;
     color:#121326;
+    font-size: 12px;
 }
 #legend h4{
 	margin:0;
+	font-size: 14px;
 }
 #legend img{
-	height: 20px;
+	height: 15px;
 }
 
 

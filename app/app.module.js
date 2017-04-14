@@ -37,8 +37,8 @@ angular.module('oyeApp', [
       Analytics.trackEvent('error', exception_msg, cause_msg);
       var Flash = $injector.get('Flash');
       var $translate = $injector.get('$translate');
-      $translate('GLOBAL.ERROR').then(function (message) {
-        Flash.create('danger',"<p>"+message+"</p><p>"+exception+"</p>");
-      });
+      // $translate('GLOBAL.ERROR').then(function (message) {
+      //   Flash.create('danger',"<p>"+message+"</p><p>"+exception+"</p>");
+      // });
     };
   }]);;
