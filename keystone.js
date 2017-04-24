@@ -82,6 +82,7 @@ keystone.set('nav', {
 	objects: 'objects',
 	places: 'places',
 	contents: 'contents',
+	images: 'images',
 	goals: 'goals',
 });
 

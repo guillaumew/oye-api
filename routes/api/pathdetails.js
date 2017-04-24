@@ -2,6 +2,8 @@ var keystone = require('keystone');
 var Path = keystone.list('Path');
 var Place = keystone.list('Place');
 var Objects = keystone.list('Object');
+var Content = keystone.list('Content');
+var Image = keystone.list('Image')
 var Goals = keystone.list('Goal');
 var async = require('async');
 
@@ -79,11 +81,31 @@ exports = module.exports = function(req, res) {
 						'_id':{$in: objects}
 					}).populate('init_content')
 					.populate('success_content')
-					.populate('init_content_en')
+					.populate({
+						path:'init_content_en',
+						model:'Content',
+						populate:{
+							path:'images',
+							model:'Image'
+						}
+					})
 					.populate('success_content_en')
 					.exec(function(err3,tmp_objects){
 						objects=[];
 						tmp_objects.forEach(function(object){
+							var tmp_images = null
+							if(object.init_content_en){
+								tmp_images = object.init_content_en.images;
+							} 
+							Image.model
+							.find({'_id':{$in: tmp_images}})
+							.exec(function(err4,images){
+								if(object.init_content_en){
+									object.init_content_en.images=images;
+								}
+								console.log(images);
+								console.log(object.init_content_en);
+							});
 							objects.push(changelang(object,lang));
 						});
 						ret.objects = (objects);
@@ -93,7 +115,7 @@ exports = module.exports = function(req, res) {
 				function(callback){
 					Goals.model.find({
 						'parent': path._id
-					}).exec(function(err3,tmp_goals){
+					}).exec(function(err5,tmp_goals){
 						goals=[];
 						tmp_goals.forEach(function(goal){
 							goals.push(changelang(goal,lang));

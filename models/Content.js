@@ -18,6 +18,7 @@ Content.add({
 	media : { 
 		type: Types.S3File
 	},
+	images : { type: Types.Relationship, ref: 'Image', many: true },
 	media_url: {type: Types.Url},
 	sub_objects : { type: Types.Relationship, ref: 'Object', many: true },
 	parent: {type: Types.Relationship, ref: 'Path', many: false, index: true},
