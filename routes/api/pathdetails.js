@@ -50,6 +50,10 @@ function getImages(item,cb){
 }
 
 exports = module.exports = function(req, res) {
+	objects=[];
+	places=[];
+	lang = "";
+	
 	var ret = {
 		path:{},
 		places:[],

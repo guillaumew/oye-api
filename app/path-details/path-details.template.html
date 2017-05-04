@@ -30,6 +30,7 @@
 }
 </style>
 
+
 <div id="nav-icon" aside-menu-toggle="left-menu" ></div>
 
 <div class="goals upper-right" ng-click="$ctrl.showPathInfo()">
@@ -89,16 +90,28 @@
 				<div ng-bind-html="$ctrl.current_content.shown_content.description | trusted"></div>
 				
 				<div class="media_content">
-					<a href="{{$ctrl.current_content.shown_content.media.url}}" target="_new">
+
+					<div class="image_container" ng-if="$ctrl.current_content.shown_content.media_type == 'img'">
 						<div class="image_holder">
-							<img ng-src="{{$ctrl.current_content.shown_content.media.url}}" ng-if="$ctrl.current_content.shown_content.media_type == 'img'" ng-pinch-zoom max-scale=“4”>
+							<img ng-src="{{$ctrl.current_content.shown_content.media.url}}" ng-pinch-zoom max-scale=“4”>
 						</div>
-					</a>
+						<div class="slide_images" ng-if="$ctrl.current_content.shown_content.images.length > 0">
+							<ul rn-carousel rn-carousel-transition="zoom" rn-carousel-index="slideImages" rn-carousel-controls>
+								<li ng-repeat="image in $ctrl.current_content.shown_content.images">
+									<div class="carousel-content">
+										<img ng-src="{{image.media.url}}" ng-pinch-zoom max-scale=“4”/>
+										<div class="carousel_description" ng-bind-html="image.description | trusted"></div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+
 					<div class="embed-responsive embed-responsive-16by9" ng-if="$ctrl.current_content.shown_content.media_type == 'youtube'">
 						<youtube-video class="embed-responsive-item" video-url="$ctrl.current_content.shown_content.media_url" player-vars="{'cc_load_policy':1,'modestbranding':1, 'rel':0, 'cc_lang_pref':'fr', 'hl':'fr'}"></youtube-video>
 					</div>
 
-					<div ng-if="$ctrl.current_content.shown_content.media_type == 'group'" class="subobjects">
+					<div ng-if="$ctrl.current_content.shown_content.sub_obj.length > 0" class="subobjects">
 						<div ng-repeat="subobject in $ctrl.current_content.shown_content.sub_obj | orderBy:'+name'" ng-click="$ctrl.showContent(subobject)" class="object">
 							<img ng-src="{{subobject.thumb.url}}">
 							<span class="object_title">{{subobject.name}}</span>
@@ -185,6 +198,41 @@
 .image_holder{
 	overflow: hidden;
     position: relative;
+}
+.image_container{
+	position: relative;
+}
+ul[rn-carousel]{
+	height: 100%;
+}
+.rn-carousel-control{
+    background: #34B3AC;
+    color:white;
+    padding: 5px 10px;
+}
+.rn-carousel-control.rn-carousel-control-next{
+	right: 0;
+}
+.rn-carousel-control.rn-carousel-control-prev{
+	left: 0;
+}
+.slide_images{
+	position: absolute;
+	top:0;
+	width:100%;
+	height: 100%;
+}
+.carousel_description{
+	position: absolute;
+    bottom: 0;
+    background: white;
+    width: 100%;
+    border: 1px solid #121326;
+    border-radius: 5px;
+}
+#content_container .carousel_description p{
+	font-size: 18px;
+	margin: 5px; 
 }
 .goal-progress{
 	height: 5px;
