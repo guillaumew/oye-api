@@ -2,9 +2,13 @@ var keystone = require('keystone');
 var Path = keystone.list('Path');
 var Place = keystone.list('Place');
 var Objects = keystone.list('Object');
+var Content = keystone.list('Content');
+var Image = keystone.list('Image')
 var Goals = keystone.list('Goal');
 var async = require('async');
-
+var objects=[];
+var places=[];
+var lang = "";
 
 function changelang(item, lang){
 	if(lang=='en'){
@@ -21,7 +25,35 @@ function changelang(item, lang){
 	
 	return item;
 }
+
+function getImages(item,cb){
+	var tmp_item = item;
+	async.eachSeries(
+		['init_content', 'success_content', 'init_content_en' ,'success_content_en'],
+		function(content_name, cback){
+			Content.model.findOne({
+				'_id': item[content_name]
+			}).populate('images')
+			.exec(function(err4,content){
+				tmp_item[content_name] = content;
+				cback();
+			});	
+		}
+	,function(){
+		if (item.__t === 'Place'){
+			places.push(changelang(tmp_item,lang));
+		}else{
+			objects.push(changelang(tmp_item,lang));
+		}
+		cb();
+	})
+}
+
 exports = module.exports = function(req, res) {
+	objects=[];
+	places=[];
+	lang = "";
+	
 	var ret = {
 		path:{},
 		places:[],
@@ -30,7 +62,6 @@ exports = module.exports = function(req, res) {
 		is_editable: false
 	};
 
-	var lang = "";
 	if(req.user && req.user.language=='en'){
 		lang='en'
 	}
@@ -48,8 +79,6 @@ exports = module.exports = function(req, res) {
 		} else if(!path) {
 			return res.json(ret);
 		} else {
-			var places = path.places;
-			var objects = path.objects;
 			if(req.user && req.user['_id'].toString() == path.author['_id'].toString()){
 				ret.is_editable = true ;
 			}
@@ -60,41 +89,31 @@ exports = module.exports = function(req, res) {
 			async.parallel([
 				function(callback){
 					Place.model.find({
-						'_id':{$in: places}
-					}).populate('init_content')
-					.populate('success_content')
-					.populate('init_content_en')
-					.populate('success_content_en')
+						'_id':{$in: path.places}
+					}).populate('init_content success_content init_content_en success_content_en')
 					.exec(function(err2,tmp_places){
-						places=[];
-						tmp_places.forEach(function(place){
-							places.push(changelang(place,lang));
+						async.eachSeries(tmp_places, getImages, function done(){
+							ret.places = (places);
+							callback();
 						});
-						ret.places = (places);
-						callback();
 					});
 				},
 				function(callback){
 					Objects.model.find({
-						'_id':{$in: objects}
-					}).populate('init_content')
-					.populate('success_content')
-					.populate('init_content_en')
-					.populate('success_content_en')
+						'_id':{$in: path.objects}
+					}).populate('init_content success_content init_content_en success_content_en')
 					.exec(function(err3,tmp_objects){
-						objects=[];
-						tmp_objects.forEach(function(object){
-							objects.push(changelang(object,lang));
+						async.eachSeries(tmp_objects, getImages, function done(){
+							ret.objects = (objects);
+							callback();
 						});
-						ret.objects = (objects);
-						callback();
 					});	
 				},
 				function(callback){
 					Goals.model.find({
 						'parent': path._id
-					}).exec(function(err3,tmp_goals){
-						goals=[];
+					}).exec(function(err5,tmp_goals){
+						var goals=[];
 						tmp_goals.forEach(function(goal){
 							goals.push(changelang(goal,lang));
 						});
@@ -106,7 +125,6 @@ exports = module.exports = function(req, res) {
 				res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000');
 				res.setHeader('Access-Control-Allow-Methods', 'GET');
 				res.setHeader('Access-Control-Allow-Credentials', true);
-				console.log(ret.is_editable);
 				return res.json(ret);
 			});
 		}
