@@ -56,7 +56,7 @@
 			<span>{{'PATH_DETAILS.LEGEND-DETAILS.MYPOSITION' | translate }}</span>
 		</div>
 		<div>
-			<img src="//s3.eu-central-1.amazonaws.com/openyoureyes/green_pin.png"> / <img src="//s3.eu-central-1.amazonaws.com/openyoureyes/grey_pin.png">
+			<img src="//s3.eu-central-1.amazonaws.com/openyoureyes/green_pin.png"> <span>/</span> <img src="//s3.eu-central-1.amazonaws.com/openyoureyes/grey_pin.png">
 			<span>{{'PATH_DETAILS.LEGEND-DETAILS.PLACES' | translate }}</span>
 		</div>
 		<div>
@@ -385,7 +385,10 @@ ul[rn-carousel]{
 	font-size: 14px;
 }
 #legend img{
-	height: 15px;
+	height: 13px;
+    overflow: visible;
+    position: relative;
+    top: -3px;
 }
 
 
